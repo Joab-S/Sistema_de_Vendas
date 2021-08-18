@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 188, 242, 1);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(14, 78, 167, 1);">
+         <children>
+            <AnchorPane layoutX="372.0" layoutY="50.0" prefHeight="216.0" prefWidth="199.0" style="-fx-background-color: rgba(255, 255, 255, 1); -fx-background-radius: 40;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <PasswordField fx:id="enterUserPassword" alignment="CENTER" layoutX="18.0" layoutY="105.0" prefHeight="34.0" prefWidth="205.0" promptText="Senha Usuário" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-background-radius: 20; -fx-Prompt-text-fill: rgba(0,0,0,0.8);" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="105.0" />
+                  <TextField fx:id="enterUserName" alignment="CENTER" layoutX="18.0" layoutY="54.0" prefHeight="34.0" prefWidth="205.0" promptText="Nome Usuário" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-background-radius: 20; -fx-Prompt-text-fill: rgba(0,0,0,0.8);" AnchorPane.bottomAnchor="212.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="54.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Button fx:id="fazerLoginButton" layoutX="35.0" layoutY="164.0" mnemonicParsing="false" onAction="#fazerLoginAction" prefHeight="34.0" prefWidth="171.0" style="-fx-background-color: rgba(244, 93, 83, 1); -fx-background-radius: 20;" text="Fazer Login" textFill="WHITE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="164.0" />
+                  <Button fx:id="fazerCadastroButton" layoutX="35.0" layoutY="248.0" mnemonicParsing="false" onAction="#fazerCadastroAction" prefHeight="34.0" prefWidth="171.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Fazer Cadastro" textFill="WHITE" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="212.0" />
+                  <Label layoutX="97.0" layoutY="22.0" style="-fx-font-weight: bold;" text="LOGIN" />
+                  <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="28.0" layoutY="252.0" prefHeight="34.0" prefWidth="185.0" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="252.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
