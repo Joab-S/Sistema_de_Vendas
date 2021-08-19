@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import main.Main;
+import Dao.ListaDeVendedores;
+import Models.Vendedor;
 
 /**
  * FXML Controller class
@@ -36,15 +38,48 @@ public class LoginController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    private boolean validateLogin(String user, String password, Vendedor vendedor){
+        //ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
+        
+        //Vendedor vendedor = vendedores.getInstance().searchUser(user);
+        
+        if (null != vendedor){
+            return (vendedor.getNome().equals(user) && vendedor.getSenha().equals(password));  
+        }
+        return false;       
+    }
 
     @FXML
     private void fazerLoginAction(ActionEvent event) {
-        loginMessageLabel.setText("Credenciais Incorretas");
+        if(!enterUserName.getText().isBlank() && !enterUserPassword.getText().isBlank()) {
+            ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
+            Vendedor vendedor = vendedores.getInstance().searchUserName(enterUserName.getText());
+        
+            if(validateLogin(enterUserName.getText(), enterUserPassword.getText(), vendedor)) {
+                System.out.println(enterUserName.getText());
+                if (vendedor.isAdmin()){
+                    Main.mudar_tela("menu_administrador");
+                }
+                else{
+                    Main.mudar_tela("menu_vendedor");
+                }
+            }
+            else{
+                loginMessageLabel.setText("Credenciais Incorretas.");
+            }
+        }
+        else{
+            loginMessageLabel.setText("Informe as credenciais.");
+        }
+
     }
 
     @FXML

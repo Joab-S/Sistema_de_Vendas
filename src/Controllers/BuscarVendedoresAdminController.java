@@ -26,7 +26,8 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     /**
      * Initializes the controller class.
-     * @throws java.lang.Exception
+     * @param url
+     * @param rb
      */ 
     
 

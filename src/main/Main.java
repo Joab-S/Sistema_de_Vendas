@@ -56,10 +56,10 @@ public class Main extends Application {
         
         Parent FXML_buscar_vendedores_admin = FXMLLoader.load(getClass().getResource("../Views/BuscarVendedoresAdmin.fxml"));
         buscar_vendedores_admin = new Scene(FXML_buscar_vendedores_admin);
-        
+        */
         Parent FXML_menu_administrador = FXMLLoader.load(getClass().getResource("../Views/MenuAdministrador.fxml"));
         menu_administrador = new Scene(FXML_menu_administrador);
-        
+        /*
         Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
         menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
         
@@ -68,10 +68,10 @@ public class Main extends Application {
         
         Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
         menu_vendas = new Scene(FXML_menu_vendas);
-        
+        */
         Parent FXML_menu_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuVendedor.fxml"));
         menu_vendedor = new Scene(FXML_menu_vendedor);
-        */
+        
         Parent FXML_pagamento = FXMLLoader.load(getClass().getResource("../Views/Pagamento.fxml"));
         pagamento = new Scene(FXML_pagamento);
         /*
@@ -108,10 +108,10 @@ public class Main extends Application {
                 break;
             case "buscar_vendedores_admin":
                 stage.setScene(buscar_vendedores_admin);
-                break;
+                break; */
             case "menu_administrador":
                 stage.setScene(menu_administrador);
-                break;
+                break;/*
             case "menu_produtos_admin":
                 stage.setScene(menu_produtos_admin);
                 break;
