@@ -2,6 +2,7 @@ package Models;
 
 import java.util.LinkedList;
 import java.io.Serializable;
+import Dao.ListaDeVendedores;
 
 public class Vendedor implements Serializable{
   private int ID;
@@ -10,16 +11,17 @@ public class Vendedor implements Serializable{
   private String senha;
   private String nome_usuario;
   private String email;
-
+  private boolean isAdmin;
 
   public Vendedor(){
-    this("Sem nome"  ,"Sem senha");
+    this("Sem nome", "Sem senha");
   }
   //Recebe nome e senha
-  public Vendedor(String nome,String senha){
+  public Vendedor(String nome, String senha){
     this.ID=-1;
     this.nome=nome.trim();
     this.senha=senha;
+    this.isAdmin = false;
   }
 
   public void setEmail(String email){
@@ -74,6 +76,14 @@ public class Vendedor implements Serializable{
   public LinkedList<Pedido> getVendas(){
     return this.vendas;
   }
+  
+  public void setAdmin(boolean admin){
+      this.isAdmin = admin;
+  }
+  
+  public boolean isAdmin(){
+      return this.isAdmin;
+  }
 
   public void adicionarVenda(Pedido novoPedido){
     LinkedList<Pedido> x = this.getVendas();
@@ -90,9 +100,6 @@ public class Vendedor implements Serializable{
       return false;
     }
     v = (Vendedor)o;
-    if(this.getID() == v.getID()){
-      return true;
-    }
-    return false;
+    return this.getID() == v.getID();
   }
 }
