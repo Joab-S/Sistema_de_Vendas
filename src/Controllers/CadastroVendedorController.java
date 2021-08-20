@@ -47,7 +47,10 @@ public class CadastroVendedorController implements Initializable {
 
     @FXML
     private Button cadastrar_vendedor;
+    /*
+    Verificar se tem o mesmo email ja cadastrado
     
+    */
     public boolean cadastrar_vendedor (ActionEvent e){
         if(nome_vendedor.getText().isBlank() || senha.getText().isBlank() || senha_confirm.getText().isBlank() || email.getText().isBlank()){
             label_aviso.setText("Preencha todos os campos.");
@@ -65,16 +68,11 @@ public class CadastroVendedorController implements Initializable {
                     System.out.println("Deu ruim");
                 }
                 Serializador.salvar_dados(x.getListaDeVendedor(),"ListaVendedores.txt");
-                Main.mudar_tela("login");
+                Main.mudar_tela("menu_administrador");
             }else{
                 label_aviso.setText("O cadastro não foi bem sucedido.");
             }
-        }
-        
-        
-        
-        
-        
+        } 
         return true;
     }
     

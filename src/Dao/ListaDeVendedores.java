@@ -28,9 +28,9 @@ public class ListaDeVendedores implements Serializable{
     public LinkedList<Vendedor> getListaDeVendedor(){
         return this.listaVendedores;
     }
-    // Contrutor carrega a lista se não houver então cria a lista fazia e seta o admin
+    // Contrutor carrega a lista se não houver então cria a lista vazia e seta o admin manualmente
     private ListaDeVendedores() { // Construtor
-        
+       
         this.listaVendedores = (LinkedList<Vendedor>)Serializador.carregar_dados("ListaVendedores.txt");
         if(this.listaVendedores==null){
             this.listaVendedores = new LinkedList<>();
