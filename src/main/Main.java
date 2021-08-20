@@ -144,14 +144,14 @@ public class Main extends Application {
     public static void main(String [] args){
         ListaDeVendedores p = ListaDeVendedores.getInstance();
         
-        
-        Serializador.salvar_dados(p, "listaVend.txt");
-    
+        Serializador.salvar_dados(p.getListaDeVendedor(), "listaVend.txt");
+        /*
         p= null;
         p= (ListaDeVendedores)Serializador.carregar_dados("listaVend.txt");
         if(p!=null){
             System.out.println("Deu bom");
         }
+        */
        
         launch(args);
     }   

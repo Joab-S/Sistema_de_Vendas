@@ -1,5 +1,6 @@
 package Dao;
 
+import Models.Serializador;
 import Models.Vendedor;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -27,12 +28,18 @@ public class ListaDeVendedores implements Serializable{
     public LinkedList<Vendedor> getListaDeVendedor(){
         return this.listaVendedores;
     }
-    
+    // Contrutor carrega a lista se não houver então cria a lista fazia e seta o admin
     private ListaDeVendedores() { // Construtor
-        this.listaVendedores = new LinkedList<>();
-        Vendedor admin = new Vendedor("Admin", "Admin");
-        admin.setAdmin(true);
-        this.listaVendedores.add(admin);
+        
+        this.listaVendedores = (LinkedList<Vendedor>)Serializador.carregar_dados("listaVend.txt");
+        if(this.listaVendedores==null){
+            this.listaVendedores = new LinkedList<>();
+            Vendedor admin = new Vendedor("Admin", "Admin");
+            admin.setAdmin(true);
+            admin.setID(0);
+            this.listaVendedores.add(admin);
+        }
+        
     }
             
     public Vendedor searchUserName(String nomeVendedor) {
