@@ -9,7 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.io.Serializable;
 
-class Pedido implements Serializable{
+public class Pedido implements Serializable{
   private int ID;
   private int formaDePagamento;
   private String dataEHora;
@@ -18,11 +18,11 @@ class Pedido implements Serializable{
   private int parcelas;
   // Rever o tipo de estrutura que a gnt vai usar
 
-  Pedido() {
+  public Pedido() {
     this(0, null);
   }
 
-  Pedido(int formaDePagamento, Vendedor vendedor) {
+  public Pedido(int formaDePagamento, Vendedor vendedor) {
     this.ID = -1;
     this.formaDePagamento = formaDePagamento;
     this.ListaProdutos = new LinkedList<ElementoPedido>();
@@ -49,7 +49,7 @@ class Pedido implements Serializable{
     this.dataEHora = dateFormat.format(date);
   }
 
-  int getID() {
+  public int getID() {
     return this.ID;
   }
 
@@ -61,7 +61,7 @@ class Pedido implements Serializable{
     return this.ListaProdutos;
   }
 
-  String getDataEHora() {
+  public String getDataEHora() {
     return this.dataEHora;
   }
 
@@ -69,7 +69,7 @@ class Pedido implements Serializable{
     this.vendedor = v;
   }
 
-  Vendedor getVendedor() {
+  public Vendedor getVendedor() {
     return this.vendedor;
   }
 
@@ -90,10 +90,7 @@ class Pedido implements Serializable{
   }
 
   boolean verificarEstoque(Produto p, int quant) {
-    if (p.getEstoque() < quant) {
-      return false;
-    }
-    return true;
+    return p.getEstoque() >= quant;
   }
 
   // Fazer o teste do estoque aqui
