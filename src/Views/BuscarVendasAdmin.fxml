@@ -19,13 +19,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BuscarVendasAdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication2.BuscarVendasAdminController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <MenuBar layoutX="428.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+                  <MenuBar layoutX="425.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
                         <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
                         <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Usuario" />
@@ -43,63 +43,39 @@
                   </Label>
                   <AnchorPane layoutY="35.0" prefHeight="365.0" prefWidth="600.0" style="-fx-background-color: rgba(229, 234, 250, 1);">
                      <children>
-                        <TextField fx:id="txtBusca" layoutX="23.0" layoutY="14.0" prefHeight="25.0" prefWidth="455.0" promptText="Consultar Vendas por ID, Data do pedido ou Horário do Pedido" style="-fx-background-radius: 20;">
+                        <TextField fx:id="txtBusca" layoutX="14.0" layoutY="62.0" prefHeight="25.0" prefWidth="482.0" promptText="Digite o ID ou a Data ou o Horário do pedido" style="-fx-background-radius: 20;">
                            <font>
                               <Font size="12.0" />
                            </font></TextField>
-                        <Button fx:id="button_pesquisar" layoutX="496.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
-                        <AnchorPane layoutX="26.0" layoutY="60.0" prefHeight="282.0" prefWidth="550.0" style="-fx-background-color: rgba(196, 196, 196, 1); -fx-background-radius: 20;" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.0">
-                           <children>
-                              <GridPane alignment="CENTER" layoutX="-2.0" layoutY="-6.0" prefHeight="282.0" prefWidth="550.0" style="-fx-background-color: rgba(255, 255, 255, 1); -fx-background-radius: 20;">
-                                <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
+                        <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="62.0" mnemonicParsing="false" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
+                        <RadioButton layoutX="18.0" layoutY="32.0" mnemonicParsing="false" selected="true" text="ID">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="pesquisa" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton layoutX="80.0" layoutY="32.0" mnemonicParsing="false" text="Data do Pedido" toggleGroup="$pesquisa" />
+                        <RadioButton layoutX="226.0" layoutY="32.0" mnemonicParsing="false" text="Horário do Pedido" toggleGroup="$pesquisa" />
+                        <Label contentDisplay="CENTER" layoutX="18.0" layoutY="-3.0" prefHeight="35.0" prefWidth="175.0" style="-fx-font-weight: bold;" text="Pesquisar vendas por:" textFill="#051028">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" />
+                           </opaqueInsets>
+                        </Label>
+                        <ScrollPane layoutX="18.0" layoutY="113.0" prefHeight="234.0" prefWidth="568.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="568.0">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="ID" textAlignment="CENTER" />
-                                    <Label alignment="CENTER" prefWidth="137.0" text="Nome Vendedor" textAlignment="CENTER" GridPane.columnIndex="1" />
-                                    <Label alignment="CENTER" prefWidth="137.0" text="Data Pedido" textAlignment="CENTER" GridPane.columnIndex="2" />
-                                    <Label alignment="CENTER" prefWidth="137.0" text="Horário Pedido" GridPane.columnIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="000000000" textAlignment="CENTER" GridPane.rowIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="000000001" textAlignment="CENTER" GridPane.rowIndex="2" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="000000002" textAlignment="CENTER" GridPane.rowIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="000000003" textAlignment="CENTER" GridPane.rowIndex="4" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="000000004" textAlignment="CENTER" GridPane.rowIndex="5" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="000000005" textAlignment="CENTER" GridPane.rowIndex="6" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="Vendedor 1" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="Vendedor 2" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="Vendedor 6" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="Vendedor 5" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="Vendedor 4" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="Vendedor 3" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="07/07/2021" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="06/07/2021" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="05/07/2021" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="04/07/2021" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="08/07/2021" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="22:45" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="21:45" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="20:45" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="19:45" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="18:45" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="17:45" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="15.0" prefWidth="137.0" text="09/07/2021" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                    <TableView prefHeight="234.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columns>
+                                        <TableColumn minWidth="0.0" prefWidth="132.0" text="ID" />
+                                        <TableColumn minWidth="0.0" prefWidth="140.0" text="Nome Vendedor" />
+                                          <TableColumn prefWidth="140.0" text="Data Pedido" />
+                                          <TableColumn minWidth="0.0" prefWidth="140.0" text="Horário Pedido" />
+                                      </columns>
+                                    </TableView>
                                  </children>
-                              </GridPane>
-                              <ScrollBar layoutX="540.0" orientation="VERTICAL" prefHeight="282.0" prefWidth="17.0" />
-                           </children>
-                        </AnchorPane>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                </children>
