@@ -6,14 +6,16 @@ package Controllers;
  * and open the template in the editor.
  */
 
-
+import main.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Menu;
 import javafx.stage.Stage;
 
 
@@ -28,7 +30,27 @@ public class MenuAdministradorController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         
     }
+    
+    
+    @FXML
+    private Menu menu_carrinho;
 
+    @FXML
+    private Menu menu_usuario;
+
+    @FXML
+    private Menu botao_home;
+
+    @FXML
+    void ir_carrinho(ActionEvent event) {
+        //Main.mudartela("menu_vendas");  
+    }
+
+    @FXML
+    void ir_usuario(ActionEvent event) {
+        System.out.println("TEste");
+        Main.mudar_tela("perfil");  
+    }
     /**
      * Initializes the controller class.
      * @throws java.lang.Exception

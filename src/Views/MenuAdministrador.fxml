@@ -20,8 +20,8 @@
                <children>
                   <MenuBar layoutX="440.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242);">
                      <menus>
-                        <Menu mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Carrinho" />
-                        <Menu mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Usuario" />
+                        <Menu fx:id="menu_carrinho" mnemonicParsing="false" onAction="#ir_carrinho" style="-fx-color: rgba(11, 63, 194, 1);" text="Carrinho" />
+                        <Menu fx:id="menu_usuario" mnemonicParsing="false" onAction="#ir_usuario" style="-fx-color: rgba(11, 63, 194, 1);" text="Usuario" />
                      </menus>
                   </MenuBar>
                   <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">

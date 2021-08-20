@@ -77,10 +77,10 @@ public class Main extends Application {
         
         Parent FXML_pagamento = FXMLLoader.load(getClass().getResource("../Views/Pagamento.fxml"));
         pagamento = new Scene(FXML_pagamento);
-        /*
+        
         Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
         perfil = new Scene(FXML_perfil);
-        
+        /*
         Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PefilVendedorAdmin.fxml"));
         perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
         */
@@ -131,9 +131,10 @@ public class Main extends Application {
             case "pagamento":
                 stage.setScene(pagamento);
                 break;
-            /*case "perfil":
+            case "perfil":
                 stage.setScene(perfil);
                 break;
+            /*
             case "perfil_vendedor_admin":
                 stage.setScene(perfil);
                 break;
