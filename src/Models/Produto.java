@@ -40,7 +40,7 @@ public class Produto implements Serializable{
     this.ID= x+1;
   }
 
-  int getID(){
+  public int getID(){
     return this.ID;
   }
 
@@ -92,7 +92,7 @@ public class Produto implements Serializable{
     this.estoque = novo_estoque;
   }
 
-   public boolean equals(Object o){
+  public boolean equals(Object o){
     Produto p;
     
     if(this == o){

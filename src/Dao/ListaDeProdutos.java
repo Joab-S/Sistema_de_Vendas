@@ -24,29 +24,34 @@ public class ListaDeProdutos implements Serializable {
     }
     
     private ListaDeProdutos() { // Construtor
-        this.listaProdutos = new LinkedList<>();
+        
         listaProdutos=(LinkedList<Produto>)Serializador.carregar_dados("ListaProdutos.txt");
+        if (listaProdutos==null){
+            this.listaProdutos = new LinkedList<>();
+        }
     }
     
-    LinkedList<Produto> getListaDeProdutos() {
+    public LinkedList<Produto> getListaDeProdutos() {
     return this.listaProdutos;
-  }
+    }
 
-  boolean adicionar(Produto produto) {
+  public boolean adicionar(Produto produto) {
     // Verifica se o produto ja foi adicionado
     if (this.getListaDeProdutos().contains(produto)) {
+      System.out.println("Contem o produto");  
       return false;
     }
     produto.getID();
     // Insere o produto
     if(!this.getListaDeProdutos().add(produto)){
+      System.out.println("Nao adiciona");  
       return false;
     }
     return true;
   }
   //Testado
   //Busca o porduto pelo ID
-  Produto buscar(int ID) {
+  public Produto buscar(int ID) {
     //Verifica se o ID é válido
     if (ID < 0) {
       return null;
@@ -76,7 +81,7 @@ public class ListaDeProdutos implements Serializable {
     }
   }
 
-  boolean remover(int ID) {
+  public boolean remover(int ID) {
     if (ID < 0) {
       return false;
     }
