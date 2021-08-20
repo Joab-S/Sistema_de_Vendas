@@ -5,6 +5,7 @@
  */
 package main; 
 import Dao.ListaDeVendedores;
+import Dao.ListaDeProdutos;
 import Models.Serializador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -147,5 +148,6 @@ public class Main extends Application {
         launch(args);
         //Ao final da execução do programa todas as listas devem ser salvas em seus respectivos arquivos
         Serializador.salvar_dados(ListaDeVendedores.getInstance().getListaDeVendedor(),"ListaVendedores.txt");
+        Serializador.salvar_dados(ListaDeProdutos.getInstance().getListaDeProdutos(),"ListaProdutos.txt");
     }   
 }

@@ -6,7 +6,8 @@ import Models.Produto;
  * and open the template in the editor.
  */
 
-
+import Dao.ListaDeProdutos;
+import Models.Serializador;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -67,16 +68,17 @@ public class CadastroDeProdutoController implements Initializable {
             p.setEstoque(Integer.parseInt(estoque.getText()));
             
             //Executar essa parte apos criar a lista de pordutos no Dao
-            //ListaDeProdutos l = ListaDeProdutos.getInstance();
-            /*if(l.adicionar(p)){
+            ListaDeProdutos l = ListaDeProdutos.getInstance();
+            if(l.adicionar(p)){
                 System.out.println("ID "+p.getID());
+                Serializador.salvar_dados(l.getListaDeProdutos(),"ListaProdutos.txt");
                 Main.mudar_tela("menu_administrador");
             }else{
-                label_aviso.setText("Produto não Cadastrado.")
+                label_aviso.setText("Produto não Cadastrado.");
             }
             
             
-            */  
+              
         }
         return true;
         
