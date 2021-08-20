@@ -7,6 +7,8 @@ package Controllers;
  */
 
 
+import Dao.ListaDeVendedores;
+import Models.Serializador;
 import Models.Vendedor;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,13 +53,18 @@ public class CadastroVendedorController implements Initializable {
             label_aviso.setText("Preencha todos os campos.");
         }else{
             if((senha.getText().compareTo(senha_confirm.getText()))==0){
+                ListaDeVendedores x = ListaDeVendedores.getInstance();
                 Vendedor p = new Vendedor();
                 p.setSenha(senha.getText());
                 p.setEmail(email.getText().strip());
                 p.setNome(nome_vendedor.getText().strip());
                 p.setSenha(senha.getText());
-                //Falta adicionar na lista
-                
+                if(x.adicionar(p)){
+                    System.out.println("Id"+p.getID());
+                }else{
+                    System.out.println("Deu ruim");
+                }
+                Serializador.salvar_dados(x.getListaDeVendedor(),"ListaVendedores.txt");
                 Main.mudar_tela("login");
             }else{
                 label_aviso.setText("O cadastro não foi bem sucedido.");

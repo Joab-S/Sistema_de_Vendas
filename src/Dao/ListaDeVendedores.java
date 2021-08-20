@@ -31,7 +31,7 @@ public class ListaDeVendedores implements Serializable{
     // Contrutor carrega a lista se não houver então cria a lista fazia e seta o admin
     private ListaDeVendedores() { // Construtor
         
-        this.listaVendedores = (LinkedList<Vendedor>)Serializador.carregar_dados("listaVend.txt");
+        this.listaVendedores = (LinkedList<Vendedor>)Serializador.carregar_dados("ListaVendedores.txt");
         if(this.listaVendedores==null){
             this.listaVendedores = new LinkedList<>();
             Vendedor admin = new Vendedor("Admin", "Admin");
@@ -49,7 +49,7 @@ public class ListaDeVendedores implements Serializable{
         if (e != null){
           while (e.hasNext()) {
               v = e.next();
-              if (v.getNome().toLowerCase().equals(nomeVendedor.trim().toLowerCase())) { return v; }
+              if (v.getNome().toLowerCase().compareTo(nomeVendedor.trim().toLowerCase())==0) { return v; }
           }
       }
       return null;

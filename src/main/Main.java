@@ -124,10 +124,11 @@ public class Main extends Application {
             case "menu_vendas":
                 stage.setScene(menu_vendas);
                 break;
+            */
             case "menu_vendedor":
                 stage.setScene(menu_vendedor);
                 break;
-            */case "pagamento":
+            case "pagamento":
                 stage.setScene(pagamento);
                 break;
             /*case "perfil":
@@ -142,9 +143,6 @@ public class Main extends Application {
     }
     
     public static void main(String [] args){
-        ListaDeVendedores p = ListaDeVendedores.getInstance();
-        
-        Serializador.salvar_dados(p.getListaDeVendedor(), "listaVend.txt");
         /*
         p= null;
         p= (ListaDeVendedores)Serializador.carregar_dados("listaVend.txt");
@@ -152,7 +150,8 @@ public class Main extends Application {
             System.out.println("Deu bom");
         }
         */
-       
         launch(args);
+        System.out.println("Executa.");
+        Serializador.salvar_dados(ListaDeVendedores.getInstance().getListaDeVendedor(),"ListaVendedores.txt");
     }   
 }
