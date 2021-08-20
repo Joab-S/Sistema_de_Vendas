@@ -64,7 +64,9 @@ public class LoginController implements Initializable {
             Vendedor vendedor = vendedores.getInstance().searchUserName(enterUserName.getText());
         
             if(validateLogin(enterUserName.getText(), enterUserPassword.getText(), vendedor)) {
-                System.out.println(enterUserName.getText());
+                //Mantem a referencia para o vendedor logado
+                //Verificar se está funcionando globalmente
+                vendedores.setVendedorLogado(vendedor);
                 if (vendedor.isAdmin()){
                     Main.mudar_tela("menu_administrador");
                 }

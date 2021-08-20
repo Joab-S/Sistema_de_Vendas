@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package main; 
+import Dao.ListaDeVendedores;
+import Models.Serializador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -74,10 +76,10 @@ public class Main extends Application {
         
         Parent FXML_pagamento = FXMLLoader.load(getClass().getResource("../Views/Pagamento.fxml"));
         pagamento = new Scene(FXML_pagamento);
-        /*
+        
         Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
         perfil = new Scene(FXML_perfil);
-        
+        /*
         Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PefilVendedorAdmin.fxml"));
         perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
         */
@@ -121,15 +123,17 @@ public class Main extends Application {
             case "menu_vendas":
                 stage.setScene(menu_vendas);
                 break;
+            */
             case "menu_vendedor":
                 stage.setScene(menu_vendedor);
                 break;
-            */case "pagamento":
+            case "pagamento":
                 stage.setScene(pagamento);
                 break;
-            /*case "perfil":
+            case "perfil":
                 stage.setScene(perfil);
                 break;
+            /*
             case "perfil_vendedor_admin":
                 stage.setScene(perfil);
                 break;
@@ -139,6 +143,9 @@ public class Main extends Application {
     }
     
     public static void main(String [] args){
+
         launch(args);
+        //Ao final da execução do programa todas as listas devem ser salvas em seus respectivos arquivos
+        Serializador.salvar_dados(ListaDeVendedores.getInstance().getListaDeVendedor(),"ListaVendedores.txt");
     }   
 }

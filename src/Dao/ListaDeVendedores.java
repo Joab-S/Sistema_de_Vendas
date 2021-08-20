@@ -1,5 +1,6 @@
 package Dao;
 
+import Models.Serializador;
 import Models.Vendedor;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -16,7 +17,7 @@ public class ListaDeVendedores implements Serializable{
     ** Isso nos permite criar uma unica instância de
     ** uma determinada classe  e  usá-la globalmente.
     */
-    
+    private static Vendedor vend;
     private static final ListaDeVendedores instancia = new ListaDeVendedores();
     private LinkedList<Vendedor> listaVendedores;
     
@@ -27,12 +28,18 @@ public class ListaDeVendedores implements Serializable{
     public LinkedList<Vendedor> getListaDeVendedor(){
         return this.listaVendedores;
     }
-    
+    // Contrutor carrega a lista se não houver então cria a lista vazia e seta o admin manualmente
     private ListaDeVendedores() { // Construtor
-        this.listaVendedores = new LinkedList<>();
-        Vendedor admin = new Vendedor("Admin", "Admin");
-        admin.setAdmin(true);
-        this.listaVendedores.add(admin);
+       
+        this.listaVendedores = (LinkedList<Vendedor>)Serializador.carregar_dados("ListaVendedores.txt");
+        if(this.listaVendedores==null){
+            this.listaVendedores = new LinkedList<>();
+            Vendedor admin = new Vendedor("Admin", "Admin");
+            admin.setAdmin(true);
+            admin.setID(0);
+            this.listaVendedores.add(admin);
+        }
+        
     }
             
     public Vendedor searchUserName(String nomeVendedor) {
@@ -42,12 +49,19 @@ public class ListaDeVendedores implements Serializable{
         if (e != null){
           while (e.hasNext()) {
               v = e.next();
-              if (v.getNome().toLowerCase().equals(nomeVendedor.trim().toLowerCase())) { return v; }
+              if (v.getNome().toLowerCase().compareTo(nomeVendedor.trim().toLowerCase())==0) { return v; }
           }
       }
       return null;
   }
-    
+  public void setVendedorLogado(Vendedor vend){
+      this.vend = vend;
+      
+  }  
+  
+  public Vendedor getVendedorLogado(){
+      return this.vend;
+  }
   public boolean adicionar(Vendedor vend) {
     if (vend == null) {
       return false;

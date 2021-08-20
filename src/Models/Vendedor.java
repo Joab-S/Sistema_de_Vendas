@@ -43,7 +43,11 @@ public class Vendedor implements Serializable{
   public void setSenha(String senha) {
       this.senha = senha;
   }
-
+  
+  public void setID(int i){
+      this.ID = i;
+  }
+  
   public String getSenha() {
       return this.senha;
   }

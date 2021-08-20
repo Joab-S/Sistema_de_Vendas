@@ -20,13 +20,13 @@
                <children>
                   <MenuBar layoutX="440.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242);">
                      <menus>
-                        <Menu mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Carrinho" />
-                        <Menu mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Usuario" />
+                        <Menu fx:id="menu_carrinho" mnemonicParsing="false" onAction="#ir_carrinho" style="-fx-color: rgba(11, 63, 194, 1);" text="Carrinho" />
+                        <Menu fx:id="menu_usuario" mnemonicParsing="false" onAction="#ir_usuario" style="-fx-color: rgba(11, 63, 194, 1);" text="Usuario" />
                      </menus>
                   </MenuBar>
                   <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Home" />
+                        <Menu fx:id="botao_home" mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Home" />
                      </menus>
                   </MenuBar>
                   <Label contentDisplay="CENTER" layoutX="75.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="MENU ADMINISTRADOR" textFill="#1e54e1" AnchorPane.leftAnchor="75.0">
@@ -47,7 +47,7 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="134.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Adcionar Produtos" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button layoutX="134.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Adicionar Produtos" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -62,7 +62,7 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="399.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadstrar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button layoutX="399.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
