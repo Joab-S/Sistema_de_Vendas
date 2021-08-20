@@ -41,7 +41,7 @@ public class ListaDeProdutos implements Serializable {
       System.out.println("Contem o produto");  
       return false;
     }
-    produto.getID();
+    produto.gerarID(this);
     // Insere o produto
     if(!this.getListaDeProdutos().add(produto)){
       System.out.println("Nao adiciona");  

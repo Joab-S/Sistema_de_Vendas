@@ -1,7 +1,7 @@
 package Models;
 
 import java.io.Serializable;
-
+import Dao.ListaDeProdutos;
 public class Produto implements Serializable{
   //Atributos
   private int ID;
@@ -91,7 +91,7 @@ public class Produto implements Serializable{
   public void alterarEstoque(int novo_estoque){
     this.estoque = novo_estoque;
   }
-
+  @Override
   public boolean equals(Object o){
     Produto p;
     
@@ -102,7 +102,7 @@ public class Produto implements Serializable{
       return false;
     }
     p = (Produto)o;
-    if(this.getID() == p.getID()){
+    if((this.getNome().toLowerCase().trim().compareTo(p.getNome().toLowerCase().trim())==0)&& (this.getTipo().toLowerCase().trim().compareTo(p.getTipo().toLowerCase().trim())==0)){
       return true;
     }
     return false;
