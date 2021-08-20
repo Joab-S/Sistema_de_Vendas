@@ -7,14 +7,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Serializador implements Serializable {
     
     public static boolean salvar_dados(Object lista,String nome_arq){
 
         try{
-            ObjectOutputStream saida =new ObjectOutputStream(new FileOutputStream(nome_arq));
+            ObjectOutputStream saida = new ObjectOutputStream( new FileOutputStream(nome_arq));
             saida.writeObject(lista);
             saida.close();
             return true;
@@ -23,7 +24,23 @@ public class Serializador implements Serializable {
             return false;
         }
     }
+    
+    /*
+    public static void salvar_dados(Object lista,String nome_arq) throws IOException{
 
+        
+        FileWriter p = new FileWriter(nome_arq);
+        PrintWriter x = new PrintWriter(p);
+        x.print(lista);
+        x.close();
+            //ObjectOutputStream saida =new ObjectOutputStream(p);
+            
+            //saida.writeObject(lista);
+            //saida.close();
+          
+        
+    }
+    */
     public static Object carregar_dados(String nome_arq){
 
         try{

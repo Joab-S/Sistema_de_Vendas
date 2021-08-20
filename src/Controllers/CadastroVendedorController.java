@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.Main;
 
@@ -28,9 +29,6 @@ public class CadastroVendedorController implements Initializable {
     private TextField nome_vendedor;
 
     @FXML
-    private TextField usuario;
-
-    @FXML
     private TextField email;
 
     @FXML
@@ -40,22 +38,33 @@ public class CadastroVendedorController implements Initializable {
     private Button cadastrado;
     
     @FXML
+    private Label label_aviso;
+    
+    @FXML
     private TextField senha_confirm;
 
     @FXML
     private Button cadastrar_vendedor;
     
     public boolean cadastrar_vendedor (ActionEvent e){
-        Vendedor p = new Vendedor();
-        if((senha.getText().compareTo(senha_confirm.getText()))==0){
-            p.setSenha(senha.getText());
-            p.setEmail(email.getText().strip());
-            p.setNome(nome_vendedor.getText().strip());
-            p.setSenha(senha.getText());
-        
+        if(nome_vendedor.getText().isBlank() || senha.getText().isBlank() || senha_confirm.getText().isBlank() || email.getText().isBlank()){
+            label_aviso.setText("Preencha todos os campos.");
         }else{
-            //Label avisando que o cadastro não foi bem sucedido
+            if((senha.getText().compareTo(senha_confirm.getText()))==0){
+                Vendedor p = new Vendedor();
+                p.setSenha(senha.getText());
+                p.setEmail(email.getText().strip());
+                p.setNome(nome_vendedor.getText().strip());
+                p.setSenha(senha.getText());
+                //Falta adicionar na lista
+                
+                Main.mudar_tela("login");
+            }else{
+                label_aviso.setText("O cadastro não foi bem sucedido.");
+            }
         }
+        
+        
         
         
         
@@ -63,7 +72,7 @@ public class CadastroVendedorController implements Initializable {
     }
     
     public void ja_cadastrado(ActionEvent e ){
-        Main.mudar_tela("pagamento");
+        Main.mudar_tela("login");
     }
     
     /**

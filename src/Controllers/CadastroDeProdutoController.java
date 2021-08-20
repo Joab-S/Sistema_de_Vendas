@@ -38,7 +38,7 @@ public class CadastroDeProdutoController implements Initializable {
 
     @FXML
     private TextField descricao;
-
+    
     @FXML
     private Button cadastrado;
 

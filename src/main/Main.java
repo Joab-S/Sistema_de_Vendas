@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package main; 
+import Dao.ListaDeVendedores;
+import Models.Serializador;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -139,6 +142,17 @@ public class Main extends Application {
     }
     
     public static void main(String [] args){
+        ListaDeVendedores p = ListaDeVendedores.getInstance();
+        
+        
+        Serializador.salvar_dados(p, "listaVend.txt");
+    
+        p= null;
+        p= (ListaDeVendedores)Serializador.carregar_dados("listaVend.txt");
+        if(p!=null){
+            System.out.println("Deu bom");
+        }
+       
         launch(args);
     }   
 }
