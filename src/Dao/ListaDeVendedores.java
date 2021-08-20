@@ -17,7 +17,7 @@ public class ListaDeVendedores implements Serializable{
     ** Isso nos permite criar uma unica instância de
     ** uma determinada classe  e  usá-la globalmente.
     */
-    
+    private static Vendedor vend;
     private static final ListaDeVendedores instancia = new ListaDeVendedores();
     private LinkedList<Vendedor> listaVendedores;
     
@@ -54,7 +54,14 @@ public class ListaDeVendedores implements Serializable{
       }
       return null;
   }
-    
+  public void setVendedorLogado(Vendedor vend){
+      this.vend = vend;
+      
+  }  
+  
+  public Vendedor getVendedorLogado(){
+      return this.vend;
+  }
   public boolean adicionar(Vendedor vend) {
     if (vend == null) {
       return false;

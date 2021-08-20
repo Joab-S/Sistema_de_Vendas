@@ -151,7 +151,6 @@ public class Main extends Application {
         }
         */
         launch(args);
-        System.out.println("Executa.");
         Serializador.salvar_dados(ListaDeVendedores.getInstance().getListaDeVendedor(),"ListaVendedores.txt");
     }   
 }

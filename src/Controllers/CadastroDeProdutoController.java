@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.Main;
 
@@ -45,24 +46,44 @@ public class CadastroDeProdutoController implements Initializable {
     @FXML
     private Button cadastrar_produto;
     
+    @FXML
+    private Label label_aviso;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
     
     public boolean cadastrar_produto(ActionEvent e){
-        Produto p = new Produto();
-        p.setDescricao(descricao.getText());
-        p.setPreco(Double.parseDouble(preco_produto.getText()));
-        p.setNome(nome_produto.getText());
-        p.setTipo(tipo_produto.getText());
-        p.setEstoque(Integer.parseInt(estoque.getText()));
-        System.out.println(p.getNome());
+        
+        if(nome_produto.getText().isBlank() || preco_produto.getText().isBlank() || tipo_produto.getText().isBlank() || estoque.getText().isBlank() || descricao.getText().isBlank()){
+            label_aviso.setText("Preencha todos os campos.");        
+        }else{
+            Produto p = new Produto();
+            p.setDescricao(descricao.getText());
+            p.setPreco(Double.parseDouble(preco_produto.getText()));
+            p.setNome(nome_produto.getText());
+            p.setTipo(tipo_produto.getText());
+            p.setEstoque(Integer.parseInt(estoque.getText()));
+            
+            //Executar essa parte apos criar a lista de pordutos no Dao
+            //ListaDeProdutos l = ListaDeProdutos.getInstance();
+            /*if(l.adicionar(p)){
+                System.out.println("ID "+p.getID());
+                Main.mudar_tela("menu_administrador");
+            }else{
+                label_aviso.setText("Produto não Cadastrado.")
+            }
+            
+            
+            */  
+        }
         return true;
+        
     }
     
-    public void ja_cadastrado(ActionEvent e){
-        Main.mudar_tela("cadastro_vendedor");
+    public void cancelar(ActionEvent e){
+        Main.mudar_tela("menu_administrador");
     }
     
 }
