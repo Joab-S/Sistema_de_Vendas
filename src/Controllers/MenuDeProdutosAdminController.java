@@ -16,7 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import Dao.ListaDeProdutos;
 import Models.Produto;
+import UseCases.ManipularImagem;
+import java.awt.image.BufferedImage;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.Main;
 /**
  * FXML Controller class
@@ -45,6 +49,9 @@ public class MenuDeProdutosAdminController implements Initializable {
     
     @FXML
     private Label label_aviso_remocao;
+    
+    @FXML
+    private ImageView imagemProduto;
    
     @FXML
     void adicionar_carrinho(ActionEvent event) {
@@ -76,6 +83,10 @@ public class MenuDeProdutosAdminController implements Initializable {
             prod_estoque.setText(Integer.toString(produto_ref.getEstoque()));
             prod_descricao.setText(produto_ref.getDescricao());
             prod_tipo.setText(produto_ref.getTipo());
+            
+            Image imagem = ManipularImagem.exibiImagemLabel(produto_ref.getImagem());
+            
+            imagemProduto.setImage(imagem);
        }
        
     }    
