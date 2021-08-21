@@ -18,7 +18,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -112,10 +111,6 @@ public class ManipularImagem {
                 card = SwingFXUtils.toFXImage(imagem, null );
             } catch (IOException ex) {
             }
-        }
-        else
-        {
-            return null;
         }
         return card;
 }
