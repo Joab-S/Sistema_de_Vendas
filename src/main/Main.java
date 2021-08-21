@@ -135,11 +135,9 @@ public class Main extends Application {
             case "perfil":
                 stage.setScene(perfil);
                 break;
-            /*
             case "perfil_vendedor_admin":
                 stage.setScene(perfil);
                 break;
-            */
         }
         
     }
@@ -173,11 +171,9 @@ public class Main extends Application {
             case "perfil":
                 perfil =nova_cena;
                 break;
-            /*
             case "perfil_vendedor_admin":
                 stage.setScene(perfil);
                 break;
-            */
         }
     }
 }
