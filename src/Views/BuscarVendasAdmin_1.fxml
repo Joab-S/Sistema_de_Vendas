@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication2.BuscarVendasAdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication2.BuscarVendasAdminController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+                  <MenuBar layoutX="425.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menuCarrinhoOnAction" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
-                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Usuario">
-                           <items>
-                              <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menuUserPerfilOnAction" text="Perfil" />
-                              <MenuItem fx:id="menuUserSair" mnemonicParsing="false" onAction="#menuUserSairOnAction" text="Sair" />
-                           </items></Menu>
+                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
+                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Usuario" />
                      </menus>
                   </MenuBar>
                   <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menuHomeOnAction" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Home" />
+                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Home" />
                      </menus>
                   </MenuBar>
-                  <Label contentDisplay="CENTER" layoutX="77.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="BUSCAR VENDEDOR" textFill="#051028" AnchorPane.leftAnchor="77.0">
+                  <Label contentDisplay="CENTER" layoutX="77.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="BUSCAR VENDAS" textFill="#051028" AnchorPane.leftAnchor="77.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" />
                      </opaqueInsets>
                   </Label>
                   <AnchorPane layoutY="35.0" prefHeight="365.0" prefWidth="600.0" style="-fx-background-color: rgba(229, 234, 250, 1);">
                      <children>
-                        <TextField fx:id="txtBusca" layoutX="14.0" layoutY="68.0" prefHeight="25.0" prefWidth="482.0" promptText="Digite o ID ou o Nome do Vendedor" style="-fx-background-radius: 20;">
+                        <TextField fx:id="txtBusca" layoutX="14.0" layoutY="62.0" prefHeight="25.0" prefWidth="482.0" promptText="Digite o ID ou a Data ou o Horário do pedido" style="-fx-background-radius: 20;">
                            <font>
                               <Font size="12.0" />
                            </font></TextField>
-                        <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
-                        <RadioButton fx:id="idRatioButon" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" selected="true" text="ID">
+                        <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="62.0" mnemonicParsing="false" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
+                        <RadioButton layoutX="18.0" layoutY="32.0" mnemonicParsing="false" selected="true" text="ID">
                            <toggleGroup>
                               <ToggleGroup fx:id="pesquisa" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="nomeRatioButton" layoutX="93.0" layoutY="36.0" mnemonicParsing="false" text="Nome" toggleGroup="$pesquisa" />
-                        <Label contentDisplay="CENTER" layoutX="18.0" layoutY="-3.0" prefHeight="35.0" prefWidth="209.0" style="-fx-font-weight: bold;" text="Pesquisar vendedor por:" textFill="#051028">
+                        <RadioButton layoutX="80.0" layoutY="32.0" mnemonicParsing="false" text="Data do Pedido" toggleGroup="$pesquisa" />
+                        <RadioButton layoutX="226.0" layoutY="32.0" mnemonicParsing="false" text="Horário do Pedido" toggleGroup="$pesquisa" />
+                        <Label contentDisplay="CENTER" layoutX="18.0" layoutY="-3.0" prefHeight="35.0" prefWidth="175.0" style="-fx-font-weight: bold;" text="Pesquisar vendas por:" textFill="#051028">
                            <opaqueInsets>
                               <Insets bottom="10.0" />
                            </opaqueInsets>
@@ -68,8 +68,8 @@
                                       <columns>
                                         <TableColumn minWidth="0.0" prefWidth="132.0" text="ID" />
                                         <TableColumn minWidth="0.0" prefWidth="140.0" text="Nome Vendedor" />
-                                          <TableColumn prefWidth="140.0" text="Ultima Venda" />
-                                          <TableColumn minWidth="0.0" prefWidth="140.0" text="Total de Vendas" />
+                                          <TableColumn prefWidth="140.0" text="Data Pedido" />
+                                          <TableColumn minWidth="0.0" prefWidth="140.0" text="Horário Pedido" />
                                       </columns>
                                     </TableView>
                                  </children>
