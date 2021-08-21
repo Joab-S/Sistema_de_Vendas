@@ -1,5 +1,6 @@
 package Models;
 
+import Dao.ListaDePedidos;
 import java.util.LinkedList;
 import java.util.ListIterator;
 //import java.time.LocalDateTime;
@@ -40,7 +41,6 @@ public class Pedido implements Serializable{
     int x;
     x = l.getListaDePedidos().getLast().getID();
     this.ID = x + 1;
-    return;
   }
 
   private void setData() {
@@ -86,10 +86,7 @@ public class Pedido implements Serializable{
   }
 
   public boolean verificarEstoque(Produto p, int quant) {
-    if (p.getEstoque() < quant) {
-      return false;
-    }
-    return true;
+    return p.getEstoque() >= quant;
   }
 
   // Fazer o teste do estoque aqui
@@ -147,10 +144,7 @@ public class Pedido implements Serializable{
   public boolean finalizar_pedido(ListaDePedidos l) {
     this.gerarID(l);
     this.setData();
-    if (!l.adicionar_pedido(this)) {
-      return false;
-    }
-    return true;
+    return l.adicionar_pedido(this);
   }
 
   public void cancelar_pedido() {
