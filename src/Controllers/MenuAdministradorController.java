@@ -89,6 +89,25 @@ public class MenuAdministradorController implements Initializable{
                     label_aviso.setText("Não foi passado um número para a pesquisa no ID.");
                 }
             }
+            else{
+                ListaDeProdutos p=ListaDeProdutos.getInstance();
+                Produto prod=p.buscar(busca_admin.getText());
+                if(prod==null){
+                    label_aviso.setText("Não foi encontrado um produto com esse Nome");
+                }
+                else{
+                    p.setRefProduto(prod);
+                    try{
+                        //Gambiarra de ultima hora
+                        Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
+                        Scene menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
+                        Main.setScene("menu_produtos_admin",menu_produtos_admin );
+                        Main.mudar_tela("menu_produtos_admin");
+                    }catch(IOException e){
+                        System.out.println("Não foi possivel carregar a tela.");
+                    }
+                }
+            }
         }
     }
 
@@ -99,8 +118,15 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     void ir_usuario(ActionEvent event) {
-        System.out.println("TEste");
-        Main.mudar_tela("perfil");  
+        try{
+            //Gambiarra de ultima hora
+            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
+            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
+            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
+            Main.mudar_tela("perfil_vendedor_admin");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
     }
     
     
