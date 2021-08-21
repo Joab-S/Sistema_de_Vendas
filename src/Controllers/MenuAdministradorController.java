@@ -23,6 +23,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
@@ -33,20 +34,29 @@ import javafx.stage.Stage;
  */
 public class MenuAdministradorController implements Initializable{
 
+    @FXML
+    private Button pesquisar_admin;
+    @FXML
+    private RadioButton rb_id;
+    @FXML
+    private RadioButton rb_nome;
+    @FXML
+    private Menu menu_carrinho;
+    @FXML
+    private Menu menu_usuario;
+    @FXML
+    private Menu botao_home;
+    @FXML
+    private Button cad_produto;
+    @FXML
+    private Button cad_vendedor;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
     }
     
     
-    @FXML
-    private Menu menu_carrinho;
-
-    @FXML
-    private Menu menu_usuario;
-
-    @FXML
-    private Menu botao_home;
 
     @FXML
     private TextField busca_admin;
@@ -139,6 +149,7 @@ public class MenuAdministradorController implements Initializable{
     void ir_prod_cad(ActionEvent event) {
         Main.mudar_tela("cadastro_produto");
     }
+
     /**
      * Initializes the controller class.
      * @throws java.lang.Exception
