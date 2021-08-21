@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import Dao.ListaDeProdutos;
 import Models.Produto;
+import javafx.scene.control.Label;
+import main.Main;
 /**
  * FXML Controller class
  *
@@ -41,6 +43,8 @@ public class MenuDeProdutosAdminController implements Initializable {
     @FXML
     private TextField prod_descricao;
     
+    @FXML
+    private Label label_aviso_remocao;
    
     @FXML
     void adicionar_carrinho(ActionEvent event) {
@@ -49,7 +53,14 @@ public class MenuDeProdutosAdminController implements Initializable {
     
     @FXML
     void remover_produto(ActionEvent event) {
-
+        
+        ListaDeProdutos lista = ListaDeProdutos.getInstance();
+        Produto prod_ref = lista.getRefProduto();
+        if(lista.remover(prod_ref.getID())){
+            Main.mudar_tela("menu_administrador");
+        }else{
+            label_aviso_remocao.setText("Não foi possivel remover o produto.");
+        }
     }
    
     @Override
