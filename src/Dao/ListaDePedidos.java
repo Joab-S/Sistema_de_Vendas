@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Dao;
 
 import Models.Pedido;
@@ -15,25 +19,27 @@ import java.util.ListIterator;
  *
  * @author thiag
  */
-
 public class ListaDePedidos implements Serializable {
-    private static final ListaDePedidos instancia=new ListaDePedidos();
+    private static final ListaDePedidos instancia = new ListaDePedidos();
     private LinkedList<Pedido> listaPedidos;
     
     public static ListaDePedidos getInstance() {
         return instancia;
     }
     
-    ListaDePedidos() {
-    this.listaPedidos = new LinkedList<>();
-    this.listaPedidos=(LinkedList<Pedido>)Serializador.carregar_dados("ListaPedidos.txt");
-  }
+    private ListaDePedidos() {
+        this.listaPedidos = new LinkedList<>();
+        this.listaPedidos = (LinkedList<Pedido>)Serializador.carregar_dados("ListaPedidos.txt");
+        if(this.listaPedidos == null){
+            this.listaPedidos = new LinkedList<>();
+        }
+    }
 
-  LinkedList<Pedido> getListaDePedidos() {
+  public LinkedList<Pedido> getListaDePedidos() {
     return this.listaPedidos;
   }
 
-  Pedido buscar_venda(Vendedor v) {
+  public Pedido buscar_venda(Vendedor v) {
     ListIterator<Pedido> iterator = getListaDePedidos().listIterator();
     Pedido p;
     while (iterator.hasNext()) {
@@ -47,7 +53,7 @@ public class ListaDePedidos implements Serializable {
 
   // Esse metodo ainda não foi terminado
 
-  Pedido buscar_pedido(String data) {
+  public Pedido buscar_pedido(String data) {
 
      try{
       SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -81,7 +87,7 @@ public class ListaDePedidos implements Serializable {
     return null;
   }
 
-  Pedido buscar_pedido(int ID) {
+  public Pedido buscar_pedido(int ID) {
     ListIterator<Pedido> iterator = this.getListaDePedidos().listIterator();
     Pedido p;
     while (iterator.hasNext()) {
@@ -118,3 +124,4 @@ public class ListaDePedidos implements Serializable {
     return !this.getListaDePedidos().remove(p);
   }
 }
+

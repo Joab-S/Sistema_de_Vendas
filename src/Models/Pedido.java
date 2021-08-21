@@ -53,11 +53,11 @@ public class Pedido implements Serializable{
     return this.ID;
   }
 
-  void setdataEHora(String datahora) {
+  public void setdataEHora(String datahora) {
     this.dataEHora = datahora;
   }
 
-  LinkedList<ElementoPedido> getListaProdutos() {
+  public LinkedList<ElementoPedido> getListaProdutos() {
     return this.ListaProdutos;
   }
 
@@ -65,7 +65,7 @@ public class Pedido implements Serializable{
     return this.dataEHora;
   }
 
-  void setVendedor(Vendedor v) {
+  public void setVendedor(Vendedor v) {
     this.vendedor = v;
   }
 
@@ -81,15 +81,11 @@ public class Pedido implements Serializable{
     return parcelas;
   }
 
-  void setFormaDePagamento(int tipoDePagamento) {
+  public void setFormaDePagamento(int tipoDePagamento) {
     this.formaDePagamento = tipoDePagamento;
   }
 
-  void setFormaDePagamento(int tipoDePagamento, int numDeParcelas) {
-    this.formaDePagamento = this.formaDePagamento + numDeParcelas;
-  }
-
-  boolean verificarEstoque(Produto p, int quant) {
+  public boolean verificarEstoque(Produto p, int quant) {
     if (p.getEstoque() < quant) {
       return false;
     }
@@ -97,7 +93,7 @@ public class Pedido implements Serializable{
   }
 
   // Fazer o teste do estoque aqui
-  boolean inserirProduto(Produto p, int quant) {
+  public boolean inserirProduto(Produto p, int quant) {
     if ((p == null) || quant < 1) {
       return false;
     }
@@ -128,7 +124,7 @@ public class Pedido implements Serializable{
     return null;
   }
 
-  boolean remover_produto(Produto p) {
+  public boolean remover_produto(Produto p) {
     ElementoPedido e = this.buscar_produto(p);
     if (e == null) {
       return false;
@@ -138,7 +134,7 @@ public class Pedido implements Serializable{
     return true;
   }
 
-  double precoTotal() {
+  public double precoTotal() {
     ListIterator<ElementoPedido> lista = this.getListaProdutos().listIterator();
     double precoTotal = 0;
     while (lista.hasNext()) {

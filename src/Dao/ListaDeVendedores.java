@@ -93,12 +93,12 @@ public class ListaDeVendedores implements Serializable{
   }
 
   boolean remover(int ID) {
-    Vendedor vend;
-    vend = searchUserID(ID);
-    if (vend == null) {
+    Vendedor vendedor;
+    vendedor = searchUserID(ID);
+    if (vendedor == null) {
       return false;
     }
-    return this.getListaDeVendedor().remove(vend);
+    return this.getListaDeVendedor().remove(vendedor);
   }
   
   Vendedor searchUserID(int IDvendedor) {

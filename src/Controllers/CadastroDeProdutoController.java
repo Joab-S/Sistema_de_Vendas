@@ -1,11 +1,6 @@
 package Controllers;
-import Models.Produto;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
+import Models.Produto;
 import Dao.ListaDeProdutos;
 import Models.Serializador;
 import UseCases.EnviarImagem;
@@ -22,12 +17,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import main.Main;
 
-
 /**
  * FXML Controller class
  *
- * @author samyra
+ * @author joab
  */
+
 public class CadastroDeProdutoController implements Initializable {
 
     @FXML
@@ -77,11 +72,12 @@ public class CadastroDeProdutoController implements Initializable {
             //Executar essa parte apos criar a lista de pordutos no Dao
             ListaDeProdutos l = ListaDeProdutos.getInstance();
             if(l.adicionar(p)){
-                System.out.println("ID "+p.getID());
-                Serializador.salvar_dados(l.getListaDeProdutos(),"ListaProdutos.txt");
+                System.out.println("ID " + p.getID());
+                Serializador.salvar_dados(l.getListaDeProdutos(), "ListaProdutos.txt");
                 
                 imagemClass.salvarImagem(p.getNome());
                 
+                limparEntradas();
                 Main.mudar_tela("menu_administrador");
             }else{
                 label_aviso.setText("Produto não Cadastrado.");
@@ -92,6 +88,7 @@ public class CadastroDeProdutoController implements Initializable {
     
     @FXML
     public void cancelar(ActionEvent e){
+        limparEntradas();
         Main.mudar_tela("menu_administrador");
     }
 
@@ -101,5 +98,15 @@ public class CadastroDeProdutoController implements Initializable {
         if(imagem_escolhida != null){
             imagem.setImage(ManipularImagem.Buffer_to_Image(imagem_escolhida));
         }
+    }
+    
+    private void limparEntradas(){
+    nome_produto.setText("");
+    preco_produto.setText("");
+    tipo_produto.setText("");
+    estoque.setText("");
+    descricao.setText("");
+    label_aviso.setText("");
+    imagem.setImage(null);
     }
 }

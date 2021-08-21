@@ -18,6 +18,7 @@ import java.util.ListIterator;
 public class ListaDeProdutos implements Serializable {
     private static final ListaDeProdutos instancia = new ListaDeProdutos();
     private LinkedList<Produto> listaProdutos;
+    private Produto ref_produto;
 
     public static ListaDeProdutos getInstance() {
         return instancia;
@@ -25,8 +26,8 @@ public class ListaDeProdutos implements Serializable {
     
     private ListaDeProdutos() { // Construtor
         
-        listaProdutos=(LinkedList<Produto>)Serializador.carregar_dados("ListaProdutos.txt");
-        if (listaProdutos==null){
+        listaProdutos = (LinkedList<Produto>)Serializador.carregar_dados("ListaProdutos.txt");
+        if (listaProdutos == null){
             this.listaProdutos = new LinkedList<>();
         }
     }
@@ -34,21 +35,29 @@ public class ListaDeProdutos implements Serializable {
     public LinkedList<Produto> getListaDeProdutos() {
     return this.listaProdutos;
     }
-
-  public boolean adicionar(Produto produto) {
+    
+    public void setRefProduto(Produto p){
+        this.ref_produto =p;
+    }
+    
+    public Produto getRefProduto(){
+        return this.ref_produto;
+    }
+    
+    public boolean adicionar(Produto produto) {
     // Verifica se o produto ja foi adicionado
-    if (this.getListaDeProdutos().contains(produto)) {
-      System.out.println("Contem o produto");  
-      return false;
+        if (this.getListaDeProdutos().contains(produto)) {
+        System.out.println("Contem o produto");  
+        return false;
+        }
+        produto.gerarID(this);
+        // Insere o produto
+        if(!this.getListaDeProdutos().add(produto)){
+        System.out.println("Nao adiciona");  
+        return false;
+        }
+        return true;
     }
-    produto.gerarID(this);
-    // Insere o produto
-    if(!this.getListaDeProdutos().add(produto)){
-      System.out.println("Nao adiciona");  
-      return false;
-    }
-    return true;
-  }
   //Testado
   //Busca o porduto pelo ID
   public Produto buscar(int ID) {
