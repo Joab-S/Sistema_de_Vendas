@@ -49,12 +49,12 @@
                               <Font size="12.0" />
                            </font></TextField>
                         <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
-                        <RadioButton fx:id="idRatioButon" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" selected="true" text="ID">
+                        <RadioButton fx:id="idRB" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" onAction="#id_RB_OnAction" selected="true" text="ID">
                            <toggleGroup>
                               <ToggleGroup fx:id="pesquisa" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="nomeRatioButton" layoutX="93.0" layoutY="36.0" mnemonicParsing="false" text="Nome" toggleGroup="$pesquisa" />
+                        <RadioButton fx:id="nomeRB" layoutX="93.0" layoutY="36.0" mnemonicParsing="false" onAction="#nome_rb_OnAction" text="Nome" toggleGroup="$pesquisa" />
                         <Label contentDisplay="CENTER" layoutX="18.0" layoutY="-3.0" prefHeight="35.0" prefWidth="209.0" style="-fx-font-weight: bold;" text="Pesquisar vendedor por:" textFill="#051028">
                            <opaqueInsets>
                               <Insets bottom="10.0" />

@@ -8,8 +8,6 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -20,26 +18,26 @@
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <MenuBar layoutX="440.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242);">
+                  <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242);">
                      <menus>
-                        <Menu fx:id="menu_carrinho" mnemonicParsing="false" onAction="#ir_carrinho" style="-fx-color: rgba(11, 63, 194, 1);" text="Carrinho" />
-                        <Menu fx:id="menu_usuario" mnemonicParsing="false" onAction="#ir_usuario" style="-fx-color: rgba(11, 63, 194, 1);" text="Usuario" />
+                        <Menu fx:id="menu_carrinho" mnemonicParsing="false" onAction="#ir_carrinho" style="-fx-font-weight: bold;" text="Carrinho" />
+                        <Menu fx:id="menu_usuario" mnemonicParsing="false" onAction="#ir_usuario" style="-fx-font-weight: bold;" text="Usuario" />
                      </menus>
                   </MenuBar>
                   <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="botao_home" mnemonicParsing="false" style="-fx-color: rgba(11, 63, 194, 1);" text="Home" />
+                        <Menu fx:id="botao_home" mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Home" />
                      </menus>
                   </MenuBar>
-                  <Label contentDisplay="CENTER" layoutX="75.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="MENU ADMINISTRADOR" textFill="#1e54e1" AnchorPane.leftAnchor="75.0">
+                  <Label contentDisplay="CENTER" layoutX="75.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="MENU ADMINISTRADOR" AnchorPane.leftAnchor="75.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" />
                      </opaqueInsets>
                   </Label>
                   <AnchorPane layoutY="35.0" prefHeight="365.0" prefWidth="600.0" style="-fx-background-color: rgba(229, 234, 250);">
                      <children>
-                        <TextField fx:id="busca_admin" layoutX="40.0" layoutY="96.0" prefHeight="35.0" prefWidth="435.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
-                        <Button layoutX="44.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <TextField fx:id="busca_admin" layoutX="28.0" layoutY="99.0" prefHeight="24.0" prefWidth="447.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
+                        <Button fx:id="buscarVendas" layoutX="25.0" layoutY="16.0" mnemonicParsing="false" onAction="#buscar_vendas_onAction" prefHeight="43.0" prefWidth="81.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -49,62 +47,32 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cad_produto" layoutX="134.0" layoutY="16.0" mnemonicParsing="false" onAction="#ir_prod_cad" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Produtos" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="cad_produto" layoutX="124.0" layoutY="16.0" mnemonicParsing="false" onAction="#ir_prod_cad" prefHeight="43.0" prefWidth="81.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Produtos" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="311.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="novaVenda" layoutX="313.0" layoutY="16.0" mnemonicParsing="false" onAction="#nova_venda_onAction" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="486.0" layoutY="16.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="buscarVendedor" layoutX="496.0" layoutY="16.0" mnemonicParsing="false" onAction="#buscar_vendedor_onAction" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cad_vendedor" layoutX="399.0" layoutY="16.0" mnemonicParsing="false" onAction="#ir_vend_cadastro" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="cad_vendedor" layoutX="405.0" layoutY="16.0" mnemonicParsing="false" onAction="#ir_vend_cadastro" prefHeight="43.0" prefWidth="75.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="44.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="224.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="404.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="44.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="224.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="404.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image.jpg" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="pesquisar_admin" layoutX="490.0" layoutY="96.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="35.0" prefWidth="65.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="pesquisar_admin" layoutX="487.0" layoutY="99.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <RadioButton fx:id="rb_id" layoutX="54.0" layoutY="72.0" mnemonicParsing="false" selected="true" text="ID">
+                        <RadioButton fx:id="rb_id" layoutX="34.0" layoutY="72.0" mnemonicParsing="false" selected="true" text="ID">
                            <toggleGroup>
                               <ToggleGroup fx:id="selecao_pesquisa" />
                            </toggleGroup>
