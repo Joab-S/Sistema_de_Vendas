@@ -62,10 +62,10 @@ public class Main extends Application {
         */
         Parent FXML_menu_administrador = FXMLLoader.load(getClass().getResource("../Views/MenuAdministrador.fxml"));
         menu_administrador = new Scene(FXML_menu_administrador);
-        /*
+        
         Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
         menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
-        
+        /*
         Parent FXML_menu_produto_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
         menu_produtos_vendedor = new Scene(FXML_menu_produto_vendedor);
         
@@ -105,7 +105,10 @@ public class Main extends Application {
             case "cadastro_vendedor":
                 stage.setScene(cadastro_vendedor);
                 break;
-            /*
+            case "menu_produtos_admin":
+                stage.setScene(menu_produtos_admin);
+                break;                
+                /*
             case "buscar_vendas_admin":
                 stage.setScene(buscar_venda_admin);
                 break;
@@ -115,9 +118,7 @@ public class Main extends Application {
             case "menu_administrador":
                 stage.setScene(menu_administrador);
                 break;/*
-            case "menu_produtos_admin":
-                stage.setScene(menu_produtos_admin);
-                break;
+
             case "menu_produtos_vendedor":
                 stage.setScene(menu_produtos_vendedor);
                 break;
@@ -149,5 +150,34 @@ public class Main extends Application {
         //Ao final da execução do programa todas as listas devem ser salvas em seus respectivos arquivos
         Serializador.salvar_dados(ListaDeVendedores.getInstance().getListaDeVendedor(),"ListaVendedores.txt");
         Serializador.salvar_dados(ListaDeProdutos.getInstance().getListaDeProdutos(),"ListaProdutos.txt");
-    }   
+    }
+    
+    public static void setScene(String nome_tela, Scene nova_cena){
+        switch(nome_tela){
+            case "menu_produtos_admin":
+                menu_produtos_admin = nova_cena;
+                break;                
+                /*
+            case "buscar_vendas_admin":
+                stage.setScene(buscar_venda_admin);
+                break;
+            case "buscar_vendedores_admin":
+                stage.setScene(buscar_vendedores_admin);
+                break; */
+            case "menu_produtos_vendedor":
+                menu_produtos_vendedor = nova_cena;
+                break;
+            case "menu_vendas":
+                menu_vendas = nova_cena;
+                break;
+            case "perfil":
+                perfil =nova_cena;
+                break;
+            /*
+            case "perfil_vendedor_admin":
+                stage.setScene(perfil);
+                break;
+            */
+        }
+    }
 }
