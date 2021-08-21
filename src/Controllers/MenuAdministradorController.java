@@ -51,6 +51,17 @@ public class MenuAdministradorController implements Initializable{
         System.out.println("TEste");
         Main.mudar_tela("perfil");  
     }
+    
+    
+    @FXML
+    void ir_vend_cadastro(ActionEvent event) {
+        Main.mudar_tela("cadastro_vendedor");
+    }
+    
+    @FXML
+    void ir_prod_cad(ActionEvent event) {
+        Main.mudar_tela("cadastro_produto");
+    }
     /**
      * Initializes the controller class.
      * @throws java.lang.Exception

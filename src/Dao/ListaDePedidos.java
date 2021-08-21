@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Dao;
 
 import Models.Pedido;
+import Models.Serializador;
 import Models.Vendedor;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -16,17 +13,24 @@ import java.util.ListIterator;
 
 /**
  *
- * @author joab
+ * @author thiag
  */
-public class ListaDePedidos implements Serializable {
-    private LinkedList<Pedido> pedidos;
 
-  ListaDePedidos() {
-    this.pedidos = new LinkedList<Pedido>();
+public class ListaDePedidos implements Serializable {
+    private static final ListaDePedidos instancia=new ListaDePedidos();
+    private LinkedList<Pedido> listaPedidos;
+    
+    public static ListaDePedidos getInstance() {
+        return instancia;
+    }
+    
+    ListaDePedidos() {
+    this.listaPedidos = new LinkedList<>();
+    this.listaPedidos=(LinkedList<Pedido>)Serializador.carregar_dados("ListaPedidos.txt");
   }
 
   LinkedList<Pedido> getListaDePedidos() {
-    return this.pedidos;
+    return this.listaPedidos;
   }
 
   Pedido buscar_venda(Vendedor v) {
@@ -97,17 +101,11 @@ public class ListaDePedidos implements Serializable {
     if (x.contains(p)) {
       return false;
     }
-    if (!x.add(p)) {
-      return false;
-    }
-    return true;
+    return x.add(p);
   }
 
   public boolean remover_pedido(Pedido pedido) {
-    if (this.getListaDePedidos().remove(pedido)) {
-      return true;
-    }
-    return false;
+    return this.getListaDePedidos().remove(pedido);
 
   }
 
@@ -117,10 +115,6 @@ public class ListaDePedidos implements Serializable {
     if (p == null) {
       return false;
     }
-    if (this.getListaDePedidos().remove(p)) {
-      return false;
-    }
-    return true;
+    return !this.getListaDePedidos().remove(p);
   }
-    
 }

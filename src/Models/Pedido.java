@@ -90,7 +90,10 @@ public class Pedido implements Serializable{
   }
 
   boolean verificarEstoque(Produto p, int quant) {
-    return p.getEstoque() >= quant;
+    if (p.getEstoque() < quant) {
+      return false;
+    }
+    return true;
   }
 
   // Fazer o teste do estoque aqui

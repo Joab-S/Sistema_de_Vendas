@@ -76,8 +76,8 @@ public class CadastroVendedorController implements Initializable {
         return true;
     }
     
-    public void ja_cadastrado(ActionEvent e ){
-        Main.mudar_tela("login");
+    public void cancelar(ActionEvent e ){
+        Main.mudar_tela("menu_administrador");
     }
     
     /**

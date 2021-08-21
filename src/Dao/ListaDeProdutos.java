@@ -1,36 +1,57 @@
-package Models;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Dao;
 
+import Models.Produto;
+import Models.Serializador;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-class ListaDeProdutos implements Serializable {
-  // Lista com os produtos
-  LinkedList<Produto> listaprodutos = new LinkedList<>();
+/**
+ *
+ * @author thiag
+ */
+public class ListaDeProdutos implements Serializable {
+    private static final ListaDeProdutos instancia = new ListaDeProdutos();
+    private LinkedList<Produto> listaProdutos;
 
-  ListaDeProdutos() {
-    this.listaprodutos = new LinkedList<Produto>();
-  }
+    public static ListaDeProdutos getInstance() {
+        return instancia;
+    }
+    
+    private ListaDeProdutos() { // Construtor
+        
+        listaProdutos=(LinkedList<Produto>)Serializador.carregar_dados("ListaProdutos.txt");
+        if (listaProdutos==null){
+            this.listaProdutos = new LinkedList<>();
+        }
+    }
+    
+    public LinkedList<Produto> getListaDeProdutos() {
+    return this.listaProdutos;
+    }
 
-  LinkedList<Produto> getListaDeProdutos() {
-    return this.listaprodutos;
-  }
-
-  boolean adicionar(Produto produto) {
+  public boolean adicionar(Produto produto) {
     // Verifica se o produto ja foi adicionado
     if (this.getListaDeProdutos().contains(produto)) {
+      System.out.println("Contem o produto");  
       return false;
     }
-    produto.getID();
+    produto.gerarID(this);
     // Insere o produto
     if(!this.getListaDeProdutos().add(produto)){
+      System.out.println("Nao adiciona");  
       return false;
     }
     return true;
   }
   //Testado
   //Busca o porduto pelo ID
-  Produto buscar(int ID) {
+  public Produto buscar(int ID) {
     //Verifica se o ID é válido
     if (ID < 0) {
       return null;
@@ -60,7 +81,7 @@ class ListaDeProdutos implements Serializable {
     }
   }
 
-  boolean remover(int ID) {
+  public boolean remover(int ID) {
     if (ID < 0) {
       return false;
     }

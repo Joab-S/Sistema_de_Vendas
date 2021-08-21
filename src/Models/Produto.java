@@ -1,6 +1,8 @@
 package Models;
 
 import java.io.Serializable;
+import Dao.ListaDeProdutos;
+import java.awt.image.BufferedImage;
 
 public class Produto implements Serializable{
   //Atributos
@@ -10,6 +12,7 @@ public class Produto implements Serializable{
   private String tipo;
   private String descricao;
   private double preco;
+  public byte[] imagem;
   
   //Metodos gets e sets
   public Produto(){
@@ -40,7 +43,7 @@ public class Produto implements Serializable{
     this.ID= x+1;
   }
 
-  int getID(){
+  public int getID(){
     return this.ID;
   }
 
@@ -91,8 +94,13 @@ public class Produto implements Serializable{
   public void alterarEstoque(int novo_estoque){
     this.estoque = novo_estoque;
   }
-
-   public boolean equals(Object o){
+  
+  public void setImagem(byte[] imagem){
+    this.imagem = imagem;
+  }
+  
+  @Override
+  public boolean equals(Object o){
     Produto p;
     
     if(this == o){
@@ -102,7 +110,7 @@ public class Produto implements Serializable{
       return false;
     }
     p = (Produto)o;
-    if(this.getID() == p.getID()){
+    if((this.getNome().toLowerCase().trim().compareTo(p.getNome().toLowerCase().trim())==0)&& (this.getTipo().toLowerCase().trim().compareTo(p.getTipo().toLowerCase().trim())==0)){
       return true;
     }
     return false;

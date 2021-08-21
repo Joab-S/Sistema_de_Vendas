@@ -6,7 +6,11 @@ import Models.Produto;
  * and open the template in the editor.
  */
 
-
+import Dao.ListaDeProdutos;
+import Models.Serializador;
+import UseCases.EnviarImagem;
+import UseCases.ManipularImagem;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import main.Main;
 
 
@@ -27,36 +32,38 @@ public class CadastroDeProdutoController implements Initializable {
 
     @FXML
     private TextField nome_produto;
-
     @FXML
     private TextField preco_produto;
-
     @FXML
     private TextField tipo_produto;
-
     @FXML
     private TextField estoque;
-
     @FXML
     private TextField descricao;
-    
-    @FXML
-    private Button cadastrado;
-
     @FXML
     private Button cadastrar_produto;
-    
     @FXML
     private Label label_aviso;
+    @FXML
+    private Button cancelar;
+    @FXML
+    private Button escolher_imagem = null;
+    @FXML
+    private ImageView imagem;
+    
+    EnviarImagem imagemClass = new EnviarImagem();
+    BufferedImage imagem_escolhida;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
+    @FXML
     public boolean cadastrar_produto(ActionEvent e){
         
-        if(nome_produto.getText().isBlank() || preco_produto.getText().isBlank() || tipo_produto.getText().isBlank() || estoque.getText().isBlank() || descricao.getText().isBlank()){
+        label_aviso.setText("");  
+        if(nome_produto.getText().isBlank() || preco_produto.getText().isBlank() || tipo_produto.getText().isBlank() || estoque.getText().isBlank() || descricao.getText().isBlank() || imagem.getImage() == null){
             label_aviso.setText("Preencha todos os campos.");        
         }else{
             Produto p = new Produto();
@@ -65,25 +72,34 @@ public class CadastroDeProdutoController implements Initializable {
             p.setNome(nome_produto.getText());
             p.setTipo(tipo_produto.getText());
             p.setEstoque(Integer.parseInt(estoque.getText()));
+            p.setImagem(ManipularImagem.getImgBytes(imagem_escolhida));
             
             //Executar essa parte apos criar a lista de pordutos no Dao
-            //ListaDeProdutos l = ListaDeProdutos.getInstance();
-            /*if(l.adicionar(p)){
+            ListaDeProdutos l = ListaDeProdutos.getInstance();
+            if(l.adicionar(p)){
                 System.out.println("ID "+p.getID());
+                Serializador.salvar_dados(l.getListaDeProdutos(),"ListaProdutos.txt");
+                
+                imagemClass.salvarImagem(p.getNome());
+                
                 Main.mudar_tela("menu_administrador");
             }else{
-                label_aviso.setText("Produto não Cadastrado.")
-            }
-            
-            
-            */  
+                label_aviso.setText("Produto não Cadastrado.");
+            }  
         }
         return true;
-        
     }
     
+    @FXML
     public void cancelar(ActionEvent e){
         Main.mudar_tela("menu_administrador");
     }
-    
+
+    @FXML
+    private void escolher_Imagem_onAction(ActionEvent event) {
+        imagem_escolhida = imagemClass.escolherImagem();
+        if(imagem_escolhida != null){
+            imagem.setImage(ManipularImagem.Buffer_to_Image(imagem_escolhida));
+        }
+    }
 }
