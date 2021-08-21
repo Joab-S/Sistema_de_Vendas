@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -98,24 +99,24 @@ public class ManipularImagem {
     }
     //Novo método para exibir imagem na tela
     //Recebe o label que queremos exibir E a imagem como array de bytes do banco
-    public static void exibiImagemLabel(byte[] minhaimagem, javax.swing.JLabel label)
+    public static Image exibiImagemLabel(byte[] minhaimagem)
 {
         //primeiro verifica se tem a imagem
         //se tem convert para inputstream que é o formato reconhecido pelo ImageIO
-       
+        Image card = null;
         if(minhaimagem!=null)
         {
             InputStream input = new ByteArrayInputStream(minhaimagem);
             try {
                 BufferedImage imagem = ImageIO.read(input);
-                label.setIcon(new ImageIcon(imagem));
+                card = SwingFXUtils.toFXImage(imagem, null );
             } catch (IOException ex) {
             }
         }
         else
         {
-            label.setIcon(null);
+            return null;
         }
-
+        return card;
 }
 }

@@ -99,6 +99,10 @@ public class Produto implements Serializable{
     this.imagem = imagem;
   }
   
+  public byte[]  getImagem(){
+    return this.imagem;
+  }
+  
   @Override
   public boolean equals(Object o){
     Produto p;
