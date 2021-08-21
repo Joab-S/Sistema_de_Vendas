@@ -41,12 +41,13 @@
                         <Label layoutX="23.0" layoutY="116.0" text="Preço:" />
                         <Label layoutX="8.0" layoutY="206.0" text="Estoque:" />
                         <Label layoutX="31.0" layoutY="162.0" text="Tipo:" />
-                        <Button fx:id="remover_produto" layoutX="40.0" layoutY="244.0" mnemonicParsing="false" onAction="#remover_produto" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-background-color: rgba(244, 93, 83, 1);" text="Remover produto" textFill="WHITE" />
+                        <Button fx:id="remover_produto" layoutX="40.0" layoutY="242.0" mnemonicParsing="false" onAction="#remover_produto" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-background-color: rgba(244, 93, 83, 1);" text="Remover produto" textFill="WHITE" />
                         <TextField fx:id="prod_nome" layoutX="72.0" layoutY="68.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="prod_tipo" layoutX="72.0" layoutY="157.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="prod_preco" layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="prod_estoque" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
-                        <Button fx:id="adicionar_carrinho" layoutX="40.0" layoutY="282.0" mnemonicParsing="false" onAction="#adicionar_carrinho" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-background-color: rgba(30, 84, 225, 1);" text="Adicionar ao Carrinho" textFill="WHITE" />
+                        <Button fx:id="adicionar_carrinho" layoutX="40.0" layoutY="288.0" mnemonicParsing="false" onAction="#adicionar_carrinho" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-background-color: rgba(30, 84, 225, 1);" text="Adicionar ao Carrinho" textFill="WHITE" />
+                        <Label fx:id="label_aviso_remocao" layoutX="45.0" layoutY="272.0" prefHeight="17.0" prefWidth="171.0" />
                      </children>
                   </AnchorPane>
                </children>
