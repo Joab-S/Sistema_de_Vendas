@@ -117,11 +117,11 @@ public class Main extends Application {
                 break; */
             case "menu_administrador":
                 stage.setScene(menu_administrador);
-                break;/*
+                break;
 
             case "menu_produtos_vendedor":
                 stage.setScene(menu_produtos_vendedor);
-                break;
+                break;/*
             case "menu_vendas":
                 stage.setScene(menu_vendas);
                 break;
