@@ -45,18 +45,13 @@ public class PerfilController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
         Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
         if(logado != null){
             System.out.println(logado.getNome());
-            Integer id = (Integer)logado.getID();
-            /*
-            perfil_id.setText(id.toString());
+            perfil_id.setText(Integer.toString(logado.getID()));
             perfil_nome.setText(logado.getNome());
             perfil_email.setText(logado.getEmail());
             perfil_senha.setText(logado.getSenha());
-            */
         }
         
     }    

@@ -89,6 +89,22 @@ public class ListaDeProdutos implements Serializable {
       return null;
     }
   }
+  
+  public Produto buscar (String nome_prod){
+    if (this.getListaDeProdutos().size() < 1) {
+        System.out.println("Lista vazia");
+        return null;
+    }
+    ListIterator<Produto> l = this.getListaDeProdutos().listIterator();
+    Produto p;
+    while (l.hasNext()) {
+        p = l.next();
+        if (nome_prod.toLowerCase().trim().compareTo(p.getNome().toLowerCase().trim())==0) {
+            return p;
+        }
+    }
+    return null;
+  }
 
   public boolean remover(int ID) {
     if (ID < 0) {
