@@ -17,7 +17,6 @@ import javafx.scene.control.TextField;
 import Dao.ListaDeProdutos;
 import Models.Produto;
 import UseCases.ManipularImagem;
-import java.awt.image.BufferedImage;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,6 +51,14 @@ public class MenuDeProdutosAdminController implements Initializable {
     
     @FXML
     private ImageView imagemProduto;
+    @FXML
+    private Button remover_produto;
+    @FXML
+    private Button adicionar_carrinho;
+    @FXML
+    private Button atualizarProdutoButton;
+    @FXML
+    private Button cancelarButton;
    
     @FXML
     void adicionar_carrinho(ActionEvent event) {
@@ -90,6 +97,14 @@ public class MenuDeProdutosAdminController implements Initializable {
        }
        
     }    
+
+    @FXML
+    private void atualizar_produto_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cancelar_onAction(ActionEvent event) {
+    }
     
     
 }

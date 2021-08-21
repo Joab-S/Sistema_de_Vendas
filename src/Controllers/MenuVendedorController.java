@@ -83,7 +83,7 @@ public class MenuVendedorController implements Initializable {
                     }else{
                        p.setRefProduto(prod);
                        try{
-                          Parent FXML_menu_produto_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
+                          Parent FXML_menu_produto_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
                           Scene menu_produtos_vendedor = new Scene(FXML_menu_produto_vendedor);
                           Main.setScene("menu_produtos_vendedor",menu_produtos_vendedor );
                           Main.mudar_tela("menu_produtos_vendedor");
@@ -105,7 +105,7 @@ public class MenuVendedorController implements Initializable {
                 else{
                     p.setRefProduto(prod);
                     try{
-                        Parent FXML_menu_produtos_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
+                        Parent FXML_menu_produtos_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
                         Scene menu_produtos_vendedor = new Scene(FXML_menu_produtos_vendedor);
                         Main.setScene("menu_produtos_vendedor",menu_produtos_vendedor );
                         Main.mudar_tela("menu_produtos_vendedor");
