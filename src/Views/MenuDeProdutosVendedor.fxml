@@ -53,18 +53,18 @@
             <Button fx:id="cancelarButton" layoutX="60.0" layoutY="297.0" mnemonicParsing="false" onAction="#cancelar_onAction" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-background-color: rgba(244, 93, 83, 1);" text="Cancelar" textFill="WHITE" />
             <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                <menus>
-                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho_onAction" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
+                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
                   <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
                      <items>
-                        <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil_onAction" text="Perfil" />
-                        <MenuItem fx:id="menuUserSair" mnemonicParsing="false" onAction="#menu_user_sair_onAction" text="Sair" />
+                        <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil" text="Perfil" />
+                        <MenuItem fx:id="menuUserSair" mnemonicParsing="false" onAction="#menu_user_sair" text="Sair" />
                      </items>
                   </Menu>
                </menus>
             </MenuBar>
             <MenuBar layoutX="-2.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                <menus>
-                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home_onAction" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Home" />
+                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Home" />
                </menus>
             </MenuBar>
          </children>

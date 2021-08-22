@@ -68,10 +68,10 @@ public class Main extends Application {
         
         Parent FXML_menu_produto_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
         menu_produtos_vendedor = new Scene(FXML_menu_produto_vendedor);
-        /*
+        
         Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
         menu_vendas = new Scene(FXML_menu_vendas);
-        */
+        
         Parent FXML_menu_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuVendedor.fxml"));
         menu_vendedor = new Scene(FXML_menu_vendedor);
         
@@ -107,25 +107,22 @@ public class Main extends Application {
                 break;
             case "menu_produtos_admin":
                 stage.setScene(menu_produtos_admin);
-                break;                
-                /*
+                break;               
             case "buscar_vendas_admin":
                 stage.setScene(buscar_venda_admin);
                 break;
             case "buscar_vendedores_admin":
                 stage.setScene(buscar_vendedores_admin);
-                break; */
+                break; 
             case "menu_administrador":
                 stage.setScene(menu_administrador);
                 break;
-
             case "menu_produtos_vendedor":
                 stage.setScene(menu_produtos_vendedor);
-                break;/*
+                break;
             case "menu_vendas":
                 stage.setScene(menu_vendas);
                 break;
-            */
             case "menu_vendedor":
                 stage.setScene(menu_vendedor);
                 break;
@@ -155,13 +152,13 @@ public class Main extends Application {
             case "menu_produtos_admin":
                 menu_produtos_admin = nova_cena;
                 break;                
-                /*
+                
             case "buscar_vendas_admin":
                 stage.setScene(buscar_venda_admin);
                 break;
             case "buscar_vendedores_admin":
                 stage.setScene(buscar_vendedores_admin);
-                break; */
+                break; 
             case "menu_produtos_vendedor":
                 menu_produtos_vendedor = nova_cena;
                 break;

@@ -41,14 +41,10 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        limparEntrada();
     }
     
-    private boolean validateLogin(String user, String password, Vendedor vendedor){
-        //ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
-        
-        //Vendedor vendedor = vendedores.getInstance().searchUser(user);
-        
+    private boolean validateLogin(String user, String password, Vendedor vendedor){ 
         if (null != vendedor){
             return (vendedor.getNome().equals(user) && vendedor.getSenha().equals(password));  
         }
@@ -71,6 +67,7 @@ public class LoginController implements Initializable {
                 else{
                     Main.mudar_tela("menu_vendedor");
                 }
+                limparEntrada();
             }
             else{
                 loginMessageLabel.setText("Credenciais Incorretas.");
@@ -83,7 +80,13 @@ public class LoginController implements Initializable {
     }
 
     private void fazerCadastroAction(ActionEvent event) {
+        limparEntrada();
         Main.mudar_tela("cadastro_vendedor");
     }
     
+    private void limparEntrada(){
+        enterUserPassword.setText("");
+        enterUserName.setText("");
+        loginMessageLabel.setText("");
+    }
 }

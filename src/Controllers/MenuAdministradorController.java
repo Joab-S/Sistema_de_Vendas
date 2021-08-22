@@ -7,6 +7,7 @@ package Controllers;
  */
 
 import Dao.ListaDeProdutos;
+import Dao.ListaDeVendedores;
 import main.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -109,7 +110,6 @@ public class MenuAdministradorController implements Initializable{
                 else{
                     p.setRefProduto(prod);
                     try{
-                        //Gambiarra de ultima hora
                         Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
                         Scene menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
                         Main.setScene("menu_produtos_admin",menu_produtos_admin );
@@ -124,13 +124,19 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     void menu_carrinho(ActionEvent event) {
-        //Main.mudartela("menu_vendas");  
+        try{
+            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
+            Scene menu_vendas = new Scene(FXML_menu_vendas);
+            Main.setScene("menu_vendas", menu_vendas );
+            Main.mudar_tela("menu_vendas");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
     }
 
     @FXML
     void menu_user_perfil(ActionEvent event) {
         try{
-            //Gambiarra de ultima hora
             Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
             Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
             Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
@@ -152,10 +158,14 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     private void menu_home(ActionEvent event) {
+        Main.mudar_tela("menu_administrador");
     }
 
     @FXML
     private void menu_user_sair(ActionEvent event) {
+        ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        vendedor.setVendedorLogado(null);
+        Main.mudar_tela("login");
     }
 
     @FXML
