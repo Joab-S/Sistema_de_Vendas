@@ -55,10 +55,10 @@ public class Main extends Application {
         
         Parent FXML_busca_venda_admin = FXMLLoader.load(getClass().getResource("../Views/BuscarVendasAdmin.fxml"));
         buscar_venda_admin = new Scene(FXML_busca_venda_admin);
-        
+        /*
         Parent FXML_buscar_vendedores_admin = FXMLLoader.load(getClass().getResource("../Views/BuscarVendedoresAdmin.fxml"));
         buscar_vendedores_admin = new Scene(FXML_buscar_vendedores_admin);
-        
+        */
         Parent FXML_menu_administrador = FXMLLoader.load(getClass().getResource("../Views/MenuAdministrador.fxml"));
         menu_administrador = new Scene(FXML_menu_administrador);
         
@@ -156,7 +156,7 @@ public class Main extends Application {
                 stage.setScene(buscar_venda_admin);
                 break;
             case "buscar_vendedores_admin":
-                stage.setScene(buscar_vendedores_admin);
+                buscar_vendedores_admin = nova_cena;
                 break; 
             case "menu_produtos_vendedor":
                 menu_produtos_vendedor = nova_cena;
