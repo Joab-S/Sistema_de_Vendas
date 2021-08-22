@@ -24,7 +24,7 @@
                <children>
                   <AnchorPane cacheShape="false" focusTraversable="true" layoutX="50.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(173, 188, 242, 1); -fx-background-radius: 20;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <TextField fx:id="perfil_id" layoutX="72.0" layoutY="26.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="perfil_id" editable="false" layoutX="72.0" layoutY="26.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <Label layoutX="36.0" layoutY="30.0" text="ID:" />
                         <Label layoutX="21.0" layoutY="72.0" text="Nome:" />
                         <Label layoutX="10.0" layoutY="115.0" text="Vendas:" />
@@ -33,7 +33,7 @@
                         <Button fx:id="atualizarDadosButton" layoutX="45.0" layoutY="261.0" mnemonicParsing="false" onAction="#atualizar_dados_onAction" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: rgba(30, 84, 225, 1);" text="Atualizar Dados" textFill="WHITE" />
                         <TextField fx:id="perfil_nome" layoutX="72.0" layoutY="68.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="perfil_email" layoutX="72.0" layoutY="157.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
-                        <TextField fx:id="vendasText" layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="vendasText" editable="false" layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="perfil_senha" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                      </children>
                   </AnchorPane>
