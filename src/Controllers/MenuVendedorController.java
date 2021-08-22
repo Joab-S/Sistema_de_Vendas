@@ -99,6 +99,7 @@ public class MenuVendedorController implements Initializable {
                           Parent FXML_menu_produto_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
                           Scene menu_produtos_vendedor = new Scene(FXML_menu_produto_vendedor);
                           Main.setScene("menu_produtos_vendedor",menu_produtos_vendedor );
+                          limparEntradas();
                           Main.mudar_tela("menu_produtos_vendedor");
                        }catch(IOException e){
                            System.out.println("Não foi possivel carregar a tela.");
@@ -121,6 +122,7 @@ public class MenuVendedorController implements Initializable {
                         Parent FXML_menu_produtos_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
                         Scene menu_produtos_vendedor = new Scene(FXML_menu_produtos_vendedor);
                         Main.setScene("menu_produtos_vendedor",menu_produtos_vendedor );
+                        limparEntradas();
                         Main.mudar_tela("menu_produtos_vendedor");
                     }catch(IOException e){
                         System.out.println("Não foi possivel carregar a tela.");
@@ -137,6 +139,7 @@ public class MenuVendedorController implements Initializable {
             Scene menu_vendas = new Scene(FXML_menu_vendas);
             Main.setScene("menu_vendas", menu_vendas );
             Main.mudar_tela("menu_vendas");
+            limparEntradas();
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
             }
@@ -148,6 +151,7 @@ public class MenuVendedorController implements Initializable {
             Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
             Scene perfil = new Scene(FXML_perfil_vendedor);
             Main.setScene("perfil",perfil );
+            limparEntradas();
             Main.mudar_tela("perfil");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
@@ -158,16 +162,23 @@ public class MenuVendedorController implements Initializable {
     private void menu_user_sair(ActionEvent event) {
         ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
         vendedor.setVendedorLogado(null);
+        limparEntradas();
         Main.mudar_tela("login");
     }
     
     @FXML
     private void menu_home(ActionEvent event) {
+        limparEntradas();
         Main.mudar_tela("menu_vendedor");
     }
     
     @FXML
     private void menu_user(ActionEvent event) {
+    }
+    
+    private void limparEntradas(){
+        label_aviso.setText("");
+        busca_vendedor.setText("");
     }
     
 }

@@ -27,7 +27,7 @@
                   <AnchorPane layoutY="35.0" prefHeight="365.0" prefWidth="600.0" style="-fx-background-color: rgba(229, 234, 250);">
                      <children>
                         <TextField fx:id="busca_admin" layoutX="18.0" layoutY="126.0" prefHeight="30.0" prefWidth="466.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
-                        <Button layoutX="9.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="buscarVendasButton" layoutX="9.0" layoutY="19.0" mnemonicParsing="false" onAction="#buscar_vendas_onAction" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -37,12 +37,12 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="246.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="novaVendaButton" layoutX="246.0" layoutY="19.0" mnemonicParsing="false" onAction="#nova_venda_onAction" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="475.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="buscarVendedorButton" layoutX="475.0" layoutY="19.0" mnemonicParsing="false" onAction="#buscar_vendedor_onAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
