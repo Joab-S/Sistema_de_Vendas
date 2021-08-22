@@ -63,7 +63,7 @@
                            </toggleGroup>
                         </RadioButton>
                         <RadioButton fx:id="rb_nome" layoutX="122.0" layoutY="84.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
-                        <Label fx:id="label_aviso" layoutX="48.0" layoutY="166.0" prefHeight="17.0" prefWidth="358.0" textFill="RED" />
+                        <Label fx:id="label_aviso" layoutX="39.0" layoutY="166.0" prefHeight="17.0" prefWidth="358.0" textFill="RED" />
                      </children>
                   </AnchorPane>
                   <MenuBar layoutX="-4.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
