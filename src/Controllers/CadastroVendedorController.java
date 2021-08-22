@@ -55,18 +55,18 @@ public class CadastroVendedorController implements Initializable {
                     label_aviso.setText("Ja existe um vendedor com esse email.");
                     System.out.println("Teste email");
                 }else{
-                Vendedor p = new Vendedor();
-                p.setSenha(senha.getText());
-                p.setEmail(email.getText().strip());
-                p.setNome(nome_vendedor.getText().strip());
-                p.setSenha(senha.getText());
-                if(x.adicionar(p)){
-                    System.out.println("Id"+p.getID());
-                }else{
-                    System.out.println("Deu ruim");
-                }
-                Serializador.salvar_dados(x.getListaDeVendedor(),"ListaVendedores.txt");
-                Main.mudar_tela("menu_administrador");
+                    Vendedor p = new Vendedor();
+                    p.setSenha(senha.getText());
+                    p.setEmail(email.getText().strip());
+                    p.setNome(nome_vendedor.getText().strip());
+                    p.setSenha(senha.getText());
+                    if(x.adicionar(p)){
+                        System.out.println("Id"+p.getID());
+                    }else{
+                        System.out.println("Deu ruim");
+                    }
+                    Serializador.salvar_dados(x.getListaDeVendedor(),"ListaVendedores.txt");
+                    Main.mudar_tela("menu_administrador");
                 }
             }else{
                 label_aviso.setText("O cadastro não foi bem sucedido.");

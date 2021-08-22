@@ -22,6 +22,7 @@ public class Vendedor implements Serializable{
     this.nome=nome.trim();
     this.senha=senha;
     this.isAdmin = false;
+    this.email = "";
   }
 
   public void setEmail(String email){

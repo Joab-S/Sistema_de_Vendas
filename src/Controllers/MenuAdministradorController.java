@@ -130,7 +130,6 @@ public class MenuAdministradorController implements Initializable{
     @FXML
     void menu_user_perfil(ActionEvent event) {
         try{
-            //Gambiarra de ultima hora
             Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
             Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
             Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
