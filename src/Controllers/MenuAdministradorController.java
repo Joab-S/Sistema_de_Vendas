@@ -24,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 
@@ -41,15 +42,19 @@ public class MenuAdministradorController implements Initializable{
     @FXML
     private RadioButton rb_nome;
     @FXML
-    private Menu menu_carrinho;
-    @FXML
-    private Menu menu_usuario;
-    @FXML
-    private Menu botao_home;
-    @FXML
     private Button cad_produto;
     @FXML
     private Button cad_vendedor;
+    @FXML
+    private Menu menuHome;
+    @FXML
+    private Menu menuCarrinho;
+    @FXML
+    private Menu menuUser;
+    @FXML
+    private MenuItem menuUserPerfil;
+    @FXML
+    private MenuItem menuUserSair;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -121,12 +126,10 @@ public class MenuAdministradorController implements Initializable{
         }
     }
 
-    @FXML
     void ir_carrinho(ActionEvent event) {
         //Main.mudartela("menu_vendas");  
     }
 
-    @FXML
     void ir_usuario(ActionEvent event) {
         try{
             //Gambiarra de ultima hora
@@ -148,6 +151,26 @@ public class MenuAdministradorController implements Initializable{
     @FXML
     void ir_prod_cad(ActionEvent event) {
         Main.mudar_tela("cadastro_produto");
+    }
+
+    @FXML
+    private void menu_home(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_carrinho(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_perfil(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_sair(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user(ActionEvent event) {
     }
 
     /**

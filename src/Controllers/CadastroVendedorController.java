@@ -36,8 +36,6 @@ public class CadastroVendedorController implements Initializable {
     @FXML
     private TextField senha;
 
-    @FXML
-    private Button cadastrado;
     
     @FXML
     private Label label_aviso;
@@ -47,10 +45,13 @@ public class CadastroVendedorController implements Initializable {
 
     @FXML
     private Button cadastrar_vendedor;
+    @FXML
+    private Button cancelar;
     /*
     Verificar se tem o mesmo email ja cadastrado
     
     */
+    @FXML
     public boolean cadastrar_vendedor (ActionEvent e){
         if(nome_vendedor.getText().isBlank() || senha.getText().isBlank() || senha_confirm.getText().isBlank() || email.getText().isBlank()){
             label_aviso.setText("Preencha todos os campos.");
@@ -76,6 +77,7 @@ public class CadastroVendedorController implements Initializable {
         return true;
     }
     
+    @FXML
     public void cancelar(ActionEvent e ){
         Main.mudar_tela("menu_administrador");
     }

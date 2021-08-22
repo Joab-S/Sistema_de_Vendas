@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,23 +16,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BuscarVendedoresAdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication2.BuscarVendasAdminController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <MenuBar layoutX="425.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
-                     <menus>
-                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
-                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Usuario" />
-                     </menus>
-                  </MenuBar>
-                  <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
-                     <menus>
-                        <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Home" />
-                     </menus>
-                  </MenuBar>
                   <Label contentDisplay="CENTER" layoutX="77.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="BUSCAR VENDEDOR" textFill="#051028" AnchorPane.leftAnchor="77.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" />
@@ -43,13 +33,22 @@
                            <font>
                               <Font size="12.0" />
                            </font></TextField>
+
+                        //<Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
+                        //<RadioButton fx:id="idRB" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" onAction="#id_RB_OnAction" selected="true" text="ID">
+
                         <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
                         <RadioButton layoutX="23.0" layoutY="36.0" mnemonicParsing="false" selected="true" text="ID">
+
                            <toggleGroup>
                               <ToggleGroup fx:id="pesquisa" />
                            </toggleGroup>
                         </RadioButton>
+
+                        //<RadioButton fx:id="nomeRB" layoutX="93.0" layoutY="36.0" mnemonicParsing="false" onAction="#nome_rb_OnAction" text="Nome" toggleGroup="$pesquisa" />
+
                         <RadioButton layoutX="93.0" layoutY="36.0" mnemonicParsing="false" text="Nome" toggleGroup="$pesquisa" />
+
                         <Label contentDisplay="CENTER" layoutX="18.0" layoutY="-3.0" prefHeight="35.0" prefWidth="209.0" style="-fx-font-weight: bold;" text="Pesquisar vendedor por:" textFill="#051028">
                            <opaqueInsets>
                               <Insets bottom="10.0" />
@@ -73,6 +72,22 @@
                         </ScrollPane>
                      </children>
                   </AnchorPane>
+                  <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+                     <menus>
+                        <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho" />
+                        <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
+                           <items>
+                              <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil" text="Perfil" />
+                              <MenuItem fx:id="menuUserSair" mnemonicParsing="false" onAction="#menu_user_sair" text="Sair" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <MenuBar layoutX="-2.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+                     <menus>
+                        <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home" />
+                     </menus>
+                  </MenuBar>
                </children>
             </AnchorPane>
          </children>
