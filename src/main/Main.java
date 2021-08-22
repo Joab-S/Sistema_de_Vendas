@@ -46,10 +46,6 @@ public class Main extends Application {
         Assistam os videos da natalia
         */
         
-        //System.out.println(getClass().getResource("../Views/CadastroDeProduto.fxml"));
-        //System.out.println(getClass().getResource("../Views/CadastroDeProduto.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/CadastroDeProduto.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("../Views/CadastroDeProduto.fxml"));
         Parent FXML_cadastro_produto = FXMLLoader.load(getClass().getResource("../Views/CadastroDeProduto.fxml"));
         cadastro_produto = new Scene(FXML_cadastro_produto);
         

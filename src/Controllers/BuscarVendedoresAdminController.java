@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -47,6 +48,8 @@ public class BuscarVendedoresAdminController implements Initializable{
     private MenuItem menuUserSair;
     @FXML
     private Menu menuHome;
+    @FXML
+    private TableView<?> table;
 
     /**
      * Initializes the controller class.
@@ -57,7 +60,7 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @FXML
@@ -78,6 +81,10 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     @FXML
     private void menu_home(ActionEvent event) {
+    }
+
+    @FXML
+    private void pesquisar_onAction(ActionEvent event) {
     }
     
 }
