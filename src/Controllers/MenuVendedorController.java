@@ -21,6 +21,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -49,6 +51,16 @@ public class MenuVendedorController implements Initializable {
     private RadioButton rb_nome;
     @FXML
     private Label label_aviso;
+    @FXML
+    private Menu menuHome;
+    @FXML
+    private Menu menuCarrinho;
+    @FXML
+    private Menu menuUser;
+    @FXML
+    private MenuItem menuUserPerfil;
+    @FXML
+    private MenuItem menuUserSair;
 
     /**
      * Initializes the controller class.
@@ -115,6 +127,26 @@ public class MenuVendedorController implements Initializable {
                 }
             }
         }
+    }
+
+    @FXML
+    private void menu_home(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_carrinho(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_perfil(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_sair(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user(ActionEvent event) {
     }
     
 }
