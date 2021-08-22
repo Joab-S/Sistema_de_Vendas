@@ -17,10 +17,10 @@
                   <Button fx:id="confirmarButton" layoutX="46.0" layoutY="175.0" mnemonicParsing="false" onAction="#confirmar_onAction" prefHeight="34.0" prefWidth="131.0" style="-fx-background-color: rgba(58, 207, 126, 1); -fx-background-radius: 20;" text="Confirmar" textFill="WHITE" AnchorPane.bottomAnchor="70.0" />
                   <RadioButton fx:id="creditoRadioButton" layoutX="71.0" layoutY="63.0" mnemonicParsing="false" onAction="#credito_onAction" selected="true" text="Crédito">
                      <toggleGroup>
-                        <ToggleGroup fx:id="grupo" />
+                        <ToggleGroup fx:id="forma_de_pagamento" />
                      </toggleGroup></RadioButton>
-                  <RadioButton fx:id="debitoRadioButton" layoutX="71.0" layoutY="98.0" mnemonicParsing="false" onAction="#debito_onAction" text="Débito" toggleGroup="$grupo" />
-                  <RadioButton fx:id="aVistaRadioButton" layoutX="71.0" layoutY="133.0" mnemonicParsing="false" onAction="#a_vista_onAction" text="À Vista" toggleGroup="$grupo" />
+                  <RadioButton fx:id="debitoRadioButton" layoutX="71.0" layoutY="98.0" mnemonicParsing="false" onAction="#debito_onAction" text="Débito" toggleGroup="$forma_de_pagamento" />
+                  <RadioButton fx:id="aVistaRadioButton" layoutX="71.0" layoutY="133.0" mnemonicParsing="false" onAction="#a_vista_onAction" text="À Vista" toggleGroup="$forma_de_pagamento" />
                   <Label contentDisplay="CENTER" layoutX="32.0" layoutY="17.0" prefHeight="35.0" prefWidth="159.0" style="-fx-font-weight: bold;" text="TIPO DE PAGAMENTO" textAlignment="CENTER" textFill="#0b3fc2">
                      <opaqueInsets>
                         <Insets bottom="10.0" />

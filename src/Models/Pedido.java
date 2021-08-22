@@ -142,6 +142,7 @@ public class Pedido implements Serializable{
   }
 
   public boolean finalizar_pedido(ListaDePedidos l) {
+      // ver se a lista não ta vazia atnes de finalizar
     this.gerarID(l);
     this.setData();
     return l.adicionar_pedido(this);

@@ -6,11 +6,16 @@ package Controllers;
  * and open the template in the editor.
  */
 
+import Dao.ListaDePedidos;
+import Dao.ListaDeProdutos;
 import Dao.ListaDeVendedores;
+import Models.ElementoPedido;
+import Models.Pedido;
+import Models.Produto;
+import Models.Vendedor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,11 +23,12 @@ import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import main.Main;
 
 
@@ -48,9 +54,9 @@ public class MenuVendasController implements Initializable {
     @FXML
     private TextField idEnter;
     @FXML
-    private TextField Enter;
+    private TextField produtoEnter;
     @FXML
-    private TextField preco;
+    private TextField precoEnter;
     @FXML
     private Button adicionarProdutoButton;
     @FXML
@@ -63,7 +69,14 @@ public class MenuVendasController implements Initializable {
     private Button selecionarPagamentoButton;
     @FXML
     private Button finalizarButton;
-
+    @FXML
+    private Label precoTotalLabel;
+    
+    private ListaDePedidos pedidos = ListaDePedidos.getInstance();
+    private Pedido pedido = new Pedido();
+    private Vendedor vendedor_logado = ListaDeVendedores.getInstance().getVendedorLogado();
+    private Produto prod = null;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
@@ -71,22 +84,68 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void adicionar_produto_onAction(ActionEvent event) {
+        //pedido.inserirProduto(produtoEnter.getText(), quantidadeEnter.getText());
+        if (precoEnter.getText().isBlank() || quantidadeEnter.getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "Informe produto e quantidade válidos");
+        }
+        else {
+            pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()));
+        }
     }
 
     @FXML
     private void pesquisar_onAction(ActionEvent event) {
+        ListaDeProdutos p = ListaDeProdutos.getInstance();
+        if (idEnter.getText().isBlank() && produtoEnter.getText().isBlank())
+        {
+            precoEnter.setText("");
+            JOptionPane.showMessageDialog(null, "Informe um ID válido ou o nome de um Produto");
+        }
+        else if (!idEnter.getText().isBlank()){
+            int ID = Integer.parseInt(idEnter.getText());      
+            prod = p.buscar(ID);
+            produtoEnter.setText(prod.getNome());
+        }
+        else if (!produtoEnter.getText().isBlank()){
+            prod = p.buscar(produtoEnter.getText());
+            String id = Integer.toString(prod.getID());
+            idEnter.setText(id);
+        }
+        if(prod == null){
+            //label_aviso.setText("Não foi encontrado um produto com esse ID.");
+            JOptionPane.showMessageDialog(null, "Não foi encontrado um produto com esse ID");
+        }else{
+            p.setRefProduto(prod);
+            precoEnter.setText(Double.toString(prod.get_preco()));
+        }
     }
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        pedido.cancelar_pedido();
+        if (vendedor_logado.isAdmin()){
+            Main.mudar_tela("menu_administrador");
+        } else {
+            Main.mudar_tela("menu_vendedor");
+        }
+        limparEntrada();
     }
 
     @FXML
     private void como_pagar_onAction(ActionEvent event) {
+        Main.mudar_tela("pagamento");
     }
 
     @FXML
     private void finalizar_venda_onAction(ActionEvent event) {
+        
+        pedido.finalizar_pedido(pedidos);
+        if (vendedor_logado.isAdmin()){
+            Main.mudar_tela("menu_administrador");
+        } else {
+            Main.mudar_tela("menu_vendedor");
+        }
+        limparEntrada();
     }
     
     @FXML
@@ -105,16 +164,14 @@ public class MenuVendasController implements Initializable {
     void menu_user_perfil(ActionEvent event) {
         try{
             ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
-            if (vendedor.getVendedorLogado().isAdmin()){
-                Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
-                Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
-                Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
-                Main.mudar_tela("perfil_vendedor_admin");
-            } else{
-                Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
-                Scene perfil = new Scene(FXML_perfil_vendedor);
-                Main.setScene("perfil",perfil );
-                Main.mudar_tela("perfil");}
+            String caminho = "";
+            if (vendedor.getVendedorLogado().isAdmin()){ caminho = "../Views/PerfilVendedorAdmin.fxml"; }
+            else{ caminho = "../Views/Perfil.fxml"; }
+            
+            Parent FXML_perfil = FXMLLoader.load(getClass().getResource(caminho));
+            Scene perfil = new Scene(FXML_perfil);
+            Main.setScene("perfil", perfil);
+            Main.mudar_tela("perfil");
         }catch(IOException e){
             System.out.println("Não foi possivel carregar a tela.");
         }
@@ -140,6 +197,10 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void menu_user(ActionEvent event) {
+    }
+
+    private void limparEntrada() {
+        
     }
     
     /**

@@ -79,7 +79,7 @@ public class CadastroVendedorController implements Initializable {
     @FXML
     public void cancelar(ActionEvent e ){
         limparEntradas();
-        Main.mudar_tela("menu_administrador");
+        Main.mudar_tela(Main.get_tela_anterior());
     }
     
     /**

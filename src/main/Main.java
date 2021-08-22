@@ -32,6 +32,9 @@ public class Main extends Application {
     private static Scene pagamento;
     private static Scene perfil;
     private static Scene perfil_vendedor_admin;
+    private static String tela_anterior = null;
+    private static String tela_atual = null;
+    private static String tipo_pagamento = null;
     
     @Override
     public void start(Stage primarystage) throws Exception{
@@ -86,6 +89,7 @@ public class Main extends Application {
         cadastro_vendedor = new Scene(FXML_cadastro_vendedor);
         
         primarystage.setScene(Login);
+        Main.tela_atual = "Login";
         primarystage.show();            
     }
     
@@ -131,6 +135,10 @@ public class Main extends Application {
                 stage.setScene(perfil);
                 break;
         }
+        Main.tela_anterior = tela_atual;
+        Main.tela_atual = nome_tela;
+        //System.out.println("Tela Anterior: " + Main.tela_anterior);
+        //System.out.println("Tela Atual: " + Main.tela_atual);
         
     }
     
@@ -169,7 +177,19 @@ public class Main extends Application {
         }
     }
     
-    public static void voltar_tela(){
-        
+    public static String get_tela_anterior(){
+        return Main.tela_anterior;
+    }
+    
+    public static String get_tela_atual(){
+        return Main.tela_atual;
+    }
+    
+    public static void set_pagamento(String tipo_pagamento){
+        Main.tipo_pagamento = tipo_pagamento;
+    }
+    
+    public static String get_pagamento(){
+        return Main.tipo_pagamento;
     }
 }

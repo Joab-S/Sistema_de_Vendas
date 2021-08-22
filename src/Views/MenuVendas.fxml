@@ -38,13 +38,13 @@
                      </font>
                   </Label>
                   <TextField fx:id="idEnter" layoutX="13.0" layoutY="45.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
-                  <TextField fx:id="Enter" layoutX="13.0" layoutY="89.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
+                  <TextField fx:id="produtoEnter" layoutX="13.0" layoutY="89.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
                   <Label layoutX="13.0" layoutY="117.0" text="Preço:">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="preco" layoutX="13.0" layoutY="132.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
+                  <TextField fx:id="precoEnter" editable="false" layoutX="13.0" layoutY="132.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
                   <Button fx:id="adicionarProdutoButton" layoutX="46.0" layoutY="172.0" mnemonicParsing="false" onAction="#adicionar_produto_onAction" prefHeight="30.0" prefWidth="115.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1);" text="Adicionar Produto" textFill="WHITE">
                      <font>
                         <Font size="11.0" />
@@ -87,7 +87,7 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Label layoutX="74.0" layoutY="241.0" text="  R$ 800,00">
+                        <Label fx:id="precoTotalLabel" layoutX="74.0" layoutY="241.0" text="  R$ 0,00">
                            <font>
                               <Font size="14.0" />
                            </font>
