@@ -20,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -47,8 +46,6 @@ public class MenuVendedorController implements Initializable {
     private ToggleGroup selecao_pesquisa;
     @FXML
     private RadioButton rb_nome;
-    @FXML
-    private Label label_aviso;
 
     /**
      * Initializes the controller class.
@@ -69,7 +66,7 @@ public class MenuVendedorController implements Initializable {
     @FXML
     private void pesquisar(ActionEvent event) {
         if (busca_vendedor.getText().trim().isBlank()){
-            label_aviso.setText("Campo de Pesquisa Vazio.");
+            //label_aviso.setText("Campo de Pesquisa Vazio.");
         }else{
             RadioButton radio = (RadioButton) selecao_pesquisa.getSelectedToggle();
             if (radio.getText().compareTo("ID")==0){
@@ -79,7 +76,7 @@ public class MenuVendedorController implements Initializable {
                     ListaDeProdutos p = ListaDeProdutos.getInstance();
                     Produto prod = p.buscar(ID);
                     if(prod == null){
-                        label_aviso.setText("Não foi encontrado um produto com esse ID.");
+                        //label_aviso.setText("Não foi encontrado um produto com esse ID.");
                     }else{
                        p.setRefProduto(prod);
                        try{
@@ -93,18 +90,19 @@ public class MenuVendedorController implements Initializable {
                        
                     }
                 }catch(NumberFormatException e){
-                    label_aviso.setText("Não foi passado um número para a pesquisa no ID.");
+                    //label_aviso.setText("Não foi passado um número para a pesquisa no ID.");
                 }
             }
             else{
                 ListaDeProdutos p=ListaDeProdutos.getInstance();
                 Produto prod=p.buscar(busca_vendedor.getText());
                 if(prod==null){
-                    label_aviso.setText("Não foi encontrado um produto com esse Nome");
+                    //label_aviso.setText("Não foi encontrado um produto com esse Nome");
                 }
                 else{
                     p.setRefProduto(prod);
                     try{
+                        //Gambiarra de ultima hora
                         Parent FXML_menu_produtos_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
                         Scene menu_produtos_vendedor = new Scene(FXML_menu_produtos_vendedor);
                         Main.setScene("menu_produtos_vendedor",menu_produtos_vendedor );

@@ -9,6 +9,8 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -59,6 +61,36 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
+                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="44.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/image.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="224.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/image.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="404.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/image.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="44.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/image.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="224.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/image.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="108.0" fitWidth="155.0" layoutX="404.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/image.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <TextField fx:id="busca_vendedor" layoutX="41.0" layoutY="131.0" prefHeight="35.0" prefWidth="435.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
@@ -67,13 +99,12 @@
                         <Font size="11.0" />
                      </font>
                   </Button>
-                  <RadioButton fx:id="rb_id" layoutX="54.0" layoutY="107.0" mnemonicParsing="false" selected="true" text="ID">
+                  <RadioButton fx:id="rb_id" layoutX="54.0" layoutY="101.0" mnemonicParsing="false" selected="true" text="ID">
                   <toggleGroup>
                         <ToggleGroup fx:id="selecao_pesquisa" />
                            </toggleGroup>
                   </RadioButton>
-                    <RadioButton fx:id="rb_nome" layoutX="122.0" layoutY="107.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
-                  <Label fx:id="label_aviso" layoutX="196.0" layoutY="107.0" prefHeight="17.0" prefWidth="359.0" textFill="RED" />
+                    <RadioButton fx:id="rb_nome" layoutX="122.0" layoutY="101.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
                </children>
             </AnchorPane>
          </children>
