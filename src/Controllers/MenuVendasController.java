@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 
@@ -37,6 +38,8 @@ public class MenuVendasController implements Initializable {
     private MenuItem menuUserSair;
     @FXML
     private Menu menuHome;
+    @FXML
+    private TableView<?> produtosAddCarrinhoTV;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
