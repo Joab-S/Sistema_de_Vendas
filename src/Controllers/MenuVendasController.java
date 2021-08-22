@@ -15,7 +15,12 @@ import Models.Produto;
 import Models.Vendedor;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,8 +31,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 import main.Main;
 
@@ -50,8 +57,6 @@ public class MenuVendasController implements Initializable {
     @FXML
     private Menu menuHome;
     @FXML
-    private TableView<?> produtosAddCarrinhoTV;
-    @FXML
     private TextField idEnter;
     @FXML
     private TextField produtoEnter;
@@ -71,11 +76,25 @@ public class MenuVendasController implements Initializable {
     private Button finalizarButton;
     @FXML
     private Label precoTotalLabel;
+    @FXML
+    private TableView<ElementoPedido> carrinhoTable;
+    @FXML
+    private TableColumn<Produto, Integer> colunaID;
+    @FXML
+    private TableColumn<Produto, String> colunaProduto;
+    @FXML
+    private TableColumn<ElementoPedido, Integer> colunaQuantidade;
+    @FXML
+    private TableColumn<ElementoPedido, Double> colunaPreco;
+    @FXML
+    private TableColumn<ElementoPedido, Double> colunaSubtotal;
+    
     
     private ListaDePedidos pedidos = ListaDePedidos.getInstance();
     private Pedido pedido = new Pedido();
     private Vendedor vendedor_logado = ListaDeVendedores.getInstance().getVendedorLogado();
     private Produto prod = null;
+    ObservableList<ElementoPedido> list;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,12 +103,33 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void adicionar_produto_onAction(ActionEvent event) {
-        //pedido.inserirProduto(produtoEnter.getText(), quantidadeEnter.getText());
-        if (precoEnter.getText().isBlank() || quantidadeEnter.getText().isBlank()){
-            JOptionPane.showMessageDialog(null, "Informe produto e quantidade válidos");
+        if (idEnter.getText().isBlank() || produtoEnter.getText().isBlank() || precoEnter.getText().isBlank() || quantidadeEnter.getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "Não deixe campos vazios");
         }
         else {
-            pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()));
+            
+            if (pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()))) {
+            
+        colunaID.setCellValueFactory(new PropertyValueFactory<Produto,Integer>("ID"));
+        colunaProduto.setCellValueFactory(new PropertyValueFactory<Produto,String>("nome"));
+        colunaQuantidade.setCellValueFactory(new PropertyValueFactory<ElementoPedido,Integer>("quant"));
+        colunaPreco.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("preco"));
+        colunaSubtotal.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("total"));
+        
+        
+        LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
+        ArrayList<ElementoPedido> array_pedidos = new ArrayList<>(); 
+        ListIterator<ElementoPedido> lista_pedidos =p.listIterator();
+        if (lista_pedidos != null){
+        while(lista_pedidos.hasNext()){
+        array_pedidos.add(lista_pedidos.next());
+        }
+        list = FXCollections.observableArrayList(array_pedidos);
+       
+        carrinhoTable.setItems(list);
+        precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
+        }
+        }
         }
     }
 
@@ -98,22 +138,31 @@ public class MenuVendasController implements Initializable {
         ListaDeProdutos p = ListaDeProdutos.getInstance();
         if (idEnter.getText().isBlank() && produtoEnter.getText().isBlank())
         {
-            precoEnter.setText("");
-            JOptionPane.showMessageDialog(null, "Informe um ID válido ou o nome de um Produto");
+            precoEnter.setText("");           
+            System.out.println("Informe um ID válido ou o nome de um Produto");
         }
         else if (!idEnter.getText().isBlank()){
             int ID = Integer.parseInt(idEnter.getText());      
             prod = p.buscar(ID);
+            if(prod == null){
+                System.out.println("Este produto não existe no sistema");
+            }
+            else{
             produtoEnter.setText(prod.getNome());
+            }
         }
         else if (!produtoEnter.getText().isBlank()){
             prod = p.buscar(produtoEnter.getText());
-            String id = Integer.toString(prod.getID());
-            idEnter.setText(id);
+            if(prod == null){
+                System.out.println("Este produto não existe no sistema");
+            }
+            else{
+            idEnter.setText(Integer.toString(prod.getID()));
+            }
         }
         if(prod == null){
             //label_aviso.setText("Não foi encontrado um produto com esse ID.");
-            JOptionPane.showMessageDialog(null, "Não foi encontrado um produto com esse ID");
+            System.out.println("Não foi encontrado um produto com esse ID");
         }else{
             p.setRefProduto(prod);
             precoEnter.setText(Double.toString(prod.get_preco()));
@@ -138,7 +187,7 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void finalizar_venda_onAction(ActionEvent event) {
-        
+        pedido.setVendedor(vendedor_logado);
         pedido.finalizar_pedido(pedidos);
         if (vendedor_logado.isAdmin()){
             Main.mudar_tela("menu_administrador");

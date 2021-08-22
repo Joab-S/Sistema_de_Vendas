@@ -8,6 +8,7 @@ package Controllers;
 
 
 import Dao.ListaDeVendedores;
+import Models.Vendedor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,8 +66,16 @@ public class PerfilVendedorAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+        Vendedor logado = ListaDeVendedores.getInstance().getVendedor_ref();
+        
+        if(logado != null){
+            idEnter.setText(Integer.toString(logado.getID()));
+            nomeEnter.setText(logado.getNome());
+            emailEnter.setText(logado.getEmail());
+            senhaEnter.setText(logado.getSenha());
+        }
+    }
 
     @FXML
     private void remover_vendedor_onAction(ActionEvent event) {

@@ -96,13 +96,13 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="357.0">
                                  <children>
-                                    <TableView fx:id="produtosAddCarrinhoTV" layoutX="1.0" prefHeight="216.0" prefWidth="359.0">
+                                    <TableView fx:id="carrinhoTable" layoutX="1.0" prefHeight="216.0" prefWidth="359.0">
                                       <columns>
-                                        <TableColumn prefWidth="48.0" text="ID" />
-                                        <TableColumn prefWidth="91.0" text="Produto" />
-                                          <TableColumn prefWidth="49.0" text="QTD" />
-                                          <TableColumn minWidth="0.0" prefWidth="77.0" text="Preço" />
-                                          <TableColumn prefWidth="82.0" text="Subtotal" />
+                                        <TableColumn fx:id="colunaID" prefWidth="48.0" text="ID" />
+                                        <TableColumn fx:id="colunaProduto" prefWidth="91.0" text="Produto" />
+                                          <TableColumn fx:id="colunaQuantidade" prefWidth="49.0" text="QTD" />
+                                          <TableColumn fx:id="colunaPreco" minWidth="0.0" prefWidth="77.0" text="Preço" />
+                                          <TableColumn fx:id="colunaSubtotal" prefWidth="82.0" text="Subtotal" />
                                       </columns>
                                     </TableView>
                                  </children>

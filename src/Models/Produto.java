@@ -11,7 +11,7 @@ public class Produto implements Serializable{
   private String nome;
   private String tipo;
   private String descricao;
-  private double preco;
+  public double preco;
   public byte[] imagem;
   
   //Metodos gets e sets

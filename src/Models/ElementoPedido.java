@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class ElementoPedido implements Serializable {
     private Produto produto;
     private int quant;
+    private double total;
 
     ElementoPedido(Produto p, int quant) {
         this.produto = p;
         this.quant = quant;
+        setTotal(quant, p.get_preco());
     }
 
     ElementoPedido() {
@@ -18,7 +20,7 @@ public class ElementoPedido implements Serializable {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-
+    
     public Produto getProduto() {
         return produto;
     }
@@ -29,5 +31,13 @@ public class ElementoPedido implements Serializable {
 
     public int getQuant() {
         return quant;
+    }
+    
+    private void setTotal(int quantidade, double preco){
+        this.total = quantidade * preco;
+    }
+    
+    public double getTotal() {
+        return this.total;
     }
 }

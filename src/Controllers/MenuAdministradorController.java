@@ -128,7 +128,7 @@ public class MenuAdministradorController implements Initializable{
             }
         }
     }
-
+    
     @FXML
     void menu_carrinho(ActionEvent event) {
         try{
@@ -201,7 +201,15 @@ public class MenuAdministradorController implements Initializable{
     @FXML
     private void buscar_vendedor_onAction(ActionEvent event) {
         limparEntradas();
-        Main.mudar_tela("buscar_vendedores_admin");
+        try{
+            Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/BuscarVendedoresAdmin.fxml"));
+            Scene buscar_vendedores_admin = new Scene(FXML_menu_produtos_admin);
+            Main.setScene("buscar_vendedores_admin",buscar_vendedores_admin );
+            Main.mudar_tela("buscar_vendedores_admin");
+        }catch(IOException e){
+            e.printStackTrace();
+            System.out.println("Não foi possivel carregar a tela.");
+        }
     }
     
     private void limparEntradas(){

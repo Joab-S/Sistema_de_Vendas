@@ -18,6 +18,7 @@ public class ListaDeVendedores implements Serializable{
     ** uma determinada classe  e  usá-la globalmente.
     */
     private static Vendedor vend;
+    private static Vendedor vendedor_ref;
     private static final ListaDeVendedores instancia = new ListaDeVendedores();
     private LinkedList<Vendedor> listaVendedores;
     
@@ -72,7 +73,15 @@ public class ListaDeVendedores implements Serializable{
   public void setVendedorLogado(Vendedor vend){
       this.vend = vend;
       
-  }  
+  }
+
+    public static Vendedor getVendedor_ref() {
+        return vendedor_ref;
+    }
+
+    public static void setVendedor_ref(Vendedor vendedor_ref) {
+        ListaDeVendedores.vendedor_ref = vendedor_ref;
+    }
   
   public Vendedor getVendedorLogado(){
       return this.vend;
@@ -116,7 +125,7 @@ public class ListaDeVendedores implements Serializable{
     return this.getListaDeVendedor().remove(vendedor);
   }
   
-  Vendedor searchUserID(int IDvendedor) {
+  public Vendedor searchUserID(int IDvendedor) {
     if (IDvendedor < 0) {
       return null;
     }

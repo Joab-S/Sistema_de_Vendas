@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 public class Pedido implements Serializable{
   private int ID;
+  private Double precoTotal;
   private int formaDePagamento;
   private String dataEHora;
   private Vendedor vendedor;
@@ -52,7 +53,7 @@ public class Pedido implements Serializable{
   public int getID() {
     return this.ID;
   }
-
+  
   public void setdataEHora(String datahora) {
     this.dataEHora = datahora;
   }
@@ -133,12 +134,11 @@ public class Pedido implements Serializable{
 
   public double precoTotal() {
     ListIterator<ElementoPedido> lista = this.getListaProdutos().listIterator();
-    double precoTotal = 0;
     while (lista.hasNext()) {
       ElementoPedido p = lista.next();
-      precoTotal += (p.getProduto().get_preco()) * p.getQuant();
+      this.precoTotal += (p.getProduto().get_preco()) * p.getQuant();
     }
-    return precoTotal;
+    return this.precoTotal;
   }
 
   public boolean finalizar_pedido(ListaDePedidos l) {
