@@ -65,10 +65,10 @@ public class Main extends Application {
         
         Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
         menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
-        /*
+        
         Parent FXML_menu_produto_vendedor = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosVendedor.fxml"));
         menu_produtos_vendedor = new Scene(FXML_menu_produto_vendedor);
-        
+        /*
         Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
         menu_vendas = new Scene(FXML_menu_vendas);
         */
@@ -117,11 +117,11 @@ public class Main extends Application {
                 break; */
             case "menu_administrador":
                 stage.setScene(menu_administrador);
-                break;/*
+                break;
 
             case "menu_produtos_vendedor":
                 stage.setScene(menu_produtos_vendedor);
-                break;
+                break;/*
             case "menu_vendas":
                 stage.setScene(menu_vendas);
                 break;

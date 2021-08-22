@@ -16,6 +16,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import Dao.ListaDeProdutos;
 import Models.Produto;
+import UseCases.ManipularImagem;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import main.Main;
 /**
  * FXML Controller class
  *
@@ -41,6 +48,29 @@ public class MenuDeProdutosAdminController implements Initializable {
     @FXML
     private TextField prod_descricao;
     
+    @FXML
+    private Label label_aviso_remocao;
+    
+    @FXML
+    private ImageView imagemProduto;
+    @FXML
+    private Button remover_produto;
+    @FXML
+    private Button adicionar_carrinho;
+    @FXML
+    private Button atualizarProdutoButton;
+    @FXML
+    private Button cancelarButton;
+    @FXML
+    private Menu menuCarrinho;
+    @FXML
+    private Menu menuUser;
+    @FXML
+    private MenuItem menuUserPerfil;
+    @FXML
+    private MenuItem menuUserSair;
+    @FXML
+    private Menu menuHome;
    
     @FXML
     void adicionar_carrinho(ActionEvent event) {
@@ -49,7 +79,14 @@ public class MenuDeProdutosAdminController implements Initializable {
     
     @FXML
     void remover_produto(ActionEvent event) {
-
+        
+        ListaDeProdutos lista = ListaDeProdutos.getInstance();
+        Produto prod_ref = lista.getRefProduto();
+        if(lista.remover(prod_ref.getID())){
+            Main.mudar_tela("menu_administrador");
+        }else{
+            label_aviso_remocao.setText("Não foi possivel remover o produto.");
+        }
     }
    
     @Override
@@ -65,9 +102,41 @@ public class MenuDeProdutosAdminController implements Initializable {
             prod_estoque.setText(Integer.toString(produto_ref.getEstoque()));
             prod_descricao.setText(produto_ref.getDescricao());
             prod_tipo.setText(produto_ref.getTipo());
+            
+            Image imagem = ManipularImagem.exibiImagemLabel(produto_ref.getImagem());
+            
+            imagemProduto.setImage(imagem);
        }
        
     }    
+
+    @FXML
+    private void atualizar_produto_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cancelar_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_carrinho(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_perfil(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_sair(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_home(ActionEvent event) {
+    }
     
     
 }

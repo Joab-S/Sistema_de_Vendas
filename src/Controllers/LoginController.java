@@ -26,8 +26,6 @@ import Models.Vendedor;
 public class LoginController implements Initializable {
 
     @FXML
-    private Button fazerCadastroButton;
-    @FXML
     private PasswordField enterUserPassword;
     @FXML
     private TextField enterUserName;
@@ -84,7 +82,6 @@ public class LoginController implements Initializable {
 
     }
 
-    @FXML
     private void fazerCadastroAction(ActionEvent event) {
         Main.mudar_tela("cadastro_vendedor");
     }
