@@ -75,10 +75,10 @@ public class CadastroDeProdutoController implements Initializable {
                 System.out.println("ID " + p.getID());
                 Serializador.salvar_dados(l.getListaDeProdutos(), "ListaProdutos.txt");
                 
-                imagemClass.salvarImagem(p.getNome());
+                //magemClass.salvarImagem(p.getNome());
                 
-                limparEntradas();
                 Main.mudar_tela("menu_administrador");
+                limparEntradas();
             }else{
                 label_aviso.setText("Produto não Cadastrado.");
             }  
