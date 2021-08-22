@@ -16,6 +16,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,13 +41,25 @@ public class MenuDeProdutosVendedorController implements Initializable {
     @FXML
     private TextField estoqueEnter;
     @FXML
-    private TextField descricaoEnter;
-    @FXML
     private ImageView imagemProduto;
     @FXML
     private Button adicionarCarrinhoButton;
     @FXML
     private Button cancelarButton;
+    @FXML
+    private Menu menuCarrinho;
+    @FXML
+    private Menu menuUser;
+    @FXML
+    private MenuItem menuUserPerfil;
+    @FXML
+    private MenuItem menuUserSair;
+    @FXML
+    private Menu menuHome;
+    @FXML
+    private TextField descricaoEnter;
+    @FXML
+    private Label descricaoLabel;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,5 +86,25 @@ public class MenuDeProdutosVendedorController implements Initializable {
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_carrinho_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_perfil_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_sair_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_home_onAction(ActionEvent event) {
     }
 }

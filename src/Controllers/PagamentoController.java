@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 
 /**
  * FXML Controller class
@@ -21,19 +22,8 @@ import javafx.scene.control.RadioButton;
 public class PagamentoController implements Initializable {
     
     @FXML
-    private RadioButton credito;
+    private ToggleGroup grupo;
     
-    @FXML
-    private RadioButton debito;
-    
-    @FXML
-    private RadioButton a_vista;
-    
-    @FXML
-    private Button concluir;
-
-    @FXML
-    private Button cancelar;
     
     /**
      * Initializes the controller class.
