@@ -27,27 +27,27 @@
                   <AnchorPane layoutY="35.0" prefHeight="365.0" prefWidth="600.0" style="-fx-background-color: rgba(229, 234, 250);">
                      <children>
                         <TextField fx:id="busca_admin" layoutX="18.0" layoutY="126.0" prefHeight="30.0" prefWidth="466.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
-                        <Button layoutX="18.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button layoutX="9.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cad_produto" layoutX="122.0" layoutY="19.0" mnemonicParsing="false" onAction="#ir_prod_cad" prefHeight="35.0" prefWidth="121.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Produtos" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="cad_produto" layoutX="112.0" layoutY="19.0" mnemonicParsing="false" onAction="#ir_prod_cad" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Produtos" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="251.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button layoutX="246.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="470.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button layoutX="475.0" layoutY="19.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cad_vendedor" layoutX="338.0" layoutY="19.0" mnemonicParsing="false" onAction="#ir_vend_cadastro" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="cad_vendedor" layoutX="342.0" layoutY="19.0" mnemonicParsing="false" onAction="#ir_vend_cadastro" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Cadastrar Vendedor" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
