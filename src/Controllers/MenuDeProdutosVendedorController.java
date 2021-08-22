@@ -8,13 +8,18 @@ package Controllers;
 
 
 import Dao.ListaDeProdutos;
+import Dao.ListaDeVendedores;
 import Models.Produto;
 import UseCases.ManipularImagem;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -22,6 +27,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import main.Main;
 
 /**
  * FXML Controller class
@@ -89,22 +95,43 @@ public class MenuDeProdutosVendedorController implements Initializable {
     }
 
     @FXML
-    private void menu_carrinho_onAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_user_perfil_onAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_user_sair_onAction(ActionEvent event) {
-    }
-
-    @FXML
     private void menu_user(ActionEvent event) {
     }
+    
+    @FXML
+    void menu_carrinho(ActionEvent event) {
+        try{
+            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
+            Scene menu_vendas = new Scene(FXML_menu_vendas);
+            Main.setScene("menu_vendas", menu_vendas );
+            Main.mudar_tela("menu_vendas");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
+    }
 
     @FXML
-    private void menu_home_onAction(ActionEvent event) {
+    void menu_user_perfil(ActionEvent event) {
+        try{
+            Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil_vendedor);
+            Main.setScene("perfil",perfil );
+            Main.mudar_tela("perfil");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
     }
+
+    @FXML
+    private void menu_user_sair(ActionEvent event) {
+        ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        vendedor.setVendedorLogado(null);
+        Main.mudar_tela("login");
+    }
+    
+    @FXML
+    private void menu_home(ActionEvent event) {
+        Main.mudar_tela("menu_vendedor");
+    }
+    
 }

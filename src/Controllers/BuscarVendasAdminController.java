@@ -7,6 +7,8 @@ package Controllers;
  */
 
 
+import Dao.ListaDeVendedores;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import static javafx.application.Application.launch;
@@ -23,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import main.Main;
 
 /**
  * FXML Controller class
@@ -56,30 +59,50 @@ public class BuscarVendasAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void menu_home(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_carrinho(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_user_perfil(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_user_sair(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_user(ActionEvent event) {
     }
 
     @FXML
     private void pesquisar_onAction(ActionEvent event) {
+    }
+    
+    @FXML
+    void menu_carrinho(ActionEvent event) {
+        try{
+            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
+            Scene menu_vendas = new Scene(FXML_menu_vendas);
+            Main.setScene("menu_vendas", menu_vendas );
+            Main.mudar_tela("menu_vendas");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
+    }
+
+    @FXML
+    void menu_user_perfil(ActionEvent event) {
+        try{
+            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
+            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
+            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
+            Main.mudar_tela("perfil_vendedor_admin");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
+    }
+
+    @FXML
+    private void menu_user_sair(ActionEvent event) {
+        ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        vendedor.setVendedorLogado(null);
+        Main.mudar_tela("login");
+    }
+    
+    @FXML
+    private void menu_home(ActionEvent event) {
+        Main.mudar_tela("menu_administrador");
+    }
+    
+    @FXML
+    private void menu_user(ActionEvent event) {
     }
     
 }
