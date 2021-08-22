@@ -55,6 +55,12 @@ public class MenuAdministradorController implements Initializable{
     private MenuItem menuUserPerfil;
     @FXML
     private MenuItem menuUserSair;
+    @FXML
+    private Button buscarVendasButton;
+    @FXML
+    private Button novaVendaButton;
+    @FXML
+    private Button buscarVendedorButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -87,10 +93,10 @@ public class MenuAdministradorController implements Initializable{
                     }else{
                        p.setRefProduto(prod);
                        try{
-                          //Gambiarra de ultima hora
                           Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
                           Scene menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
                           Main.setScene("menu_produtos_admin",menu_produtos_admin );
+                          limparEntradas();
                           Main.mudar_tela("menu_produtos_admin");
                        }catch(IOException e){
                            System.out.println("Não foi possivel carregar a tela.");
@@ -113,6 +119,7 @@ public class MenuAdministradorController implements Initializable{
                         Parent FXML_menu_produtos_admin = FXMLLoader.load(getClass().getResource("../Views/MenuDeProdutosAdmin.fxml"));
                         Scene menu_produtos_admin = new Scene(FXML_menu_produtos_admin);
                         Main.setScene("menu_produtos_admin",menu_produtos_admin );
+                        limparEntradas();
                         Main.mudar_tela("menu_produtos_admin");
                     }catch(IOException e){
                         System.out.println("Não foi possivel carregar a tela.");
@@ -128,6 +135,7 @@ public class MenuAdministradorController implements Initializable{
             Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
             Scene menu_vendas = new Scene(FXML_menu_vendas);
             Main.setScene("menu_vendas", menu_vendas );
+            limparEntradas();
             Main.mudar_tela("menu_vendas");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
@@ -140,6 +148,7 @@ public class MenuAdministradorController implements Initializable{
             Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
             Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
             Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
+            limparEntradas();
             Main.mudar_tela("perfil_vendedor_admin");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
@@ -148,16 +157,20 @@ public class MenuAdministradorController implements Initializable{
     
     @FXML
     void ir_vend_cadastro(ActionEvent event) {
+        limparEntradas();
         Main.mudar_tela("cadastro_vendedor");
     }
     
     @FXML
     void ir_prod_cad(ActionEvent event) {
+        limparEntradas();
         Main.mudar_tela("cadastro_produto");
     }
 
     @FXML
     private void menu_home(ActionEvent event) {
+        limparEntradas();
+        System.out.println("Home");
         Main.mudar_tela("menu_administrador");
     }
 
@@ -165,11 +178,29 @@ public class MenuAdministradorController implements Initializable{
     private void menu_user_sair(ActionEvent event) {
         ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
         vendedor.setVendedorLogado(null);
+        limparEntradas();
         Main.mudar_tela("login");
     }
 
     @FXML
     private void menu_user(ActionEvent event) {
+    }
+
+    @FXML
+    private void buscar_vendas_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void nova_venda_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void buscar_vendedor_onAction(ActionEvent event) {
+    }
+    
+    private void limparEntradas(){
+        label_aviso.setText("");
+        busca_admin.setText("");
     }
 
     /**
