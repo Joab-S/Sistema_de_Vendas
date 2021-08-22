@@ -28,9 +28,12 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import Models.Vendedor;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import javafx.collections.FXCollections;
+import javafx.scene.control.RadioButton;
+import main.Main;
 
 /**
  * FXML Controller class
@@ -77,6 +80,8 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     @FXML
     private Menu menuHome;
+    
+
 
     ObservableList<Vendedor> list;
 
@@ -137,7 +142,79 @@ public class BuscarVendedoresAdminController implements Initializable{
     
     @FXML
     void pesquisar_onAction(ActionEvent event) {
-
+        if ((txtBusca.getText().strip().isBlank())){
+            //label_aviso.setText("Campo de Pesquisa Vazio.");
+        }else{
+            RadioButton radio = (RadioButton) pesquisa.getSelectedToggle();
+            if (radio.getText().compareTo("ID")==0){
+                int ID=0;
+                try{
+                    ID = Integer.parseInt(txtBusca.getText());
+                    ListaDeVendedores p = ListaDeVendedores.getInstance();
+                    Vendedor vend = p.searchUserID(ID);
+                    if(vend == null){
+                        //label_aviso.setText("Não foi encontrado um produto com esse ID.");
+                    }else{
+                       p.setVendedor_ref(vend);
+                       if(vend.isAdmin()){
+                            try{
+                                Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+                                Scene perfil = new Scene(FXML_perfil);
+                                Main.setScene("perfil",perfil );
+                                //limparEntradas();
+                                Main.mudar_tela("perfil");
+                            }catch(IOException e){
+                                System.out.println("Não foi possivel carregar a tela.");
+                            }
+                       }else{
+                           try{
+                                Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
+                                Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
+                                Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
+                                //limparEntradas();
+                                Main.mudar_tela("perfil_vendedor_admin");
+                            }catch(IOException e){
+                                System.out.println("Não foi possivel carregar a tela.");
+                            }
+                        }
+                    }
+                }catch(NumberFormatException e){
+                    //label_aviso.setText("Não foi passado um número para a pesquisa no ID.");
+                }
+            }
+            else{
+                ListaDeVendedores p=ListaDeVendedores.getInstance();
+                Vendedor vend=p.searchUserName(txtBusca.getText());
+                if(vend==null){
+                    //label_aviso.setText("Não foi encontrado um produto com esse Nome");
+                }
+                else{
+                    p.setVendedor_ref(vend);
+                    if(vend.isAdmin()){
+                        try{
+                            Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+                            Scene perfil = new Scene(FXML_perfil);
+                            Main.setScene("perfil",perfil );
+                                //limparEntradas();
+                            Main.mudar_tela("perfil");
+                        }catch(IOException e){
+                            System.out.println("Não foi possivel carregar a tela.");
+                        }
+                    }else{
+                        try{
+                            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
+                            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
+                            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
+                            //limparEntradas();
+                            Main.mudar_tela("perfil_vendedor_admin");
+                        }catch(IOException e){
+                            System.out.println("Não foi possivel carregar a tela.");
+                        }
+                    }   
+                }
+            }
+        }
     }
-    
 }
+    
+ 

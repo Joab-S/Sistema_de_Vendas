@@ -132,7 +132,7 @@ public class Main extends Application {
                 stage.setScene(perfil);
                 break;
             case "perfil_vendedor_admin":
-                stage.setScene(perfil);
+                stage.setScene(perfil_vendedor_admin);
                 break;
         }
         
@@ -150,8 +150,7 @@ public class Main extends Application {
         switch(nome_tela){
             case "menu_produtos_admin":
                 menu_produtos_admin = nova_cena;
-                break;                
-                
+                break;                 
             case "buscar_vendas_admin":
                 stage.setScene(buscar_venda_admin);
                 break;
@@ -168,7 +167,7 @@ public class Main extends Application {
                 perfil =nova_cena;
                 break;
             case "perfil_vendedor_admin":
-                stage.setScene(perfil);
+                perfil_vendedor_admin = nova_cena;
                 break;
         }
     }
