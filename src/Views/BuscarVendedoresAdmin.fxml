@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication2.BuscarVendasAdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BuscarVendasAdminController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -34,10 +34,10 @@
                               <Font size="12.0" />
                            </font></TextField>
 
-                        //<Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
-                        //<RadioButton fx:id="idRB" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" onAction="#id_RB_OnAction" selected="true" text="ID">
+                        <!--<Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarButtonAction" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
+                        <RadioButton fx:id="idRB" layoutX="23.0" layoutY="36.0" mnemonicParsing="false" onAction="#id_RB_OnAction" selected="true" text="ID"> -->
 
-                        <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
+                        <Button fx:id="button_pesquisar" layoutX="505.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisar_onAction" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textFill="WHITE" />
                         <RadioButton layoutX="23.0" layoutY="36.0" mnemonicParsing="false" selected="true" text="ID">
 
                            <toggleGroup>
@@ -45,7 +45,7 @@
                            </toggleGroup>
                         </RadioButton>
 
-                        //<RadioButton fx:id="nomeRB" layoutX="93.0" layoutY="36.0" mnemonicParsing="false" onAction="#nome_rb_OnAction" text="Nome" toggleGroup="$pesquisa" />
+                        <!--<RadioButton fx:id="nomeRB" layoutX="93.0" layoutY="36.0" mnemonicParsing="false" onAction="#nome_rb_OnAction" text="Nome" toggleGroup="$pesquisa" /> -->
 
                         <RadioButton layoutX="93.0" layoutY="36.0" mnemonicParsing="false" text="Nome" toggleGroup="$pesquisa" />
 
@@ -58,7 +58,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="568.0">
                                  <children>
-                                    <TableView prefHeight="234.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="table" prefHeight="234.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
                                         <TableColumn minWidth="0.0" prefWidth="132.0" text="ID" />
                                         <TableColumn minWidth="0.0" prefWidth="140.0" text="Nome Vendedor" />

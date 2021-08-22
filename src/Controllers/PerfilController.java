@@ -29,9 +29,6 @@ public class PerfilController implements Initializable {
     private TextField perfil_id;
 
     @FXML
-    private Button perfil_atualizar;
-
-    @FXML
     private TextField perfil_nome;
 
     @FXML
@@ -52,6 +49,10 @@ public class PerfilController implements Initializable {
     private MenuItem menuUserSair;
     @FXML
     private Menu menuHome;
+    @FXML
+    private Button atualizarDadosButton;
+    @FXML
+    private TextField vendasText;
     
     
     
@@ -87,6 +88,10 @@ public class PerfilController implements Initializable {
 
     @FXML
     private void menu_home(ActionEvent event) {
+    }
+
+    @FXML
+    private void atualizar_dados_onAction(ActionEvent event) {
     }
     
 }

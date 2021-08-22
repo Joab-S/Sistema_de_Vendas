@@ -5,10 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -37,26 +37,26 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="13.0" layoutY="45.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
-                  <TextField layoutX="13.0" layoutY="89.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
+                  <TextField fx:id="idEnter" layoutX="13.0" layoutY="45.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
+                  <TextField fx:id="Enter" layoutX="13.0" layoutY="89.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
                   <Label layoutX="13.0" layoutY="117.0" text="Preço:">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="13.0" layoutY="132.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
-                  <Button layoutX="46.0" layoutY="172.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1);" text="Adicionar Produto" textFill="WHITE">
+                  <TextField fx:id="preco" layoutX="13.0" layoutY="132.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
+                  <Button fx:id="adicionarProdutoButton" layoutX="46.0" layoutY="172.0" mnemonicParsing="false" onAction="#adicionar_produto_onAction" prefHeight="30.0" prefWidth="115.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1);" text="Adicionar Produto" textFill="WHITE">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="112.0" layoutY="132.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
+                  <TextField fx:id="quantidadeEnter" layoutX="112.0" layoutY="132.0" prefHeight="13.0" prefWidth="80.0" style="-fx-background-radius: 10;" />
                   <Label layoutX="111.0" layoutY="117.0" text="Qntd:">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <Button layoutX="112.0" layoutY="46.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1);" text="Pesquisar" textFill="WHITE">
+                  <Button fx:id="pesquisarButton" layoutX="112.0" layoutY="46.0" mnemonicParsing="false" onAction="#pesquisar_onAction" prefHeight="20.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1);" text="Pesquisar" textFill="WHITE">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -72,17 +72,17 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button layoutX="18.0" layoutY="278.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: rgba(244, 93, 83, 1); -fx-font-weight: bold;" text="Cancelar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="cancelarButton" layoutX="18.0" layoutY="278.0" mnemonicParsing="false" onAction="#cancelar_onAction" prefHeight="36.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: rgba(244, 93, 83, 1); -fx-font-weight: bold;" text="Cancelar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="114.0" layoutY="278.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: rgba(58, 207, 126, 1); -fx-font-weight: bold;" text="Selecionar pagamento" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="selecionarPagamentoButton" layoutX="114.0" layoutY="278.0" mnemonicParsing="false" onAction="#como_pagar_onAction" prefHeight="36.0" prefWidth="110.0" style="-fx-background-radius: 20; -fx-background-color: rgba(58, 207, 126, 1); -fx-font-weight: bold;" text="Selecionar pagamento" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button layoutX="238.0" layoutY="278.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Finalizar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="finalizarButton" layoutX="238.0" layoutY="278.0" mnemonicParsing="false" onAction="#finalizar_venda_onAction" prefHeight="36.0" prefWidth="80.0" style="-fx-background-radius: 20; -fx-background-color: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Finalizar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>

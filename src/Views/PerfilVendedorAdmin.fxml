@@ -24,18 +24,18 @@
                <children>
                   <AnchorPane cacheShape="false" focusTraversable="true" layoutX="50.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(173, 188, 242, 1); -fx-background-radius: 20;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <TextField layoutX="72.0" layoutY="26.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="idEnter" layoutX="72.0" layoutY="26.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <Label layoutX="45.0" layoutY="30.0" style="-fx-font-weight: bold;" text="ID:" />
                         <Label layoutX="21.0" layoutY="72.0" style="-fx-font-weight: bold;" text="Nome:" />
                         <Label layoutX="8.0" layoutY="115.0" style="-fx-font-weight: bold;" text="Vendas:" />
                         <Label layoutX="15.0" layoutY="208.0" style="-fx-font-weight: bold;" text="Senha:" />
                         <Label layoutX="21.0" layoutY="162.0" style="-fx-font-weight: bold;" text="Email:" />
-                        <Button layoutX="45.0" layoutY="244.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: rgba(244, 93, 83, 1); -fx-font-weight: bold;" text="Remover vendedor" textFill="WHITE" />
-                        <TextField layoutX="72.0" layoutY="68.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
-                        <TextField layoutX="72.0" layoutY="157.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
-                        <TextField layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
-                        <TextField layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
-                        <Button layoutX="45.0" layoutY="282.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Atualizar Dados" textFill="WHITE" />
+                        <Button fx:id="removerVendedorButton" layoutX="45.0" layoutY="244.0" mnemonicParsing="false" onAction="#remover_vendedor_onAction" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: rgba(244, 93, 83, 1); -fx-font-weight: bold;" text="Remover vendedor" textFill="WHITE" />
+                        <TextField fx:id="nomeEnter" layoutX="72.0" layoutY="68.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="emailEnter" layoutX="72.0" layoutY="157.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="vendasEnter" layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="senhaEnter" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <Button fx:id="atualizarDadosButton" layoutX="45.0" layoutY="282.0" mnemonicParsing="false" onAction="#atualizar_dados_onAction" prefHeight="30.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Atualizar Dados" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>
@@ -44,8 +44,8 @@
                <children>
                   <AnchorPane layoutX="50.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(173, 188, 242, 1); -fx-background-radius: 40;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <ImageView fitHeight="112.0" fitWidth="181.0" layoutX="46.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextField layoutX="30.0" layoutY="200.0" prefHeight="96.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
+                        <ImageView fx:id="imagemAdmin" fitHeight="112.0" fitWidth="181.0" layoutX="46.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="CampoAdicionalEnter" layoutX="30.0" layoutY="200.0" prefHeight="96.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
                         <Label layoutX="32.0" layoutY="177.0" style="-fx-font-weight: bold;" text="Campos Adicionais:" textFill="#1e54e1" />
                      </children>
                   </AnchorPane>

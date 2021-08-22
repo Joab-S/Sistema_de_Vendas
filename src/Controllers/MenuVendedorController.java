@@ -42,8 +42,6 @@ public class MenuVendedorController implements Initializable {
     @FXML
     private TextField busca_vendedor;
     @FXML
-    private Button pesquisar_vendedor;
-    @FXML
     private RadioButton rb_id;
     @FXML
     private ToggleGroup selecao_pesquisa;
@@ -61,6 +59,8 @@ public class MenuVendedorController implements Initializable {
     private MenuItem menuUserPerfil;
     @FXML
     private MenuItem menuUserSair;
+    @FXML
+    private Button pesquisarVendedorButton;
 
     /**
      * Initializes the controller class.
@@ -79,7 +79,7 @@ public class MenuVendedorController implements Initializable {
     }
 
     @FXML
-    private void pesquisar(ActionEvent event) {
+    private void pesquisar_onAction(ActionEvent event) {
         if (busca_vendedor.getText().trim().isBlank()){
             label_aviso.setText("Campo de Pesquisa Vazio.");
         }else{
