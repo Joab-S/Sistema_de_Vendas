@@ -37,11 +37,11 @@ public class ListaDeVendedores implements Serializable{
             Vendedor admin = new Vendedor("Admin", "Admin");
             admin.setAdmin(true);
             admin.setID(0);
+            admin.setEmail("Admin");
             this.listaVendedores.add(admin);
         }
         
-    }
-            
+    }        
     public Vendedor searchUserName(String nomeVendedor) {
         ListIterator<Vendedor> e = getListaDeVendedor().listIterator();
         Vendedor v;
@@ -54,6 +54,21 @@ public class ListaDeVendedores implements Serializable{
       }
       return null;
   }
+    
+    public Vendedor searchUserEmail(String emailVendedor) {
+        ListIterator<Vendedor> e = getListaDeVendedor().listIterator();
+        Vendedor v;
+
+        if (e != null){
+          while (e.hasNext()) {
+              v = e.next();
+              System.out.println(v.getEmail());
+              if (v.getEmail().toLowerCase().compareTo(emailVendedor.trim().toLowerCase())==0) { return v; }
+          }
+      }
+      return null;
+  }
+    
   public void setVendedorLogado(Vendedor vend){
       this.vend = vend;
       
@@ -128,5 +143,4 @@ public class ListaDeVendedores implements Serializable{
       return null;
     }
   }
-  
 }

@@ -71,7 +71,7 @@
                      </children>
                   </AnchorPane>
                   <TextField fx:id="busca_vendedor" layoutX="41.0" layoutY="131.0" prefHeight="35.0" prefWidth="435.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
-                  <Button fx:id="pesquisar_vendedor" layoutX="491.0" layoutY="131.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                  <Button fx:id="pesquisarVendedorButton" layoutX="491.0" layoutY="131.0" mnemonicParsing="false" onAction="#pesquisar_onAction" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                      <font>
                         <Font size="11.0" />
                      </font>
