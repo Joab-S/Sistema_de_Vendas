@@ -9,7 +9,11 @@ package Controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 
 /**
  * FXML Controller class
@@ -18,6 +22,17 @@ import javafx.fxml.Initializable;
  */
 public class PerfilVendedorAdminController implements Initializable {
 
+    @FXML
+    private Menu menuHome;
+    @FXML
+    private Menu menuCarrinho;
+    @FXML
+    private Menu menuUser;
+    @FXML
+    private MenuItem menuUserPerfil;
+    @FXML
+    private MenuItem menuUserSair;
+
     /**
      * Initializes the controller class.
      */
@@ -25,5 +40,25 @@ public class PerfilVendedorAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void menu_home(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_carrinho(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_perfil(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user_sair(ActionEvent event) {
+    }
+
+    @FXML
+    private void menu_user(ActionEvent event) {
+    }
     
 }
