@@ -52,14 +52,13 @@ public class Main extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("../Views/CadastroDeProduto.fxml"));
         Parent FXML_cadastro_produto = FXMLLoader.load(getClass().getResource("../Views/CadastroDeProduto.fxml"));
         cadastro_produto = new Scene(FXML_cadastro_produto);
-        /*
+        
         Parent FXML_busca_venda_admin = FXMLLoader.load(getClass().getResource("../Views/BuscarVendasAdmin.fxml"));
         buscar_venda_admin = new Scene(FXML_busca_venda_admin);
-
         
         Parent FXML_buscar_vendedores_admin = FXMLLoader.load(getClass().getResource("../Views/BuscarVendedoresAdmin.fxml"));
         buscar_vendedores_admin = new Scene(FXML_buscar_vendedores_admin);
-        */
+        
         Parent FXML_menu_administrador = FXMLLoader.load(getClass().getResource("../Views/MenuAdministrador.fxml"));
         menu_administrador = new Scene(FXML_menu_administrador);
         
@@ -80,10 +79,10 @@ public class Main extends Application {
         
         Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
         perfil = new Scene(FXML_perfil);
-        /*
-        Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PefilVendedorAdmin.fxml"));
+        
+        Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
         perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
-        */
+        
         Parent FXML_login = FXMLLoader.load(getClass().getResource("../Views/Login.fxml"));
         Login = new Scene(FXML_login);
         
@@ -172,5 +171,9 @@ public class Main extends Application {
                 stage.setScene(perfil);
                 break;
         }
+    }
+    
+    public static void voltar_tela(){
+        
     }
 }
