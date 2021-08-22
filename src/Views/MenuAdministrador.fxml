@@ -68,12 +68,18 @@
                   </AnchorPane>
                   <MenuBar layoutX="-4.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home" />
+                        <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Ir para a home" />
+                           </items></Menu>
                      </menus>
                   </MenuBar>
                   <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho" />
+                        <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Ir para o carrinho" />
+                           </items></Menu>
                         <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
                            <items>
                               <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil" text="Perfil" />

@@ -121,15 +121,34 @@ public class BuscarVendedoresAdminController implements Initializable{
     
 
     @FXML
-    private void menu_carrinho(ActionEvent event) {
+    void menu_carrinho(ActionEvent event) {
+        try{
+            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
+            Scene menu_vendas = new Scene(FXML_menu_vendas);
+            Main.setScene("menu_vendas", menu_vendas );
+            Main.mudar_tela("menu_vendas");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
     }
 
     @FXML
     private void menu_user_perfil(ActionEvent event) {
+        try{
+            Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil_vendedor);
+            Main.setScene("perfil",perfil );
+            Main.mudar_tela("perfil");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
     }
 
     @FXML
     private void menu_user_sair(ActionEvent event) {
+        ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        vendedor.setVendedorLogado(null);
+        Main.mudar_tela("login");
     }
 
     @FXML
@@ -138,6 +157,16 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     @FXML
     private void menu_home(ActionEvent event) {
+        Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
+
+        if (logado.isAdmin())
+        {
+            Main.mudar_tela("menu_administrador");
+        }
+        else
+        {
+            Main.mudar_tela("menu_vendedor");
+        }
     }
     
     @FXML

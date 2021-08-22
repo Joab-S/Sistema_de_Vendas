@@ -20,6 +20,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import Models.Produto;
+import Models.Vendedor;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -145,11 +146,11 @@ public class MenuAdministradorController implements Initializable{
     @FXML
     void menu_user_perfil(ActionEvent event) {
         try{
-            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
-            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
-            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
+            Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil);
+            Main.setScene("perfil",perfil);
             limparEntradas();
-            Main.mudar_tela("perfil_vendedor_admin");
+            Main.mudar_tela("perfil");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
             }
@@ -169,9 +170,17 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     private void menu_home(ActionEvent event) {
+        Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
         limparEntradas();
-        System.out.println("Home");
-        Main.mudar_tela("menu_administrador");
+        if (logado.isAdmin())
+        {
+            Main.mudar_tela("menu_administrador");
+        }
+        else
+        {
+            Main.mudar_tela("menu_vendedor");
+        }
+         
     }
 
     @FXML
