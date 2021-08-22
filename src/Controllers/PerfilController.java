@@ -71,12 +71,39 @@ public class PerfilController implements Initializable {
             perfil_nome.setText(logado.getNome());
             perfil_email.setText(logado.getEmail());
             perfil_senha.setText(logado.getSenha());
+            perfil_campos_adicionais.setText(logado.getDescricao());
+            vendasText.setText(Integer.toString(logado.getTotal_vendas()));
         }
         
     }    
 
     @FXML
     private void atualizar_dados_onAction(ActionEvent event) {
+        if(perfil_nome.getText().isBlank() || perfil_email.getText().isBlank()|| perfil_senha.getText().isBlank()){
+           //Aviso  
+        }else{
+            ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
+            if(vendedores.searchUserName(perfil_nome.getText())==null || vendedores.searchUserName(perfil_nome.getText())==vendedores.getVendedor_ref() ){
+                if(vendedores.searchUserName(perfil_email.getText())==null || vendedores.searchUserName(perfil_email.getText())==vendedores.getVendedor_ref()){
+                    Vendedor vendedor_atualizado = vendedores.getVendedorLogado();
+                    vendedor_atualizado.setNome(perfil_nome.getText());
+                    vendedor_atualizado.setEmail(perfil_email.getText());
+                    vendedor_atualizado.setSenha(perfil_senha.getText());
+                    vendedor_atualizado.setDescricao(perfil_campos_adicionais.getText());
+                    if(vendedor_atualizado.isAdmin()){
+                        Main.mudar_tela("menu_administrador");
+                    }else{
+                        Main.mudar_tela("menu_vendedor");
+                    }
+                    
+                }else{
+                    //Aviso existe um usuario com o mesmo email.
+                }
+                
+            }else{
+                //Aviso existe um usuario com o mesmo nome.
+            }
+        }           
     }
     
     @FXML

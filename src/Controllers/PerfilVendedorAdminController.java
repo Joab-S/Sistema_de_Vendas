@@ -8,6 +8,7 @@ package Controllers;
 
 
 import Dao.ListaDeVendedores;
+import Models.Serializador;
 import Models.Vendedor;
 import java.io.IOException;
 import java.net.URL;
@@ -43,9 +44,9 @@ public class PerfilVendedorAdminController implements Initializable {
     @FXML
     private MenuItem menuUserSair;
     @FXML
-    private TextField idEnter;
-    @FXML
     private Button removerVendedorButton;
+    @FXML
+    private TextField idEnter;
     @FXML
     private TextField nomeEnter;
     @FXML
@@ -74,15 +75,49 @@ public class PerfilVendedorAdminController implements Initializable {
             nomeEnter.setText(logado.getNome());
             emailEnter.setText(logado.getEmail());
             senhaEnter.setText(logado.getSenha());
+            CampoAdicionalEnter.setText(logado.getDescricao());
+            vendasEnter.setText(Integer.toString(logado.getTotal_vendas()));
         }
     }
 
     @FXML
     private void remover_vendedor_onAction(ActionEvent event) {
+        ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
+        if(!(vendedores.getVendedor_ref().isAdmin())){
+            if(vendedores.remover(vendedores.getVendedor_ref())){
+                System.out.println("Foi removido");
+                Serializador.salvar_dados(vendedores.getListaDeVendedor(),"ListaVendedores.txt");
+                Main.mudar_tela("menu_administrador");
+            }else{
+                //Label aviso
+            }
+        }
+                
     }
 
     @FXML
     private void atualizar_dados_onAction(ActionEvent event) {
+        if(nomeEnter.getText().isBlank() || emailEnter.getText().isBlank()|| senhaEnter.getText().isBlank()){
+           //Aviso  
+        }else{
+            ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
+            if(vendedores.searchUserName(nomeEnter.getText())==null || vendedores.searchUserName(nomeEnter.getText())==vendedores.getVendedor_ref() ){
+                if(vendedores.searchUserName(emailEnter.getText())==null || vendedores.searchUserName(emailEnter.getText())==vendedores.getVendedor_ref()){
+                    Vendedor vendedor_atualizado = vendedores.getVendedor_ref();
+                    vendedor_atualizado.setNome(nomeEnter.getText());
+                    vendedor_atualizado.setEmail(emailEnter.getText());
+                    vendedor_atualizado.setSenha(senhaEnter.getText());
+                    vendedor_atualizado.setDescricao(CampoAdicionalEnter.getText());
+                    Main.mudar_tela("menu_administrador");
+                }else{
+                    //Aviso existe um usuario com o mesmo email.
+                }
+                
+            }else{
+                //Aviso existe um usuario com o mesmo nome.
+            }
+        }
+    
     }
     
     @FXML
