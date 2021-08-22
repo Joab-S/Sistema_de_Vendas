@@ -52,17 +52,17 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="pesquisar_admin" layoutX="494.0" layoutY="126.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="pesquisar_admin" layoutX="494.0" layoutY="126.0" mnemonicParsing="false" onAction="#pesquisar_onAction" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <RadioButton fx:id="rb_id" layoutX="54.0" layoutY="72.0" mnemonicParsing="false" selected="true" text="ID">
+                        <RadioButton fx:id="rb_id" layoutX="54.0" layoutY="84.0" mnemonicParsing="false" selected="true" text="ID">
                            <toggleGroup>
                               <ToggleGroup fx:id="selecao_pesquisa" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="rb_nome" layoutX="122.0" layoutY="72.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
+                        <RadioButton fx:id="rb_nome" layoutX="122.0" layoutY="84.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
                         <Label fx:id="label_aviso" layoutX="195.0" layoutY="72.0" prefHeight="17.0" prefWidth="358.0" textFill="RED" />
                      </children>
                   </AnchorPane>

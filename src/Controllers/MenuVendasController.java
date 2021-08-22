@@ -15,9 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -40,6 +42,24 @@ public class MenuVendasController implements Initializable {
     private Menu menuHome;
     @FXML
     private TableView<?> produtosAddCarrinhoTV;
+    @FXML
+    private TextField idEnter;
+    @FXML
+    private TextField Enter;
+    @FXML
+    private TextField preco;
+    @FXML
+    private Button adicionarProdutoButton;
+    @FXML
+    private TextField quantidadeEnter;
+    @FXML
+    private Button pesquisarButton;
+    @FXML
+    private Button cancelarButton;
+    @FXML
+    private Button selecionarPagamentoButton;
+    @FXML
+    private Button finalizarButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,6 +84,26 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void menu_home(ActionEvent event) {
+    }
+
+    @FXML
+    private void adicionar_produto_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void pesquisar_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cancelar_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void como_pagar_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void finalizar_venda_onAction(ActionEvent event) {
     }
 
     /**

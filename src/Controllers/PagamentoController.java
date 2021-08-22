@@ -8,6 +8,7 @@ package Controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,6 +24,16 @@ public class PagamentoController implements Initializable {
     
     @FXML
     private ToggleGroup grupo;
+    @FXML
+    private Button confirmarButton;
+    @FXML
+    private RadioButton creditoRadioButton;
+    @FXML
+    private RadioButton debitoRadioButton;
+    @FXML
+    private RadioButton aVistaRadioButton;
+    @FXML
+    private Button cancelarButton;
     
     
     /**
@@ -32,5 +43,25 @@ public class PagamentoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void confirmar_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void credito_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void debito_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void a_vista_onAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cancelar_onAction(ActionEvent event) {
+    }
     
 }

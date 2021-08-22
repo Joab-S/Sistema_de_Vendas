@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -46,6 +47,8 @@ public class BuscarVendasAdminController implements Initializable {
     private MenuItem menuUserPerfil;
     @FXML
     private MenuItem menuUserSair;
+    @FXML
+    private TableView<?> table;
 
     /**
      * Initializes the controller class.
@@ -73,6 +76,10 @@ public class BuscarVendasAdminController implements Initializable {
 
     @FXML
     private void menu_user(ActionEvent event) {
+    }
+
+    @FXML
+    private void pesquisar_onAction(ActionEvent event) {
     }
     
 }

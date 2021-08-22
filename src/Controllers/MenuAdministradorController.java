@@ -25,7 +25,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.stage.Stage;
 
 
 /**
@@ -60,8 +59,6 @@ public class MenuAdministradorController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         
     }
-    
-    
 
     @FXML
     private TextField busca_admin;
@@ -72,9 +69,8 @@ public class MenuAdministradorController implements Initializable{
     @FXML
     private Label label_aviso;
 
-
     @FXML
-    void pesquisar(ActionEvent event) {
+    void pesquisar_onAction(ActionEvent event) {
         if (busca_admin.getText().trim().isBlank()){
             label_aviso.setText("Campo de Pesquisa Vazio.");
         }else{
@@ -126,11 +122,13 @@ public class MenuAdministradorController implements Initializable{
         }
     }
 
-    void ir_carrinho(ActionEvent event) {
+    @FXML
+    void menu_carrinho(ActionEvent event) {
         //Main.mudartela("menu_vendas");  
     }
 
-    void ir_usuario(ActionEvent event) {
+    @FXML
+    void menu_user_perfil(ActionEvent event) {
         try{
             //Gambiarra de ultima hora
             Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
@@ -141,7 +139,6 @@ public class MenuAdministradorController implements Initializable{
                 System.out.println("Não foi possivel carregar a tela.");
             }
     }
-    
     
     @FXML
     void ir_vend_cadastro(ActionEvent event) {
@@ -155,14 +152,6 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     private void menu_home(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_carrinho(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu_user_perfil(ActionEvent event) {
     }
 
     @FXML
