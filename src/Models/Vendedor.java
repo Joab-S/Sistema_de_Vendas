@@ -13,7 +13,8 @@ public class Vendedor implements Serializable{
   private boolean isAdmin;
   private int total_vendas;
   private String ultima_venda;
-
+  private String descricao;
+  
   public Vendedor(){
     this("Sem nome", "Sem senha");
   }
@@ -26,8 +27,17 @@ public class Vendedor implements Serializable{
     this.email = "";
     this.total_vendas =0;
     this.ultima_venda ="Sem Vendas.";
+    this.descricao="";
   }
 
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+    
     public int getTotal_vendas() {
         return total_vendas;
     }
