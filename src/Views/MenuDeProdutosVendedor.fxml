@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,17 +15,6 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
-               <menus>
-                  <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
-                  <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario" />
-               </menus>
-            </MenuBar>
-            <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
-               <menus>
-                  <Menu mnemonicParsing="false" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Home" />
-               </menus>
-            </MenuBar>
             <Label contentDisplay="CENTER" layoutX="77.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="MENU DE PRODUTOS" textFill="#051028" AnchorPane.leftAnchor="77.0">
                <opaqueInsets>
                   <Insets bottom="10.0" />
@@ -54,13 +44,29 @@
                   <AnchorPane layoutX="50.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(173, 188, 242, 1); -fx-background-radius: 40;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                      <children>
                         <TextField fx:id="descricaoEnter" editable="false" layoutX="30.0" layoutY="200.0" prefHeight="96.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
-                        <Label fx:id="descricaoEnter" layoutX="32.0" layoutY="177.0" style="-fx-font-weight: bold;" text="Descrição:" textFill="#1e54e1" />
+                        <Label fx:id="descricaoLabel" layoutX="32.0" layoutY="177.0" style="-fx-font-weight: bold;" text="Descrição:" textFill="#1e54e1" />
                         <ImageView fx:id="imagemProduto" fitHeight="129.0" fitWidth="200.0" layoutX="30.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
             <Button fx:id="cancelarButton" layoutX="60.0" layoutY="297.0" mnemonicParsing="false" onAction="#cancelar_onAction" prefHeight="30.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-background-color: rgba(244, 93, 83, 1);" text="Cancelar" textFill="WHITE" />
+            <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+               <menus>
+                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho_onAction" style="-fx-text-fill: rgba(11, 63, 194, 1); -fx-font-weight: bold;" text="Carrinho" />
+                  <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
+                     <items>
+                        <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil_onAction" text="Perfil" />
+                        <MenuItem fx:id="menuUserSair" mnemonicParsing="false" onAction="#menu_user_sair_onAction" text="Sair" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <MenuBar layoutX="-2.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+               <menus>
+                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home_onAction" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Home" />
+               </menus>
+            </MenuBar>
          </children>
       </AnchorPane>
    </children>

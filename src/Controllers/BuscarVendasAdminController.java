@@ -10,10 +10,14 @@ package Controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import static javafx.application.Application.launch;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +26,13 @@ import javafx.stage.Stage;
  * @author samyra
  */
 public class BuscarVendasAdminController implements Initializable {
+
+    @FXML
+    private TextField txtBusca;
+    @FXML
+    private Button button_pesquisar;
+    @FXML
+    private ToggleGroup pesquisa;
 
     /**
      * Initializes the controller class.
