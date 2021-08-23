@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import main.Main;
@@ -59,6 +60,14 @@ public class PerfilController implements Initializable {
     @FXML
     private TextField vendasText;
     
+    @FXML
+    private Label labelAvisoBranco;
+
+    @FXML
+    private Label labelAvisoNome;
+
+    @FXML
+    private Label labelAvisoEmail;
     
     
     
@@ -79,8 +88,9 @@ public class PerfilController implements Initializable {
 
     @FXML
     private void atualizar_dados_onAction(ActionEvent event) {
+        limparLabels();
         if(perfil_nome.getText().isBlank() || perfil_email.getText().isBlank()|| perfil_senha.getText().isBlank()){
-           //Aviso  
+           labelAvisoBranco.setText("Há campos em branco.");
         }else{
             ListaDeVendedores vendedores = ListaDeVendedores.getInstance();
             if(vendedores.searchUserName(perfil_nome.getText())==null || vendedores.searchUserName(perfil_nome.getText())==vendedores.getVendedor_ref() ){
@@ -90,6 +100,7 @@ public class PerfilController implements Initializable {
                     vendedor_atualizado.setEmail(perfil_email.getText());
                     vendedor_atualizado.setSenha(perfil_senha.getText());
                     vendedor_atualizado.setDescricao(perfil_campos_adicionais.getText());
+                    limparLabels();
                     if(vendedor_atualizado.isAdmin()){
                         Main.mudar_tela("menu_administrador");
                     }else{
@@ -97,11 +108,11 @@ public class PerfilController implements Initializable {
                     }
                     
                 }else{
-                    //Aviso existe um usuario com o mesmo email.
+                   labelAvisoEmail.setText("Já há vendedores com esse email.");
                 }
                 
             }else{
-                //Aviso existe um usuario com o mesmo nome.
+                labelAvisoNome.setText("Já há vendedores com esse nome.");
             }
         }           
     }
@@ -144,5 +155,11 @@ public class PerfilController implements Initializable {
     
     @FXML
     private void menu_user(ActionEvent event) {
+    }
+    
+    public void limparLabels(){
+        labelAvisoNome.setText("");
+        labelAvisoEmail.setText("");
+        labelAvisoBranco.setText("");
     }
 }
