@@ -35,6 +35,9 @@
                         <TextField fx:id="perfil_email" layoutX="72.0" layoutY="157.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="vendasText" editable="false" layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="perfil_senha" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <Label fx:id="labelAvisoBranco" layoutX="66.0" layoutY="6.0" prefHeight="17.0" prefWidth="159.0" />
+                        <Label fx:id="labelAvisoNome" layoutX="60.0" layoutY="93.0" prefHeight="17.0" prefWidth="170.0" />
+                        <Label fx:id="labelAvisoEmail" layoutX="54.0" layoutY="182.0" prefHeight="17.0" prefWidth="181.0" />
                      </children>
                   </AnchorPane>
                </children>

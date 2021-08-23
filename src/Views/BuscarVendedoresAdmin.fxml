@@ -70,6 +70,7 @@
                               </AnchorPane>
                           </content>
                         </ScrollPane>
+                        <Label fx:id="labelAviso" layoutX="184.0" layoutY="36.0" prefHeight="17.0" prefWidth="365.0" />
                      </children>
                   </AnchorPane>
                   <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">

@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import main.Main;
 
@@ -80,7 +81,8 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     @FXML
     private Menu menuHome;
-    
+    @FXML
+    private Label labelAviso;
 
 
     ObservableList<Vendedor> list;
@@ -94,9 +96,7 @@ public class BuscarVendedoresAdminController implements Initializable{
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-       System.out.println("Teste colunas");
        coluna_ID.setCellValueFactory(new PropertyValueFactory<Vendedor,Integer>("ID"));
-       System.out.println("Teste colunas");
        colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor,String>("nome"));
        colunaTotalVendas.setCellValueFactory(new PropertyValueFactory<Vendedor,Integer>("total_vendas"));
        colunaUltimaVenda.setCellValueFactory(new PropertyValueFactory<Vendedor,String>("ultima_venda")); 
@@ -125,8 +125,9 @@ public class BuscarVendedoresAdminController implements Initializable{
         try{
             Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
             Scene menu_vendas = new Scene(FXML_menu_vendas);
+            limparLabels();
             Main.setScene("menu_vendas", menu_vendas );
-            Main.mudar_tela("menu_vendas");
+            Main.mudar_tela("menu_vendas");    
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
             }
@@ -137,6 +138,7 @@ public class BuscarVendedoresAdminController implements Initializable{
         try{
             Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
             Scene perfil = new Scene(FXML_perfil_vendedor);
+            limparLabels();
             Main.setScene("perfil",perfil );
             Main.mudar_tela("perfil");
             }catch(IOException e){
@@ -147,18 +149,30 @@ public class BuscarVendedoresAdminController implements Initializable{
     @FXML
     private void menu_user_sair(ActionEvent event) {
         ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        limparLabels();
         vendedor.setVendedorLogado(null);
         Main.mudar_tela("login");
     }
 
     @FXML
     private void menu_user(ActionEvent event) {
+        limparLabels();
+        try{
+            Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil);
+            limparLabels();
+            Main.setScene("perfil",perfil );
+            Main.mudar_tela("perfil");
+        }catch(IOException e){
+            System.out.println("Não foi possivel carregar a tela.");
+        }
+        
     }
 
     @FXML
     private void menu_home(ActionEvent event) {
         Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
-
+        limparLabels();
         if (logado.isAdmin())
         {
             Main.mudar_tela("menu_administrador");
@@ -171,8 +185,9 @@ public class BuscarVendedoresAdminController implements Initializable{
     
     @FXML
     void pesquisar_onAction(ActionEvent event) {
+        limparLabels();
         if ((txtBusca.getText().strip().isBlank())){
-            //label_aviso.setText("Campo de Pesquisa Vazio.");
+            labelAviso.setText("Campo de Pesquisa Vazio.");
         }else{
             RadioButton radio = (RadioButton) pesquisa.getSelectedToggle();
             if (radio.getText().compareTo("ID")==0){
@@ -182,15 +197,15 @@ public class BuscarVendedoresAdminController implements Initializable{
                     ListaDeVendedores p = ListaDeVendedores.getInstance();
                     Vendedor vend = p.searchUserID(ID);
                     if(vend == null){
-                        //label_aviso.setText("Não foi encontrado um produto com esse ID.");
+                        labelAviso.setText("Não foi encontrado um vendedor com esse ID.");
                     }else{
                        p.setVendedor_ref(vend);
                        if(vend.isAdmin()){
                             try{
                                 Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
                                 Scene perfil = new Scene(FXML_perfil);
+                                limparLabels();
                                 Main.setScene("perfil",perfil );
-                                //limparEntradas();
                                 Main.mudar_tela("perfil");
                             }catch(IOException e){
                                 System.out.println("Não foi possivel carregar a tela.");
@@ -199,8 +214,8 @@ public class BuscarVendedoresAdminController implements Initializable{
                            try{
                                 Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
                                 Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
+                                limparLabels();
                                 Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
-                                //limparEntradas();
                                 Main.mudar_tela("perfil_vendedor_admin");
                             }catch(IOException e){
                                 System.out.println("Não foi possivel carregar a tela.");
@@ -208,14 +223,14 @@ public class BuscarVendedoresAdminController implements Initializable{
                         }
                     }
                 }catch(NumberFormatException e){
-                    //label_aviso.setText("Não foi passado um número para a pesquisa no ID.");
+                    labelAviso.setText("Não foi passado um número para a pesquisa no ID.");
                 }
             }
             else{
                 ListaDeVendedores p=ListaDeVendedores.getInstance();
                 Vendedor vend=p.searchUserName(txtBusca.getText());
                 if(vend==null){
-                    //label_aviso.setText("Não foi encontrado um produto com esse Nome");
+                    labelAviso.setText("Não foi encontrado um vendedor com esse Nome");
                 }
                 else{
                     p.setVendedor_ref(vend);
@@ -223,8 +238,8 @@ public class BuscarVendedoresAdminController implements Initializable{
                         try{
                             Parent FXML_perfil = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
                             Scene perfil = new Scene(FXML_perfil);
+                            limparLabels();
                             Main.setScene("perfil",perfil );
-                                //limparEntradas();
                             Main.mudar_tela("perfil");
                         }catch(IOException e){
                             System.out.println("Não foi possivel carregar a tela.");
@@ -233,8 +248,8 @@ public class BuscarVendedoresAdminController implements Initializable{
                         try{
                             Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
                             Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
+                            limparLabels();
                             Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
-                            //limparEntradas();
                             Main.mudar_tela("perfil_vendedor_admin");
                         }catch(IOException e){
                             System.out.println("Não foi possivel carregar a tela.");
@@ -243,6 +258,9 @@ public class BuscarVendedoresAdminController implements Initializable{
                 }
             }
         }
+    }
+    public void limparLabels(){
+        labelAviso.setText("");
     }
 }
     
