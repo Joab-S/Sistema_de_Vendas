@@ -44,6 +44,7 @@ public class CadastroVendedorController implements Initializable {
     
     @FXML
     public boolean cadastrar_vendedor (ActionEvent e){
+        label_aviso.setText("");
         if(nome_vendedor.getText().isBlank() || senha.getText().isBlank() || senha_confirm.getText().isBlank() || email.getText().isBlank()){
             label_aviso.setText("Preencha todos os campos.");
         }else{
@@ -63,8 +64,9 @@ public class CadastroVendedorController implements Initializable {
                 if(x.adicionar(p)){
                     System.out.println("Id"+p.getID());
                 }else{
-                    System.out.println("Deu ruim");
+                    label_aviso.setText("Não foi possível cadastrar.");
                 }
+                limparEntradas();
                 Serializador.salvar_dados(x.getListaDeVendedor(),"ListaVendedores.txt");
                 Main.mudar_tela("menu_administrador");
                 }
@@ -72,7 +74,7 @@ public class CadastroVendedorController implements Initializable {
                 label_aviso.setText("O cadastro não foi bem sucedido.");
             }
         }
-        limparEntradas();
+        
         return true;
     }
     
@@ -93,12 +95,12 @@ public class CadastroVendedorController implements Initializable {
     }    
     
     private void limparEntradas(){
-    nome_vendedor.setText("");
-    email.setText("");
-    senha.setText("");
-    senha_confirm.setText("");
-    label_aviso.setText("");
-    //imagem.setImage(null);
+        nome_vendedor.setText("");
+        email.setText("");
+        senha.setText("");
+        senha_confirm.setText("");
+        label_aviso.setText("");
+        //imagem.setImage(null);
     
     }
 }
