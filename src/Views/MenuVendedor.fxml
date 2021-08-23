@@ -19,46 +19,52 @@
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <Label contentDisplay="CENTER" layoutX="75.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="MENU VENDEDOR" textFill="#1e54e1" AnchorPane.leftAnchor="75.0">
+                  <Label contentDisplay="CENTER" layoutX="75.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: rgba(173, 188, 242, 1); -fx-font-weight: bold;" text="MENU VENDEDOR" AnchorPane.leftAnchor="75.0">
                      <opaqueInsets>
                         <Insets bottom="10.0" />
                      </opaqueInsets>
                   </Label>
                   <AnchorPane layoutY="35.0" prefHeight="365.0" prefWidth="602.0" style="-fx-background-color: rgba(229, 234, 250);">
                      <children>
-                        <Button fx:id="buscarVendasButton" layoutX="177.0" layoutY="16.0" mnemonicParsing="false" onAction="#buscar_vendas_onAction" prefHeight="40.0" prefWidth="112.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="buscarVendasButton" layoutX="177.0" layoutY="18.0" mnemonicParsing="false" onAction="#buscar_vendas_onAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Buscar Vendas" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="novaVendaButton" layoutX="302.0" layoutY="16.0" mnemonicParsing="false" onAction="#nova_venda_onAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                        <Button fx:id="novaVendaButton" layoutX="301.0" layoutY="18.0" mnemonicParsing="false" onAction="#nova_venda_onAction" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Nova Venda" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
+                        <TextField fx:id="busca_vendedor" layoutX="17.0" layoutY="109.0" prefHeight="30.0" prefWidth="466.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
+                        <RadioButton fx:id="rb_id" layoutX="52.0" layoutY="73.0" mnemonicParsing="false" selected="true" text="ID">
+                        <toggleGroup>
+                              <ToggleGroup fx:id="selecao_pesquisa" />
+                                 </toggleGroup>
+                        </RadioButton>
+                        <Button fx:id="pesquisarVendedorButton" layoutX="494.0" layoutY="109.0" mnemonicParsing="false" onAction="#pesquisar_onAction" prefHeight="30.0" prefWidth="88.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                          <RadioButton fx:id="rb_nome" layoutX="135.0" layoutY="73.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
                      </children>
                   </AnchorPane>
-                  <TextField fx:id="busca_vendedor" layoutX="41.0" layoutY="131.0" prefHeight="35.0" prefWidth="435.0" promptText="Buscar produto por ID ou nome" style="-fx-background-radius: 20;" />
-                  <Button fx:id="pesquisarVendedorButton" layoutX="491.0" layoutY="131.0" mnemonicParsing="false" onAction="#pesquisar_onAction" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: rgba(58, 128, 226, 1); -fx-background-radius: 20;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Button>
-                  <RadioButton fx:id="rb_id" layoutX="54.0" layoutY="107.0" mnemonicParsing="false" selected="true" text="ID">
-                  <toggleGroup>
-                        <ToggleGroup fx:id="selecao_pesquisa" />
-                           </toggleGroup>
-                  </RadioButton>
-                    <RadioButton fx:id="rb_nome" layoutX="122.0" layoutY="107.0" mnemonicParsing="false" text="Nome" toggleGroup="$selecao_pesquisa" />
                   <Label fx:id="label_aviso" layoutX="196.0" layoutY="107.0" prefHeight="17.0" prefWidth="359.0" textFill="RED" />
                   <MenuBar layoutX="-4.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home" />
+                        <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Ir para a home" />
+                           </items></Menu>
                      </menus>
                   </MenuBar>
                   <MenuBar layoutX="425.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
-                        <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho" />
+                        <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Ir para o carrinho" />
+                           </items></Menu>
                         <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
                            <items>
                               <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil" text="Perfil" />

@@ -150,7 +150,16 @@ public class PerfilController implements Initializable {
     
     @FXML
     private void menu_home(ActionEvent event) {
-        Main.mudar_tela("menu_vendedor");
+        Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
+
+        if (logado.isAdmin())
+        {
+            Main.mudar_tela("menu_administrador");
+        }
+        else
+        {
+            Main.mudar_tela("menu_vendedor");
+        }
     }
     
     @FXML
