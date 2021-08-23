@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -92,29 +91,24 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ScrollPane prefHeight="225.0" prefWidth="359.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="357.0">
-                                 <children>
-                                    <TableView fx:id="carrinhoTable" layoutX="1.0" prefHeight="216.0" prefWidth="359.0">
-                                      <columns>
-                                        <TableColumn fx:id="colunaID" prefWidth="48.0" text="ID" />
-                                        <TableColumn fx:id="colunaProduto" prefWidth="91.0" text="Produto" />
-                                          <TableColumn fx:id="colunaQuantidade" prefWidth="49.0" text="QTD" />
-                                          <TableColumn fx:id="colunaPreco" minWidth="0.0" prefWidth="77.0" text="Preço" />
-                                          <TableColumn fx:id="colunaSubtotal" prefWidth="82.0" text="Subtotal" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </ScrollPane>
+                        <TableView fx:id="carrinhoTable" prefHeight="216.0" prefWidth="359.0">
+                          <columns>
+                            <TableColumn fx:id="colunaID" prefWidth="48.0" text="ID" />
+                            <TableColumn fx:id="colunaProduto" prefWidth="91.0" text="Produto" />
+                              <TableColumn fx:id="colunaQuantidade" prefWidth="49.0" text="QTD" />
+                              <TableColumn fx:id="colunaPreco" minWidth="0.0" prefWidth="77.0" text="Preço" />
+                              <TableColumn fx:id="colunaSubtotal" prefWidth="93.0" text="Subtotal" />
+                          </columns>
+                        </TableView>
                      </children></AnchorPane>
                </children>
             </AnchorPane>
             <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                <menus>
-                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho" />
+                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Ir para o carinho" />
+                     </items></Menu>
                   <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
                      <items>
                         <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil" text="Perfil" />
@@ -125,7 +119,10 @@
             </MenuBar>
             <MenuBar layoutX="-4.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                <menus>
-                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home" />
+                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Ir para a home" />
+                     </items></Menu>
                </menus>
             </MenuBar>
          </children>
