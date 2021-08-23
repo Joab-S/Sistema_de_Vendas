@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import main.Main;
 
 /**
  * FXML Controller class
@@ -22,8 +23,6 @@ import javafx.scene.control.ToggleGroup;
  */
 public class PagamentoController implements Initializable {
     
-    @FXML
-    private ToggleGroup grupo;
     @FXML
     private Button confirmarButton;
     @FXML
@@ -34,6 +33,8 @@ public class PagamentoController implements Initializable {
     private RadioButton aVistaRadioButton;
     @FXML
     private Button cancelarButton;
+    @FXML
+    private ToggleGroup forma_de_pagamento;
     
     
     /**
@@ -46,6 +47,18 @@ public class PagamentoController implements Initializable {
 
     @FXML
     private void confirmar_onAction(ActionEvent event) {
+        RadioButton radio = (RadioButton) forma_de_pagamento.getSelectedToggle();
+            if (radio.getText().compareTo("Crédito")==0){
+                Main.set_pagamento("crédito");
+            }
+            else if (radio.getText().compareTo("Débito")==0){
+                Main.set_pagamento("débito");
+            }
+            else if (radio.getText().compareTo("À Vista")==0){
+                Main.set_pagamento("à vista");
+            }
+            Main.mudar_tela("menu_vendas");
+            System.out.println(Main.get_pagamento());
     }
 
     @FXML
@@ -62,6 +75,7 @@ public class PagamentoController implements Initializable {
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        Main.mudar_tela(Main.get_tela_anterior());
     }
     
 }

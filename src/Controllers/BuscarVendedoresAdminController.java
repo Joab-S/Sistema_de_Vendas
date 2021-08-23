@@ -181,7 +181,7 @@ public class BuscarVendedoresAdminController implements Initializable{
             Main.mudar_tela("menu_vendedor");
         }
     }
-    
+
     @FXML
     void pesquisar_onAction(ActionEvent event) {
         limparLabels();

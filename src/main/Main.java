@@ -32,6 +32,9 @@ public class Main extends Application {
     private static Scene pagamento;
     private static Scene perfil;
     private static Scene perfil_vendedor_admin;
+    private static String tela_anterior = null;
+    private static String tela_atual = null;
+    private static String tipo_pagamento = null;
     
     @Override
     public void start(Stage primarystage) throws Exception{
@@ -46,10 +49,6 @@ public class Main extends Application {
         Assistam os videos da natalia
         */
         
-        //System.out.println(getClass().getResource("../Views/CadastroDeProduto.fxml"));
-        //System.out.println(getClass().getResource("../Views/CadastroDeProduto.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/CadastroDeProduto.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("../Views/CadastroDeProduto.fxml"));
         Parent FXML_cadastro_produto = FXMLLoader.load(getClass().getResource("../Views/CadastroDeProduto.fxml"));
         cadastro_produto = new Scene(FXML_cadastro_produto);
         
@@ -90,6 +89,7 @@ public class Main extends Application {
         cadastro_vendedor = new Scene(FXML_cadastro_vendedor);
         
         primarystage.setScene(Login);
+        Main.tela_atual = "Login";
         primarystage.show();            
     }
     
@@ -135,6 +135,10 @@ public class Main extends Application {
                 stage.setScene(perfil_vendedor_admin);
                 break;
         }
+        Main.tela_anterior = tela_atual;
+        Main.tela_atual = nome_tela;
+        //System.out.println("Tela Anterior: " + Main.tela_anterior);
+        //System.out.println("Tela Atual: " + Main.tela_atual);
         
     }
     
@@ -169,10 +173,28 @@ public class Main extends Application {
             case "perfil_vendedor_admin":
                 perfil_vendedor_admin = nova_cena;
                 break;
+            case "menu_admin":
+                menu_administrador = nova_cena;
+                break;
+            case "menu_vendedor":
+                menu_vendedor = nova_cena;
+                break;
         }
     }
     
-    public static void voltar_tela(){
-        
+    public static String get_tela_anterior(){
+        return Main.tela_anterior;
+    }
+    
+    public static String get_tela_atual(){
+        return Main.tela_atual;
+    }
+    
+    public static void set_pagamento(String tipo_pagamento){
+        Main.tipo_pagamento = tipo_pagamento;
+    }
+    
+    public static String get_pagamento(){
+        return Main.tipo_pagamento;
     }
 }

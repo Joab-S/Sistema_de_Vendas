@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import main.Main;
 import Dao.ListaDeVendedores;
 import Models.Vendedor;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -41,7 +42,6 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        limparEntrada();
     }
     
     private boolean validateLogin(String user, String password, Vendedor vendedor){ 
@@ -77,11 +77,6 @@ public class LoginController implements Initializable {
             loginMessageLabel.setText("Informe as credenciais.");
         }
 
-    }
-
-    private void fazerCadastroAction(ActionEvent event) {
-        limparEntrada();
-        Main.mudar_tela("cadastro_vendedor");
     }
     
     private void limparEntrada(){
