@@ -224,10 +224,11 @@ public class BuscarVendasAdminController implements Initializable {
     @FXML
     private void menu_user_perfil(ActionEvent event) {
         try{
-            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
-            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
-            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
-            Main.mudar_tela("perfil_vendedor_admin");
+            Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil_vendedor);
+            Main.setScene("perfil",perfil );
+            
+            Main.mudar_tela("perfil");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
             }

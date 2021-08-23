@@ -254,18 +254,14 @@ public class MenuVendasController implements Initializable {
     @FXML
     void menu_user_perfil(ActionEvent event) {
         try{
-            ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
-            String caminho = "";
-            if (vendedor.getVendedorLogado().isAdmin()){ caminho = "../Views/PerfilVendedorAdmin.fxml"; }
-            else{ caminho = "../Views/Perfil.fxml"; }
+            Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil_vendedor);
+            Main.setScene("perfil",perfil );
             
-            Parent FXML_perfil = FXMLLoader.load(getClass().getResource(caminho));
-            Scene perfil = new Scene(FXML_perfil);
-            Main.setScene("perfil", perfil);
             Main.mudar_tela("perfil");
-        }catch(IOException e){
-            System.out.println("Não foi possivel carregar a tela.");
-        }
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }
     }
 
     @FXML
