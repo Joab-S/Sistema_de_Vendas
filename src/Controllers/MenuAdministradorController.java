@@ -180,7 +180,6 @@ public class MenuAdministradorController implements Initializable{
         {
             Main.mudar_tela("menu_vendedor");
         }
-         
     }
 
     @FXML

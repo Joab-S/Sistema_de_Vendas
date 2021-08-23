@@ -101,6 +101,7 @@ public class MenuVendasController implements Initializable {
         pedido = new Pedido();
         logado = ListaDeVendedores.getInstance().getVendedorLogado();
         prod = null;
+        Main.set_pagamento("");
     }
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -117,19 +118,19 @@ public class MenuVendasController implements Initializable {
             if (pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()))) 
             {
             
-            //colunaID.setCellValueFactory(new PropertyValueFactory<Produto,Integer>("ID"));
-            //colunaProduto.setCellValueFactory(new PropertyValueFactory<Produto,String>("nome"));
+            colunaID.setCellValueFactory(new PropertyValueFactory<Produto,Integer>("ID"));
+            colunaProduto.setCellValueFactory(new PropertyValueFactory<Produto,String>("nome"));
             colunaQuantidade.setCellValueFactory(new PropertyValueFactory<ElementoPedido,Integer>("quant"));
-            //colunaPreco.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("preco"));
+            colunaPreco.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("preco"));
             colunaSubtotal.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("total"));
         
         
-            System.out.println("PRINTS");
-            System.out.println(pedido);
-            System.out.println(logado);
-            System.out.println(prod);
-            System.out.println(pedido.getListaProdutos());
-            System.out.println("FIM");
+            //System.out.println("PRINTS");
+            //System.out.println(pedido);
+            //System.out.println(logado);
+            //System.out.println(prod);
+            //System.out.println(pedido.getListaProdutos());
+            //System.out.println("FIM");
         
             ObservableList<ElementoPedido> list;
         
@@ -147,8 +148,8 @@ public class MenuVendasController implements Initializable {
                 list = FXCollections.observableArrayList(array_pedidos);
        
                 carrinhoTable.setItems(list);
-                //precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
-                //pedido.precoTotal();
+                String s = Double.toString(pedido.precoTotal());
+                precoTotalLabel.setText(s);
                 //System.out.println("SAIU DO PRECO");
             }
             else { System.out.println("lista de pedidos nula"); }
@@ -218,7 +219,6 @@ public class MenuVendasController implements Initializable {
                 }
         }
         System.out.println("Cancelado");
-        limparEntrada();
     }
 
     @FXML
@@ -228,15 +228,22 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void finalizar_venda_onAction(ActionEvent event) {
-        pedido.setVendedor(logado);
-        pedido.finalizar_pedido(pedidos);
-        if (logado.isAdmin()){
-            Main.mudar_tela("menu_administrador");
-        } else {
-            Main.mudar_tela("menu_vendedor");
+        if (!("".equals(Main.get_pagamento()))){
+            pedido.setFormaDePagamento(Main.get_pagamento());
+            pedido.setVendedor(logado);
+            pedido.setData();
+            pedido.finalizar_pedido(pedidos);
+            if (logado.isAdmin()){
+                Main.mudar_tela("menu_administrador");
+            } else {
+                Main.mudar_tela("menu_vendedor");
+            }
+            System.out.println("Finalizado");
         }
-        System.out.println("Finalizado");
-        limparEntrada();
+        else
+        {
+            System.out.println("Informe o tipo de pagamento.");
+        }
     }
     
     @FXML
@@ -288,10 +295,6 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void menu_user(ActionEvent event) {
-    }
-
-    private void limparEntrada() {
-        
     }
     
     /**

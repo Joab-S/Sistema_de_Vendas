@@ -75,6 +75,7 @@ public class LoginController implements Initializable {
         }
         else{
             loginMessageLabel.setText("Informe as credenciais.");
+            JOptionPane.showMessageDialog(null, "Informe as credenciais.");
         }
 
     }

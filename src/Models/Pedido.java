@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Pedido implements Serializable{
   private int ID;
   public Double precoTotal;
-  private int formaDePagamento;
+  private String formaDePagamento;
   private String dataEHora;
   private Vendedor vendedor;
   private LinkedList<ElementoPedido> ListaProdutos;
@@ -21,10 +21,10 @@ public class Pedido implements Serializable{
   // Rever o tipo de estrutura que a gnt vai usar
 
   public Pedido() {
-    this(0, null);
+    this("", null);
   }
 
-  public Pedido(int formaDePagamento, Vendedor vendedor) {
+  public Pedido(String formaDePagamento, Vendedor vendedor) {
     this.ID = -1;
     this.formaDePagamento = formaDePagamento;
     this.ListaProdutos = new LinkedList<ElementoPedido>();
@@ -44,7 +44,7 @@ public class Pedido implements Serializable{
     this.ID = x + 1;
   }
 
-  private void setData() {
+  public void setData() {
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date = new Date();
     this.dataEHora = dateFormat.format(date);
@@ -82,7 +82,7 @@ public class Pedido implements Serializable{
     return parcelas;
   }
 
-  public void setFormaDePagamento(int tipoDePagamento) {
+  public void setFormaDePagamento(String tipoDePagamento) {
     this.formaDePagamento = tipoDePagamento;
   }
 
@@ -136,10 +136,10 @@ public class Pedido implements Serializable{
     ListIterator<ElementoPedido> lista = this.getListaProdutos().listIterator();
     while (lista.hasNext()) {
       ElementoPedido p = lista.next();
-      this.precoTotal += (p.getProduto().get_preco()) * p.getQuant();
+      this.precoTotal += (p.getProduto().get_preco()) * p.getQuant() * 1.0;
       System.out.println("Elemento: " + p.getProduto().get_preco() + " q: "  +p.getQuant());
       double d = (double) p.getQuant();
-      System.out.println((p.getProduto().get_preco()) * d);
+      System.out.println((p.getProduto().get_preco()) * d * 1.0);
     }
     return precoTotal;
   }
