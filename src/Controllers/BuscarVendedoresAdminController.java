@@ -94,7 +94,6 @@ public class BuscarVendedoresAdminController implements Initializable{
      */ 
     
 
-    @FXML
     public void initialize(URL url, ResourceBundle rb) {
        coluna_ID.setCellValueFactory(new PropertyValueFactory<Vendedor,Integer>("ID"));
        colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Vendedor,String>("nome"));

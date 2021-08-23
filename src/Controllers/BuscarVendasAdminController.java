@@ -71,9 +71,9 @@ public class BuscarVendasAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //System.out.println("teste");
+        System.out.println("teste");
         colunaID.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("ID"));
-        //System.out.println("teste1");
+        System.out.println("teste1");
         colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Pedido, String>("nomeVendedor"));
         colunaData.setCellValueFactory(new PropertyValueFactory<Pedido, String>("data"));
         
@@ -129,7 +129,9 @@ public class BuscarVendasAdminController implements Initializable {
                     System.out.println("Não foi possível carregar a tela");
                 }
             }else if(radio.getText().equals("data")){
-                //System.out.println("teste2");
+
+                System.out.println("teste2");
+
                 try{
                     //data = String.valueOf(txtBusca.getText());
                     String data = null;

@@ -22,6 +22,15 @@ import java.util.ListIterator;
 public class ListaDePedidos implements Serializable {
     private static final ListaDePedidos instancia = new ListaDePedidos();
     private LinkedList<Pedido> listaPedidos;
+    private Pedido ref_produto;
+
+    public Pedido getRef_produto() {
+        return ref_produto;
+    }
+
+    public void setRef_produto(Pedido ref_produto) {
+        this.ref_produto = ref_produto;
+    }
     
     public static ListaDePedidos getInstance() {
         return instancia;
