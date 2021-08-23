@@ -92,7 +92,6 @@ public class BuscarVendedoresAdminController implements Initializable{
      */ 
     
 
-    @FXML
     public void initialize(URL url, ResourceBundle rb) {
        System.out.println("Teste colunas");
        coluna_ID.setCellValueFactory(new PropertyValueFactory<Vendedor,Integer>("ID"));
@@ -143,7 +142,7 @@ public class BuscarVendedoresAdminController implements Initializable{
     @FXML
     void pesquisar_onAction(ActionEvent event) {
         if ((txtBusca.getText().strip().isBlank())){
-            //label_aviso.setText("Campo de Pesquisa Vazio.");
+            //abel_aviso.setText("Campo de Pesquisa Vazio.");
         }else{
             RadioButton radio = (RadioButton) pesquisa.getSelectedToggle();
             if (radio.getText().compareTo("ID")==0){
