@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import Dao.ListaDeProdutos;
 import Dao.ListaDeVendedores;
 import Models.Produto;
+import Models.Vendedor;
 import UseCases.ManipularImagem;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -117,10 +118,38 @@ public class MenuDeProdutosAdminController implements Initializable {
 
     @FXML
     private void atualizar_produto_onAction(ActionEvent event) {
+        if(prod_nome.getText().isBlank() || prod_preco.getText().isBlank() || prod_estoque.getText().isBlank() || prod_tipo.getText().isBlank() || imagemProduto.getImage() == null)
+        {
+            System.out.println("Preencha todos os campos");
+        }
+        else
+        {
+            ListaDeProdutos produtos = ListaDeProdutos.getInstance();
+            
+            
+            if(produtos.buscar(prod_nome.getText()) == null || produtos.buscar(prod_nome.getText())==produtos.getRefProduto() )
+            {
+                Produto produto_ref = ListaDeProdutos.getInstance().getRefProduto();
+                
+                produto_ref.setNome(prod_nome.getText());
+                produto_ref.setPreco(Double.parseDouble(prod_preco.getText()));
+                
+                produto_ref.setDescricao(prod_descricao.getText());
+           
+                produto_ref.setTipo(prod_tipo.getText());
+                produto_ref.setEstoque(Integer.parseInt(prod_estoque.getText()));
+                System.out.println("Produto Atualizado com sucesso");
+            }
+            else
+            {
+                System.out.println("Ja existe produto com esse nome, favor colocar outro");
+            }
+        }
     }
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        Main.mudar_tela("menu_administrador");
     }
     
     @FXML
@@ -138,10 +167,10 @@ public class MenuDeProdutosAdminController implements Initializable {
     @FXML
     void menu_user_perfil(ActionEvent event) {
         try{
-            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
-            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
-            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
-            Main.mudar_tela("perfil_vendedor_admin");
+            Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil_vendedor);
+            Main.setScene("perfil",perfil );
+            Main.mudar_tela("perfil");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
             }
@@ -156,9 +185,17 @@ public class MenuDeProdutosAdminController implements Initializable {
     
     @FXML
     private void menu_home(ActionEvent event) {
-        Main.mudar_tela("menu_administrador");
+        Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
+
+        if (logado.isAdmin())
+        {
+            Main.mudar_tela("menu_administrador");
+        }
+        else
+        {
+            Main.mudar_tela("menu_vendedor");
+        }
     }
-    
     @FXML
     private void menu_user(ActionEvent event) {
     }

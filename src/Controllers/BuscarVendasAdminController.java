@@ -129,7 +129,9 @@ public class BuscarVendasAdminController implements Initializable {
                     System.out.println("Não foi possível carregar a tela");
                 }
             }else if(radio.getText().equals("data")){
+
                 System.out.println("teste2");
+
                 try{
                     //data = String.valueOf(txtBusca.getText());
                     String data = null;

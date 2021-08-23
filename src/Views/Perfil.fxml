@@ -35,6 +35,9 @@
                         <TextField fx:id="perfil_email" layoutX="72.0" layoutY="157.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="vendasText" editable="false" layoutX="72.0" layoutY="111.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
                         <TextField fx:id="perfil_senha" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 15;" />
+                        <Label fx:id="labelAvisoBranco" layoutX="66.0" layoutY="6.0" prefHeight="17.0" prefWidth="159.0" />
+                        <Label fx:id="labelAvisoNome" layoutX="60.0" layoutY="93.0" prefHeight="17.0" prefWidth="170.0" />
+                        <Label fx:id="labelAvisoEmail" layoutX="54.0" layoutY="182.0" prefHeight="17.0" prefWidth="181.0" />
                      </children>
                   </AnchorPane>
                </children>
@@ -52,7 +55,10 @@
             </AnchorPane>
             <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                <menus>
-                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho" />
+                  <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Ir para o carrinho" />
+                     </items></Menu>
                   <Menu fx:id="menuUser" mnemonicParsing="false" onAction="#menu_user" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Usuario">
                      <items>
                         <MenuItem fx:id="menuUserPerfil" mnemonicParsing="false" onAction="#menu_user_perfil" text="Perfil" />
@@ -63,7 +69,10 @@
             </MenuBar>
             <MenuBar layoutX="-4.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                <menus>
-                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home" />
+                  <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Ir para a home" />
+                     </items></Menu>
                </menus>
             </MenuBar>
          </children>

@@ -10,6 +10,7 @@ package Controllers;
 import Dao.ListaDeProdutos;
 import Dao.ListaDeVendedores;
 import Models.Produto;
+import Models.Vendedor;
 import UseCases.ManipularImagem;
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +93,7 @@ public class MenuDeProdutosVendedorController implements Initializable {
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        Main.mudar_tela("menu_vendedor");
     }
 
     @FXML
@@ -131,7 +133,16 @@ public class MenuDeProdutosVendedorController implements Initializable {
     
     @FXML
     private void menu_home(ActionEvent event) {
-        Main.mudar_tela("menu_vendedor");
+        Vendedor logado = ListaDeVendedores.getInstance().getVendedorLogado();
+        if (logado.isAdmin())
+        {
+            Main.mudar_tela("menu_administrador");
+        }
+        else
+        {
+            Main.mudar_tela("menu_vendedor");
+        }
+         
     }
     
 }
