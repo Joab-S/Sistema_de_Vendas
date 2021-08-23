@@ -173,6 +173,12 @@ public class Main extends Application {
             case "perfil_vendedor_admin":
                 perfil_vendedor_admin = nova_cena;
                 break;
+            case "menu_admin":
+                menu_administrador = nova_cena;
+                break;
+            case "menu_vendedor":
+                menu_vendedor = nova_cena;
+                break;
         }
     }
     

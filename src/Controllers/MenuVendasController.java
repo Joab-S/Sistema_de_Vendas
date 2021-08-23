@@ -90,15 +90,20 @@ public class MenuVendasController implements Initializable {
     private TableColumn<ElementoPedido, Double> colunaSubtotal;
     
     
-    private ListaDePedidos pedidos = ListaDePedidos.getInstance();
-    private Pedido pedido = new Pedido();
-    private Vendedor vendedor_logado = ListaDeVendedores.getInstance().getVendedorLogado();
-    private Produto prod = null;
-    ObservableList<ElementoPedido> list;
+    private ListaDePedidos pedidos;
+    private Pedido pedido;
+    private Vendedor logado;
+    private Produto prod;
     
-    @Override
+    public MenuVendasController() {
+        System.out.println("first");
+        pedidos = ListaDePedidos.getInstance();
+        pedido = new Pedido();
+        logado = ListaDeVendedores.getInstance().getVendedorLogado();
+        prod = null;
+    }
+    
     public void initialize(URL url, ResourceBundle rb) {
-       
     }
 
     @FXML
@@ -106,30 +111,46 @@ public class MenuVendasController implements Initializable {
         if (idEnter.getText().isBlank() || produtoEnter.getText().isBlank() || precoEnter.getText().isBlank() || quantidadeEnter.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Não deixe campos vazios");
         }
-        else {
+        else 
+        {
             
-            if (pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()))) {
+            if (pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()))) 
+            {
             
-        colunaID.setCellValueFactory(new PropertyValueFactory<Produto,Integer>("ID"));
-        colunaProduto.setCellValueFactory(new PropertyValueFactory<Produto,String>("nome"));
-        colunaQuantidade.setCellValueFactory(new PropertyValueFactory<ElementoPedido,Integer>("quant"));
-        colunaPreco.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("preco"));
-        colunaSubtotal.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("total"));
+            //colunaID.setCellValueFactory(new PropertyValueFactory<Produto,Integer>("ID"));
+            //colunaProduto.setCellValueFactory(new PropertyValueFactory<Produto,String>("nome"));
+            colunaQuantidade.setCellValueFactory(new PropertyValueFactory<ElementoPedido,Integer>("quant"));
+            //colunaPreco.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("preco"));
+            colunaSubtotal.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("total"));
         
         
-        LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
-        ArrayList<ElementoPedido> array_pedidos = new ArrayList<>(); 
-        ListIterator<ElementoPedido> lista_pedidos =p.listIterator();
-        if (lista_pedidos != null){
-        while(lista_pedidos.hasNext()){
-        array_pedidos.add(lista_pedidos.next());
-        }
-        list = FXCollections.observableArrayList(array_pedidos);
+            System.out.println("PRINTS");
+            System.out.println(pedido);
+            System.out.println(logado);
+            System.out.println(prod);
+            System.out.println(pedido);
+            System.out.println("FIM");
+        
+            ObservableList<ElementoPedido> list;
+        
+            LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
+            System.out.println(p);
+            ArrayList<ElementoPedido> array_pedidos = new ArrayList<>(); 
+            ListIterator<ElementoPedido> lista_pedidos =p.listIterator();
+            if (lista_pedidos != null)
+            {
+                while(lista_pedidos.hasNext())
+                {
+                    array_pedidos.add(lista_pedidos.next());
+                }
+                list = FXCollections.observableArrayList(array_pedidos);
        
-        carrinhoTable.setItems(list);
-        precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
-        }
-        }
+                carrinhoTable.setItems(list);
+                precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
+            }
+            else { System.out.println("lista de pedidos nula"); }
+            }
+            else { System.out.println("Não é possível adicionar este produto"); }
         }
     }
 
@@ -171,12 +192,29 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        System.out.println(pedido);
         pedido.cancelar_pedido();
-        if (vendedor_logado.isAdmin()){
-            Main.mudar_tela("menu_administrador");
+        if (logado.isAdmin()){
+            try{
+                Parent tela = FXMLLoader.load(getClass().getResource("../Views/MenuAdministrador.fxml"));
+                Scene menu = new Scene(tela);
+                Main.setScene("menu_admin", menu);
+                    Main.mudar_tela("menu_administrador");
+                }catch(IOException e){
+                    System.out.println("Não foi possivel carregar a tela.");
+                }
+            
         } else {
-            Main.mudar_tela("menu_vendedor");
+            try{
+            Parent tela = FXMLLoader.load(getClass().getResource("../Views/MenuVendedor.fxml"));
+                Scene menu = new Scene(tela);
+                Main.setScene("menu_vendedor", menu);
+                    Main.mudar_tela("menu_vendedor");
+                }catch(IOException e){
+                    System.out.println("Não foi possivel carregar a tela.");
+                }
         }
+        System.out.println("Cancelado");
         limparEntrada();
     }
 
@@ -187,13 +225,14 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void finalizar_venda_onAction(ActionEvent event) {
-        pedido.setVendedor(vendedor_logado);
+        pedido.setVendedor(logado);
         pedido.finalizar_pedido(pedidos);
-        if (vendedor_logado.isAdmin()){
+        if (logado.isAdmin()){
             Main.mudar_tela("menu_administrador");
         } else {
             Main.mudar_tela("menu_vendedor");
         }
+        System.out.println("Finalizado");
         limparEntrada();
     }
     

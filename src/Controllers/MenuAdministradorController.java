@@ -194,8 +194,15 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     private void nova_venda_onAction(ActionEvent event) {
+         try{
+            Parent tela = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
+            Scene cena = new Scene(tela);
+            Main.setScene("menu_vendas", cena);
+            Main.mudar_tela("menu_vendas");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }   
         limparEntradas();
-        Main.mudar_tela("menu_vendas");
     }
 
     @FXML
