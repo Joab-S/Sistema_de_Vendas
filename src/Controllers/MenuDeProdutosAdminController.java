@@ -118,10 +118,38 @@ public class MenuDeProdutosAdminController implements Initializable {
 
     @FXML
     private void atualizar_produto_onAction(ActionEvent event) {
+        if(prod_nome.getText().isBlank() || prod_preco.getText().isBlank() || prod_estoque.getText().isBlank() || prod_tipo.getText().isBlank() || imagemProduto.getImage() == null)
+        {
+            System.out.println("Preencha todos os campos");
+        }
+        else
+        {
+            ListaDeProdutos produtos = ListaDeProdutos.getInstance();
+            
+            
+            if(produtos.buscar(prod_nome.getText()) == null || produtos.buscar(prod_nome.getText())==produtos.getRefProduto() )
+            {
+                Produto produto_ref = ListaDeProdutos.getInstance().getRefProduto();
+                
+                produto_ref.setNome(prod_nome.getText());
+                produto_ref.setPreco(Double.parseDouble(prod_preco.getText()));
+                
+                produto_ref.setDescricao(prod_descricao.getText());
+           
+                produto_ref.setTipo(prod_tipo.getText());
+                produto_ref.setEstoque(Integer.parseInt(prod_estoque.getText()));
+                System.out.println("Produto Atualizado com sucesso");
+            }
+            else
+            {
+                System.out.println("Ja existe produto com esse nome, favor colocar outro");
+            }
+        }
     }
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        Main.mudar_tela("menu_administrador");
     }
     
     @FXML

@@ -93,6 +93,7 @@ public class MenuDeProdutosVendedorController implements Initializable {
 
     @FXML
     private void cancelar_onAction(ActionEvent event) {
+        Main.mudar_tela("menu_vendedor");
     }
 
     @FXML
