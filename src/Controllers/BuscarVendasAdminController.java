@@ -199,8 +199,15 @@ public class BuscarVendasAdminController implements Initializable {
 
     @FXML
     private void menu_home(ActionEvent event) {
-        Main.mudar_tela("menu_administrador");
+        ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        if (vendedor.getVendedorLogado().isAdmin()){
+            Main.mudar_tela("menu_administrador");
+        }
+        else{
+            Main.mudar_tela("menu_vendedor");
+        }
     }
+
 
     @FXML
     private void menu_carrinho(ActionEvent event) {
