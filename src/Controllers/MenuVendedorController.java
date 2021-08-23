@@ -82,7 +82,7 @@ public class MenuVendedorController implements Initializable {
         limparEntradas();
         Main.mudar_tela("menu_vendas");
     }
-
+    
     @FXML
     private void pesquisar_onAction(ActionEvent event) {
         if (busca_vendedor.getText().trim().isBlank()){

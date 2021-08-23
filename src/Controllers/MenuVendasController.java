@@ -128,7 +128,7 @@ public class MenuVendasController implements Initializable {
             System.out.println(pedido);
             System.out.println(logado);
             System.out.println(prod);
-            System.out.println(pedido);
+            System.out.println(pedido.getListaProdutos());
             System.out.println("FIM");
         
             ObservableList<ElementoPedido> list;
@@ -143,10 +143,13 @@ public class MenuVendasController implements Initializable {
                 {
                     array_pedidos.add(lista_pedidos.next());
                 }
+                System.out.println(array_pedidos);
                 list = FXCollections.observableArrayList(array_pedidos);
        
                 carrinhoTable.setItems(list);
-                precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
+                //precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
+                //pedido.precoTotal();
+                //System.out.println("SAIU DO PRECO");
             }
             else { System.out.println("lista de pedidos nula"); }
             }
