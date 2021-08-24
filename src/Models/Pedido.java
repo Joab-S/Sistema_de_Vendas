@@ -16,7 +16,7 @@ public class Pedido implements Serializable{
   private String formaDePagamento;
   private String dataEHora;
   private Vendedor vendedor;
-  private String nomeVendedor = "Vendedor";
+  private String nome;
   private LinkedList<ElementoPedido> ListaProdutos;
   private int parcelas;
 
@@ -25,15 +25,14 @@ public class Pedido implements Serializable{
     this.formaDePagamento = formaDePagamento;
     this.ListaProdutos = new LinkedList<ElementoPedido>();
     this.vendedor = vendedor;
-    setNomeVendedor(vendedor);
   }
 
-  private void setNomeVendedor (Vendedor v){
-        this.nomeVendedor = v.getNome();
+  private void setNome (Vendedor v){
+        this.nome = v.getNome();
   }
   
-  private String getNomeVendedor (){
-        return this.nomeVendedor;
+  private String getNome (){
+        return nome;
   }
   
   public void gerarID(ListaDePedidos l) {
@@ -73,10 +72,11 @@ public class Pedido implements Serializable{
 
   public void setVendedor(Vendedor v) {
     this.vendedor = v;
+    setNome(v);
   }
 
   public Vendedor getVendedor() {
-    return this.vendedor;
+    return vendedor;
   }
 
   public void setParcelas(int parcelas) {
@@ -137,16 +137,18 @@ public class Pedido implements Serializable{
     return true;
   }
 
-  public void setPrecoTotal(){
-    ListIterator<ElementoPedido> lista = this.getListaProdutos().listIterator();
-    while (lista.hasNext()) {
-        ElementoPedido p = lista.next();
-        precoTotal += (p.getQuant()) * (p.getProduto().get_preco());
+  public void setPrecoTotal(ListIterator<ElementoPedido> lista){
+    //ListIterator<ElementoPedido> lista = this.getListaProdutos().listIterator();
+    if (lista != null){
+        while (lista.hasNext()) {
+            this.precoTotal += lista.next().getTotal();
+        }
     }
+    if (this.precoTotal == null) { this.precoTotal = 1000.0; }
   }
   
   public Double getPrecoTotal() {
-    this.setPrecoTotal();
+    //setPrecoTotal();
     return precoTotal;
   }
 
