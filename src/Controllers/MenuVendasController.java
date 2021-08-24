@@ -79,11 +79,11 @@ public class MenuVendasController implements Initializable {
     @FXML
     private TableView<ElementoPedido> carrinhoTable;
     @FXML
-    private TableColumn<Produto, Integer> colunaID;
+    private TableColumn<ElementoPedido, Integer> colunaID;
     @FXML
-    private TableColumn<Produto, String> colunaProduto;
+    private TableColumn<ElementoPedido, String> colunaProduto;
     @FXML
-    private TableColumn<ElementoPedido, Integer> colunaQuantidade;
+    private TableColumn<ElementoPedido, Double> colunaQuantidade;
     @FXML
     private TableColumn<ElementoPedido, Double> colunaPreco;
     @FXML
@@ -94,12 +94,16 @@ public class MenuVendasController implements Initializable {
     private Pedido pedido;
     private Vendedor logado;
     private Produto prod;
+    private ElementoPedido elemento_pedido;
     
     public MenuVendasController() {
         System.out.println("first");
         pedidos = ListaDePedidos.getInstance();
-        pedido = new Pedido();
+        Main.set_pagamento("");
         logado = ListaDeVendedores.getInstance().getVendedorLogado();
+        if (logado != null){
+            pedido = new Pedido("", logado);
+        }
         prod = null;
     }
     
@@ -113,30 +117,23 @@ public class MenuVendasController implements Initializable {
         }
         else 
         {
-            
-            if (pedido.inserirProduto(prod, Integer.parseInt(quantidadeEnter.getText()))) 
+            System.out.println(prod);
+            elemento_pedido = new ElementoPedido(prod, Integer.parseInt(quantidadeEnter.getText()));
+            if (pedido.inserirProduto(elemento_pedido.getProduto(), elemento_pedido.getQuant())) 
             {
             
-            //colunaID.setCellValueFactory(new PropertyValueFactory<Produto,Integer>("ID"));
-            //colunaProduto.setCellValueFactory(new PropertyValueFactory<Produto,String>("nome"));
-            colunaQuantidade.setCellValueFactory(new PropertyValueFactory<ElementoPedido,Integer>("quant"));
-            //colunaPreco.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("preco"));
-            colunaSubtotal.setCellValueFactory(new PropertyValueFactory<ElementoPedido, Double>("total"));
-        
-        
-            System.out.println("PRINTS");
-            System.out.println(pedido);
-            System.out.println(logado);
-            System.out.println(prod);
-            System.out.println(pedido.getListaProdutos());
-            System.out.println("FIM");
-        
-            ObservableList<ElementoPedido> list;
-        
+            colunaID.setCellValueFactory(new PropertyValueFactory<>("ID_produto"));
+            colunaProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quant"));
+            colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+            colunaSubtotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+
+            
+            ObservableList <ElementoPedido> list;
             LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
             System.out.println(p);
-            ArrayList<ElementoPedido> array_pedidos = new ArrayList<>(); 
-            ListIterator<ElementoPedido> lista_pedidos =p.listIterator();
+            ArrayList <ElementoPedido> array_pedidos =  new ArrayList<>();
+            ListIterator <ElementoPedido> lista_pedidos =p.listIterator();
             if (lista_pedidos != null)
             {
                 while(lista_pedidos.hasNext())
@@ -147,9 +144,9 @@ public class MenuVendasController implements Initializable {
                 list = FXCollections.observableArrayList(array_pedidos);
        
                 carrinhoTable.setItems(list);
-                //precoTotalLabel.setText(Double.toString(pedido.precoTotal()));
-                //pedido.precoTotal();
-                //System.out.println("SAIU DO PRECO");
+                
+                //String s = (String) Double.toString((double)pedido.getPrecoTotal());
+                //precoTotalLabel.setText(s);
             }
             else { System.out.println("lista de pedidos nula"); }
             }
@@ -218,7 +215,6 @@ public class MenuVendasController implements Initializable {
                 }
         }
         System.out.println("Cancelado");
-        limparEntrada();
     }
 
     @FXML
@@ -228,15 +224,34 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void finalizar_venda_onAction(ActionEvent event) {
-        pedido.setVendedor(logado);
-        pedido.finalizar_pedido(pedidos);
-        if (logado.isAdmin()){
-            Main.mudar_tela("menu_administrador");
-        } else {
-            Main.mudar_tela("menu_vendedor");
+        if (!("".equals(Main.get_pagamento()))){
+            pedido.setFormaDePagamento(Main.get_pagamento());
+            pedido.setVendedor(logado);
+            System.out.println(pedido.getListaProdutos());
+            if (pedido.finalizar_pedido(pedidos)){
+                if (logado.isAdmin()){
+                    Main.mudar_tela("menu_administrador");
+                } else {
+                    Main.mudar_tela("menu_vendedor");
+                }
+                LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
+                System.out.println(p);
+                ArrayList <ElementoPedido> array_pedidos =  new ArrayList<>();
+                ListIterator <ElementoPedido> lista_pedidos =p.listIterator();
+                if (lista_pedidos != null)
+                {
+                    while(lista_pedidos.hasNext())
+                    {
+                        array_pedidos.add(lista_pedidos.next());
+                    }
+                }
+                System.out.println("Finalizado");
+            }
         }
-        System.out.println("Finalizado");
-        limparEntrada();
+        else
+        {
+            System.out.println("Informe o tipo de pagamento.");
+        }
     }
     
     @FXML
@@ -284,10 +299,6 @@ public class MenuVendasController implements Initializable {
 
     @FXML
     private void menu_user(ActionEvent event) {
-    }
-
-    private void limparEntrada() {
-        
     }
     
     /**

@@ -34,7 +34,7 @@ public class Main extends Application {
     private static Scene perfil_vendedor_admin;
     private static String tela_anterior = null;
     private static String tela_atual = null;
-    private static String tipo_pagamento = null;
+    private static String tipo_pagamento;
     
     @Override
     public void start(Stage primarystage) throws Exception{

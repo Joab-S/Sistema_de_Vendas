@@ -71,19 +71,20 @@ public class BuscarVendasAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("teste");
         colunaID.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("ID"));
         System.out.println("teste1");
         colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Pedido, String>("nomeVendedor"));
-        colunaData.setCellValueFactory(new PropertyValueFactory<Pedido, String>("data"));
+        colunaData.setCellValueFactory(new PropertyValueFactory<Pedido, String>("dataEHora"));
         
        ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
-       ListaDePedidos lp = ListaDePedidos.getInstance(); 
+       ListaDePedidos lp = ListaDePedidos.getInstance();
        ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
        while(listaPedidos.hasNext()){
-           array_pedidos.add(listaPedidos.next());
+           Pedido x = listaPedidos.next();
+           System.out.println(x);
+           System.out.println(x.getVendedor());
+           array_pedidos.add(x);
        }
-       
        listObservable = FXCollections.observableArrayList(array_pedidos);
        tableView.setItems(listObservable);
     }    
@@ -100,7 +101,7 @@ public class BuscarVendasAdminController implements Initializable {
                     ID = Integer.parseInt(txtBusca.getText());
                     ListaDePedidos pedidos = ListaDePedidos.getInstance();
                     Pedido ped = pedidos.buscar_pedido(ID);
-                    Vendedor vend = null;
+                    Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();
                     if(ped == null){
                         System.out.println("Sem pedidos");
                     }else{
@@ -136,7 +137,7 @@ public class BuscarVendasAdminController implements Initializable {
                     //data = String.valueOf(txtBusca.getText());
                     String data = null;
                     ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                    Vendedor vend = null;                
+                    Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();               
                     Pedido ped = pedidos.buscar_pedido(data);
                     if (ped == null){
                         System.out.println("Sem data");
@@ -164,7 +165,7 @@ public class BuscarVendasAdminController implements Initializable {
                 
             }else{
                 ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                Vendedor vend = null;                
+                Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();               
                 Pedido ped = pedidos.buscar_venda(vend);
                 if(ped == null){
                     System.out.println("Não há vendas com esse vendedor");

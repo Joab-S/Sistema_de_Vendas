@@ -180,7 +180,6 @@ public class MenuAdministradorController implements Initializable{
         {
             Main.mudar_tela("menu_vendedor");
         }
-         
     }
 
     @FXML
@@ -197,8 +196,15 @@ public class MenuAdministradorController implements Initializable{
 
     @FXML
     private void buscar_vendas_onAction(ActionEvent event) {
+        try{
+            Parent tela = FXMLLoader.load(getClass().getResource("../Views/BuscarVendasAdmin.fxml"));
+            Scene cena = new Scene(tela);
+            Main.setScene("buscar_vendas_admin", cena);
+            Main.mudar_tela("buscar_vendas_admin");
+            }catch(IOException e){
+                System.out.println("Não foi possivel carregar a tela.");
+            }   
         limparEntradas();
-        Main.mudar_tela("buscar_vendas_admin");
     }
 
     @FXML

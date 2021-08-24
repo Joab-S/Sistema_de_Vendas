@@ -37,7 +37,7 @@ public class ListaDePedidos implements Serializable {
     }
     
     private ListaDePedidos() {
-        this.listaPedidos = new LinkedList<>();
+        //this.listaPedidos = new LinkedList<>();
         this.listaPedidos = (LinkedList<Pedido>)Serializador.carregar_dados("ListaPedidos.txt");
         if(this.listaPedidos == null){
             this.listaPedidos = new LinkedList<>();
@@ -111,12 +111,15 @@ public class ListaDePedidos implements Serializable {
     return null;
   }
 
-  public boolean adicionar_pedido(Pedido p) {
-    LinkedList<Pedido> x = this.getListaDePedidos();
-    if (x.contains(p)) {
-      return false;
+  public boolean adicionar_pedido(Pedido p) {    
+    if (p == null) return false;
+    
+    if (!this.listaPedidos.add(p))
+    {
+        System.out.println("Não foi possível adicionar pedido.");
+        return false;
     }
-    return x.add(p);
+    return true;
   }
 
   public boolean remover_pedido(Pedido pedido) {
