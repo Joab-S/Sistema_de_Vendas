@@ -49,24 +49,21 @@
                         <ScrollPane layoutX="18.0" layoutY="113.0" prefHeight="234.0" prefWidth="568.0">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="568.0">
-                                 <children>
-                                    <TableView fx:id="tableView" prefHeight="234.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columns>
-                                        <TableColumn fx:id="colunaID" minWidth="0.0" prefWidth="132.0" text="ID" />
-                                        <TableColumn fx:id="colunaNomeVendedor" minWidth="0.0" prefWidth="140.0" text="Nome Vendedor" />
-                                          <TableColumn fx:id="colunaData" prefWidth="140.0" text="Data Pedido" />
-                                      </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
+                                <children>
+                                    <TableView fx:id="tableView" prefHeight="234.0" prefWidth="568.0">
+                                        <columns>
+                                            <TableColumn fx:id="colunaID" minWidth="0.0" prefWidth="63.0" text="ID" />
+                                            <TableColumn fx:id="colunaNomeVendedor" minWidth="0.0" prefWidth="257.0" text="Nome Vendedor" />
+                                            <TableColumn fx:id="colunaData" prefWidth="247.0" text="Data Pedido" />
+                                        </columns>
                                     </TableView>
-                                 </children>
-                              </AnchorPane>
+                                </children>
+                            </AnchorPane>
                           </content>
                         </ScrollPane>
                      </children>
                   </AnchorPane>
-                  <MenuBar prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+                  <MenuBar layoutX="-2.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
                         <Menu fx:id="menuHome" mnemonicParsing="false" onAction="#menu_home" style="-fx-text-fill: rgba(0, 0, 0, 1); -fx-font-weight: bold; -fx-font-size: 13;" text="Home">
                            <items>
@@ -74,7 +71,7 @@
                            </items></Menu>
                      </menus>
                   </MenuBar>
-                  <MenuBar layoutX="425.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
+                  <MenuBar layoutX="423.0" prefHeight="35.0" style="-fx-background-color: rgba(173, 188, 242, 1);">
                      <menus>
                         <Menu fx:id="menuCarrinho" mnemonicParsing="false" onAction="#menu_carrinho" style="-fx-text-fill: rgba(30, 84, 225, 1); -fx-font-weight: bold;" text="Carrinho">
                            <items>

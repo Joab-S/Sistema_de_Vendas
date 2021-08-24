@@ -60,10 +60,10 @@
                                  <children>
                                     <TableView fx:id="table" prefHeight="234.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn fx:id="coluna_ID" minWidth="0.0" prefWidth="132.0" text="ID" />
-                                        <TableColumn fx:id="colunaNomeVendedor" minWidth="0.0" prefWidth="140.0" text="Nome Vendedor" />
-                                          <TableColumn fx:id="colunaUltimaVenda" prefWidth="140.0" text="Ultima Venda" />
-                                          <TableColumn fx:id="colunaTotalVendas" minWidth="0.0" prefWidth="140.0" text="Total de Vendas" />
+                                        <TableColumn fx:id="coluna_ID" minWidth="0.0" prefWidth="63.0" text="ID" />
+                                        <TableColumn fx:id="colunaNomeVendedor" minWidth="0.0" prefWidth="158.0" text="Nome Vendedor" />
+                                          <TableColumn fx:id="colunaUltimaVenda" prefWidth="197.0" text="Ultima Venda" />
+                                          <TableColumn fx:id="colunaTotalVendas" minWidth="0.0" prefWidth="134.0" text="Total de Vendas" />
                                       </columns>
                                     </TableView>
                                  </children>
