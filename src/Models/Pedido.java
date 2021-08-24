@@ -16,21 +16,26 @@ public class Pedido implements Serializable{
   private String formaDePagamento;
   private String dataEHora;
   private Vendedor vendedor;
+  private String nomeVendedor;
   private LinkedList<ElementoPedido> ListaProdutos;
   private int parcelas;
-  // Rever o tipo de estrutura que a gnt vai usar
-
-  public Pedido() {
-    this("", null);
-  }
 
   public Pedido(String formaDePagamento, Vendedor vendedor) {
     this.ID = -1;
     this.formaDePagamento = formaDePagamento;
     this.ListaProdutos = new LinkedList<ElementoPedido>();
     this.vendedor = vendedor;
+    setNomeVendedor(vendedor);
   }
 
+  private void setNomeVendedor (Vendedor v){
+        this.nomeVendedor = v.getNome();
+  }
+  
+  private String getNomeVendedor (){
+        return this.nomeVendedor;
+  }
+  
   public void gerarID(ListaDePedidos l) {
     if (l == null) {
       return;
@@ -132,23 +137,32 @@ public class Pedido implements Serializable{
     return true;
   }
 
-  public double precoTotal() {
+  public void setPrecoTotal(){
     ListIterator<ElementoPedido> lista = this.getListaProdutos().listIterator();
     while (lista.hasNext()) {
-      ElementoPedido p = lista.next();
-      this.precoTotal += (p.getProduto().get_preco()) * p.getQuant() * 1.0;
-      System.out.println("Elemento: " + p.getProduto().get_preco() + " q: "  +p.getQuant());
-      double d = (double) p.getQuant();
-      System.out.println((p.getProduto().get_preco()) * d * 1.0);
+        ElementoPedido p = lista.next();
+        precoTotal += (p.getQuant()) * (p.getProduto().get_preco());
     }
+  }
+  
+  public Double getPrecoTotal() {
+    this.setPrecoTotal();
     return precoTotal;
   }
 
   public boolean finalizar_pedido(ListaDePedidos l) {
-      // ver se a lista não ta vazia atnes de finalizar
+    // ver se a lista não ta vazia atnes de finalizar
     this.gerarID(l);
     this.setData();
-    return l.adicionar_pedido(this);
+    if (l.adicionar_pedido(this)){
+        this.vendedor.adicionarVenda(this);
+        System.out.println("Venda adicinada ao vendedor");
+    }
+    else{
+        System.out.println("Erro ao adicinar pedido");
+        return false;
+    }
+    return true;
   }
 
   public void cancelar_pedido() {

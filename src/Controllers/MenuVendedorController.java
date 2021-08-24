@@ -74,7 +74,7 @@ public class MenuVendedorController implements Initializable {
     @FXML
     private void buscar_vendas_onAction(ActionEvent event) {
         limparEntradas();
-        Main.mudar_tela("buscar_vendas_admin");
+        Main.mudar_tela("buscar_venda_admin");
     }
 
     @FXML

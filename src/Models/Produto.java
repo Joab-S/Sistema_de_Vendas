@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 public class Produto implements Serializable{
   //Atributos
-  private int ID;
+  private Integer ID;
   private int estoque;
   private String nome;
   private String tipo;

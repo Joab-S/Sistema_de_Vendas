@@ -71,19 +71,20 @@ public class BuscarVendasAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("teste");
         colunaID.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("ID"));
         System.out.println("teste1");
         colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Pedido, String>("nomeVendedor"));
-        colunaData.setCellValueFactory(new PropertyValueFactory<Pedido, String>("data"));
+        colunaData.setCellValueFactory(new PropertyValueFactory<Pedido, String>("dataEHora"));
         
        ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
-       ListaDePedidos lp = ListaDePedidos.getInstance(); 
+       ListaDePedidos lp = ListaDePedidos.getInstance();
        ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
        while(listaPedidos.hasNext()){
-           array_pedidos.add(listaPedidos.next());
+           Pedido x = listaPedidos.next();
+           System.out.println(x);
+           System.out.println(x.getVendedor());
+           array_pedidos.add(x);
        }
-       
        listObservable = FXCollections.observableArrayList(array_pedidos);
        tableView.setItems(listObservable);
     }    
@@ -100,7 +101,7 @@ public class BuscarVendasAdminController implements Initializable {
                     ID = Integer.parseInt(txtBusca.getText());
                     ListaDePedidos pedidos = ListaDePedidos.getInstance();
                     Pedido ped = pedidos.buscar_pedido(ID);
-                    Vendedor vend = null;
+                    Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();
                     if(ped == null){
                         System.out.println("Sem pedidos");
                     }else{
@@ -136,7 +137,7 @@ public class BuscarVendasAdminController implements Initializable {
                     //data = String.valueOf(txtBusca.getText());
                     String data = null;
                     ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                    Vendedor vend = null;                
+                    Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();               
                     Pedido ped = pedidos.buscar_pedido(data);
                     if (ped == null){
                         System.out.println("Sem data");
@@ -164,7 +165,7 @@ public class BuscarVendasAdminController implements Initializable {
                 
             }else{
                 ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                Vendedor vend = null;                
+                Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();               
                 Pedido ped = pedidos.buscar_venda(vend);
                 if(ped == null){
                     System.out.println("Não há vendas com esse vendedor");
@@ -199,8 +200,15 @@ public class BuscarVendasAdminController implements Initializable {
 
     @FXML
     private void menu_home(ActionEvent event) {
-        Main.mudar_tela("menu_administrador");
+        ListaDeVendedores vendedor = ListaDeVendedores.getInstance();
+        if (vendedor.getVendedorLogado().isAdmin()){
+            Main.mudar_tela("menu_administrador");
+        }
+        else{
+            Main.mudar_tela("menu_vendedor");
+        }
     }
+
 
     @FXML
     private void menu_carrinho(ActionEvent event) {
@@ -217,10 +225,11 @@ public class BuscarVendasAdminController implements Initializable {
     @FXML
     private void menu_user_perfil(ActionEvent event) {
         try{
-            Parent FXML_perfil_vendedor_admin = FXMLLoader.load(getClass().getResource("../Views/PerfilVendedorAdmin.fxml"));
-            Scene perfil_vendedor_admin = new Scene(FXML_perfil_vendedor_admin);
-            Main.setScene("perfil_vendedor_admin",perfil_vendedor_admin );
-            Main.mudar_tela("perfil_vendedor_admin");
+            Parent FXML_perfil_vendedor = FXMLLoader.load(getClass().getResource("../Views/Perfil.fxml"));
+            Scene perfil = new Scene(FXML_perfil_vendedor);
+            Main.setScene("perfil",perfil );
+            
+            Main.mudar_tela("perfil");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
             }
