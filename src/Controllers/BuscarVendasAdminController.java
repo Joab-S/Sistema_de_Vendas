@@ -27,6 +27,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -67,23 +68,28 @@ public class BuscarVendasAdminController implements Initializable {
      * @param url
      * @param rb
      */
-    @Override
+
+    public BuscarVendasAdminController(){
+        System.out.println("Construtor Vendas");
+    }
+    
     public void initialize(URL url, ResourceBundle rb) {
-        colunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        System.out.println("teste1");
-        colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<>("nomeVendedor"));
-        colunaData.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
-        
         ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
         ListaDePedidos lp = ListaDePedidos.getInstance();
         ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
-        while(listaPedidos.hasNext()){
+        
+        colunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<>("nomeVendedor"));
+        colunaData.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
+        
+        while(listaPedidos.hasNext()) {
             Pedido x = listaPedidos.next();
             System.out.println(x.getID());
             System.out.println(x.getVendedor().getNome());
             System.out.println(x.getDataEHora());
             array_pedidos.add(x);
         }
+        System.out.println(array_pedidos);
         listObservable = FXCollections.observableArrayList(array_pedidos);
         tableView.setItems(listObservable);
     }    
@@ -95,104 +101,90 @@ public class BuscarVendasAdminController implements Initializable {
         }else{
             RadioButton radio = (RadioButton) pesquisa.getSelectedToggle();
             if(radio.getText().compareTo("ID") == 0){
-                int ID = 0;
+                int ID;
                 try{
-                    ID = Integer.parseInt(txtBusca.getText());
-                    ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                    Pedido ped = pedidos.buscar_pedido(ID);
-                    Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();
-                    if(ped == null){
-                        System.out.println("Sem pedidos");
-                    }else{
-                        pedidos.setRef_produto(ped);
-                        if(vend.isAdmin()){
-                            try{
-                                Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
-                                Scene menu_vendas = new Scene(FXML_menu_vendas);
-                                Main.setScene("menu_vendas", menu_vendas);
-                                Main.mudar_tela("menu_vendas");
-                            }catch(IOException e){
-                                System.out.println("Não foi possível carregar a tela");
-                            }                            
-                        }else{
-                            try{
-                                Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
-                                Scene menu_vendas = new Scene(FXML_menu_vendas);
-                                Main.setScene("menu_vendas", menu_vendas);
-                                Main.mudar_tela("menu_vendas");
-                            }catch(IOException e){
-                                System.out.println("Não foi possível carregar a tela");
-                            }                            
+                    ID = Integer.parseInt(txtBusca.getText()); 
+                    ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
+                    ListaDePedidos lp = ListaDePedidos.getInstance();
+                    ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
+
+                    colunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+                    colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<>("nome"));
+                    colunaData.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
+
+                    while(listaPedidos.hasNext()) {
+                        Pedido x = listaPedidos.next();
+                        if (x.getID() == ID){
+                            System.out.println(x.getID());
+                            System.out.println(x.getVendedor().getNome());
+                            System.out.println(x.getDataEHora());
+                            array_pedidos.add(x);
                         }
                     }
+                    if (array_pedidos.size() == 0) { 
+                        JOptionPane.showMessageDialog(null, "Não foram encontradas vendas.");
+                    }
+                    listObservable = FXCollections.observableArrayList(array_pedidos);
+                    tableView.setItems(listObservable);
+                    
                 }catch(NumberFormatException e){
                     System.out.println("Não foi possível carregar a tela");
                 }
             }else if(radio.getText().equals("data")){
-
-                System.out.println("teste2");
-
                 try{
-                    //data = String.valueOf(txtBusca.getText());
-                    String data = null;
-                    ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                    Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();               
-                    Pedido ped = pedidos.buscar_pedido(data);
-                    if (ped == null){
-                        System.out.println("Sem data");
-                    }else{
-                        pedidos.setRef_produto(ped);
-                        if(vend.isAdmin()){
-                            try{
-                                Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
-                                Scene menu_vendas = new Scene(FXML_menu_vendas);
-                                Main.setScene("menu_vendas", menu_vendas);
-                                Main.mudar_tela("menu_vendas");
-                            }catch(IOException e){
-                                System.out.println("Não foi possível carregar a tela");
-                            }
-                        }else{
-                            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
-                            Scene menu_vendas = new Scene(FXML_menu_vendas);
-                            Main.setScene("menu_vendas", menu_vendas);
-                            Main.mudar_tela("menu_vendas");                            
+                    String data = String.valueOf(txtBusca.getText());
+                    ArrayList<Pedido> array_pedidos = new ArrayList<>();
+                    ListaDePedidos lp = ListaDePedidos.getInstance();
+                    ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
+                    colunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+                    colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<>("nomeVendedor"));
+                    colunaData.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
+                    while(listaPedidos.hasNext()) {
+                        Pedido x = listaPedidos.next();
+                        if (data.equals(x.getDataEHora())){
+                            System.out.println(x.getID());
+                            System.out.println(x.getVendedor().getNome());
+                            System.out.println(x.getDataEHora());
+                            array_pedidos.add(x);
                         }
                     }
-                }catch(IOException e){
+                    if (array_pedidos.size() == 0) { 
+                            JOptionPane.showMessageDialog(null, "Não foram encontradas vendas.");
+                        }
+                    listObservable = FXCollections.observableArrayList(array_pedidos);
+                    tableView.setItems(listObservable);
+                }catch(NumberFormatException e){
                     System.out.println("Não foi possível carregar a tela");
-                }     
+                }
                 
             }else{
-                ListaDePedidos pedidos = ListaDePedidos.getInstance();
-                Vendedor vend = ListaDeVendedores.getInstance().getVendedorLogado();               
-                Pedido ped = pedidos.buscar_venda(vend);
-                if(ped == null){
-                    System.out.println("Não há vendas com esse vendedor");
-                }else{
-                    pedidos.setRef_produto(ped);
-                    if(vend.isAdmin()){
-                        try{
-                            pedidos.setRef_produto(ped);
-                            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
-                            Scene menu_vendas = new Scene(FXML_menu_vendas);
-                            Main.setScene("menu_vendas", menu_vendas);
-                            Main.mudar_tela("menu_vendas");                        
-                        }catch(IOException e){
-                            System.out.println("Não foi possível carregar a tela");
-                        }                        
-                    }else{
-                        try{
-                            pedidos.setRef_produto(ped);
-                            Parent FXML_menu_vendas = FXMLLoader.load(getClass().getResource("../Views/MenuVendas.fxml"));
-                            Scene menu_vendas = new Scene(FXML_menu_vendas);
-                            Main.setScene("menu_vendas", menu_vendas);
-                            Main.mudar_tela("menu_vendas");                        
-                        }catch(IOException e){
-                            System.out.println("Não foi possível carregar a tela");
-                        }                        
-                    }
+                try{
+                String vendedor = String.valueOf(txtBusca.getText());
+                ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
+                ListaDePedidos lp = ListaDePedidos.getInstance();
+                ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
 
-                }                
+                colunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+                colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<>("nomeVendedor"));
+                colunaData.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
+
+                while(listaPedidos.hasNext()) {
+                    Pedido x = listaPedidos.next();
+                    if (x.getVendedor().getNome().equals(vendedor)){
+                        System.out.println(x.getID());
+                        System.out.println(x.getVendedor().getNome());
+                        System.out.println(x.getDataEHora());
+                        array_pedidos.add(x);
+                    }
+                }
+                if (array_pedidos.size() == 0) { 
+                        JOptionPane.showMessageDialog(null, "Não foram encontradas vendas.");
+                    }
+                listObservable = FXCollections.observableArrayList(array_pedidos);
+                tableView.setItems(listObservable);
+                }catch(NumberFormatException e){
+                    System.out.println("Não foi possível carregar a tela");
+                }
             }
         }
     }

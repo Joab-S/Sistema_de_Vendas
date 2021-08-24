@@ -133,19 +133,20 @@ public class MenuVendasController implements Initializable {
                 System.out.println(p);
                 ArrayList <ElementoPedido> array_pedidos =  new ArrayList<>();
                 ListIterator <ElementoPedido> lista_pedidos =p.listIterator();
+                Double n = 0.0;
                 if (lista_pedidos != null)
                 {
                     while(lista_pedidos.hasNext())
                     {
-                        array_pedidos.add(lista_pedidos.next());
+                        ElementoPedido ep = lista_pedidos.next();
+                        array_pedidos.add(ep);
+                        n += (ep.getProduto().get_preco() * ep.getQuant());
                     }
                     System.out.println(array_pedidos);
                     list = FXCollections.observableArrayList(array_pedidos);
 
                     carrinhoTable.setItems(list);
-
-                    //String s = (String) Double.toString((double)pedido.getPrecoTotal());
-                    //precoTotalLabel.setText(s);
+                    precoTotalLabel.setText(Double.toString(n));
                 }
                 else { 
                     System.out.println("lista de pedidos nula"); 
