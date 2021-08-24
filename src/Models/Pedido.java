@@ -16,7 +16,7 @@ public class Pedido implements Serializable{
   private String formaDePagamento;
   private String dataEHora;
   private Vendedor vendedor;
-  private String nomeVendedor;
+  private String nomeVendedor = "Vendedor";
   private LinkedList<ElementoPedido> ListaProdutos;
   private int parcelas;
 

@@ -18,8 +18,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import static javafx.application.Application.launch;
-import javafx.stage.Stage;
 import main.Main;
 import Models.Pedido;
 import Models.Vendedor;
@@ -71,22 +69,23 @@ public class BuscarVendasAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        colunaID.setCellValueFactory(new PropertyValueFactory<Pedido, Integer>("ID"));
+        colunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         System.out.println("teste1");
-        colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<Pedido, String>("nomeVendedor"));
-        colunaData.setCellValueFactory(new PropertyValueFactory<Pedido, String>("dataEHora"));
+        colunaNomeVendedor.setCellValueFactory(new PropertyValueFactory<>("nomeVendedor"));
+        colunaData.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
         
-       ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
-       ListaDePedidos lp = ListaDePedidos.getInstance();
-       ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
-       while(listaPedidos.hasNext()){
-           Pedido x = listaPedidos.next();
-           System.out.println(x);
-           System.out.println(x.getVendedor());
-           array_pedidos.add(x);
-       }
-       listObservable = FXCollections.observableArrayList(array_pedidos);
-       tableView.setItems(listObservable);
+        ArrayList<Pedido> array_pedidos = new ArrayList<>(); 
+        ListaDePedidos lp = ListaDePedidos.getInstance();
+        ListIterator<Pedido> listaPedidos = lp.getListaDePedidos().listIterator();
+        while(listaPedidos.hasNext()){
+            Pedido x = listaPedidos.next();
+            System.out.println(x.getID());
+            System.out.println(x.getVendedor().getNome());
+            System.out.println(x.getDataEHora());
+            array_pedidos.add(x);
+        }
+        listObservable = FXCollections.observableArrayList(array_pedidos);
+        tableView.setItems(listObservable);
     }    
 
     @FXML

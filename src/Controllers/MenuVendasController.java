@@ -121,36 +121,41 @@ public class MenuVendasController implements Initializable {
             elemento_pedido = new ElementoPedido(prod, Integer.parseInt(quantidadeEnter.getText()));
             if (pedido.inserirProduto(elemento_pedido.getProduto(), elemento_pedido.getQuant())) 
             {
-            
-            colunaID.setCellValueFactory(new PropertyValueFactory<>("ID_produto"));
-            colunaProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quant"));
-            colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-            colunaSubtotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+                colunaID.setCellValueFactory(new PropertyValueFactory<>("ID_produto"));
+                colunaProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+                colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quant"));
+                colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+                colunaSubtotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-            
-            ObservableList <ElementoPedido> list;
-            LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
-            System.out.println(p);
-            ArrayList <ElementoPedido> array_pedidos =  new ArrayList<>();
-            ListIterator <ElementoPedido> lista_pedidos =p.listIterator();
-            if (lista_pedidos != null)
-            {
-                while(lista_pedidos.hasNext())
+
+                ObservableList <ElementoPedido> list;
+                LinkedList <ElementoPedido>  p = pedido.getListaProdutos();
+                System.out.println(p);
+                ArrayList <ElementoPedido> array_pedidos =  new ArrayList<>();
+                ListIterator <ElementoPedido> lista_pedidos =p.listIterator();
+                if (lista_pedidos != null)
                 {
-                    array_pedidos.add(lista_pedidos.next());
+                    while(lista_pedidos.hasNext())
+                    {
+                        array_pedidos.add(lista_pedidos.next());
+                    }
+                    System.out.println(array_pedidos);
+                    list = FXCollections.observableArrayList(array_pedidos);
+
+                    carrinhoTable.setItems(list);
+
+                    //String s = (String) Double.toString((double)pedido.getPrecoTotal());
+                    //precoTotalLabel.setText(s);
                 }
-                System.out.println(array_pedidos);
-                list = FXCollections.observableArrayList(array_pedidos);
-       
-                carrinhoTable.setItems(list);
-                
-                //String s = (String) Double.toString((double)pedido.getPrecoTotal());
-                //precoTotalLabel.setText(s);
+                else { 
+                    System.out.println("lista de pedidos nula"); 
+                    JOptionPane.showMessageDialog(null, "lista de pedidos nula");
+                }
             }
-            else { System.out.println("lista de pedidos nula"); }
+            else {
+                System.out.println("Não é possível adicionar este produto"); 
+                JOptionPane.showMessageDialog(null, "Não é possível adicionar este produto");
             }
-            else { System.out.println("Não é possível adicionar este produto"); }
         }
     }
 
@@ -161,12 +166,14 @@ public class MenuVendasController implements Initializable {
         {
             precoEnter.setText("");           
             System.out.println("Informe um ID válido ou o nome de um Produto");
+            JOptionPane.showMessageDialog(null, "Informe um ID válido ou o nome de um Produto");
         }
         else if (!idEnter.getText().isBlank()){
             int ID = Integer.parseInt(idEnter.getText());      
             prod = p.buscar(ID);
             if(prod == null){
                 System.out.println("Este produto não existe no sistema");
+                JOptionPane.showMessageDialog(null, "Este produto não existe no sistema");
             }
             else{
             produtoEnter.setText(prod.getNome());
@@ -176,6 +183,7 @@ public class MenuVendasController implements Initializable {
             prod = p.buscar(produtoEnter.getText());
             if(prod == null){
                 System.out.println("Este produto não existe no sistema");
+                JOptionPane.showMessageDialog(null, "Este produto não existe no sistema");
             }
             else{
             idEnter.setText(Integer.toString(prod.getID()));
@@ -184,6 +192,7 @@ public class MenuVendasController implements Initializable {
         if(prod == null){
             //label_aviso.setText("Não foi encontrado um produto com esse ID.");
             System.out.println("Não foi encontrado um produto com esse ID");
+            JOptionPane.showMessageDialog(null, "Não foi encontrado um produto com esse ID");
         }else{
             p.setRefProduto(prod);
             precoEnter.setText(Double.toString(prod.get_preco()));
@@ -202,6 +211,7 @@ public class MenuVendasController implements Initializable {
                     Main.mudar_tela("menu_administrador");
                 }catch(IOException e){
                     System.out.println("Não foi possivel carregar a tela.");
+                    JOptionPane.showMessageDialog(null, "Não foi possivel carregar a tela");
                 }
             
         } else {
@@ -212,6 +222,7 @@ public class MenuVendasController implements Initializable {
                     Main.mudar_tela("menu_vendedor");
                 }catch(IOException e){
                     System.out.println("Não foi possivel carregar a tela.");
+                    JOptionPane.showMessageDialog(null, "Não foi possivel carregar a tela");
                 }
         }
         System.out.println("Cancelado");
@@ -251,6 +262,8 @@ public class MenuVendasController implements Initializable {
         else
         {
             System.out.println("Informe o tipo de pagamento.");
+            JOptionPane.showMessageDialog(null, "Informe o tipo de pagamento");
+
         }
     }
     
@@ -263,6 +276,7 @@ public class MenuVendasController implements Initializable {
             Main.mudar_tela("menu_vendas");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
+                JOptionPane.showMessageDialog(null, "Não foi possivel carregar a tela");
             }
     }
 
@@ -276,6 +290,7 @@ public class MenuVendasController implements Initializable {
             Main.mudar_tela("perfil");
             }catch(IOException e){
                 System.out.println("Não foi possivel carregar a tela.");
+                JOptionPane.showMessageDialog(null, "Não foi possivel carregar a tela");
             }
     }
 
